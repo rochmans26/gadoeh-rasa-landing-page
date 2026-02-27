@@ -87,21 +87,17 @@
       .text-blue-dark {
         color: var(--blue-dark);
       }
+      .text-green-dark {
+        color: #1c6264;
+      }
       .text-primary-color {
         color: var(--text-primary);
-      }
-      .bg-content {
-        background-image: url("./assets/img/faq-assets/pattern.png");
-        background-size: contain;
-        background-position: bottom;
-        background-repeat: no-repeat;
-        padding-bottom: 0; /* Hapus padding bottom */
       }
 
       /* Tambahan class untuk menghapus margin bottom pada container terakhir */
       .bg-content .container:last-child {
         margin-bottom: 0 !important;
-        padding-bottom: 3rem; /* Tambah padding bottom untuk ruang konten terakhir */
+        padding-bottom: 3rem;
       }
 
       /* ── NAVBAR LINKS ── */
@@ -296,11 +292,43 @@
         color: var(--text-primary);
       }
 
-      .faq-content {
-        background-color: var(--white);
-        padding-top: 80px;
-        padding-bottom: 0; /* Hapus padding bottom */
-        margin-bottom: 0; /* Hapus margin bottom */
+      .about-content {
+        background-color: var(--primary-color);
+        padding-top: 40px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      .c-headline-text {
+        width: auto;
+      }
+
+      .text-justify {
+        text-align: justify;
+      }
+
+      /* ── HISTORY SECTION: section kuning di atas ── */
+      .bg-primary-color.py-5 {
+        overflow: visible;
+      }
+
+      /* ── HISTORY SECTION: section putih ── */
+      #history-text {
+        overflow: visible;
+        position: relative;
+      }
+
+      /* ── OVERLAP IMAGE ── */
+      .history-img-overlap {
+        position: relative;
+        z-index: 10;
+        margin-top: -140px; /* nilai negatif = gambar naik ke section kuning, sesuaikan */
+      }
+
+      @media (max-width: 767.98px) {
+        .history-img-overlap {
+          margin-top: 0; /* di mobile tidak overlap agar tidak berantakan */
+        }
       }
 
       /* ── SCROLL REVEAL ── */
@@ -349,7 +377,13 @@
 
       @media (max-width: 575.98px) {
         .footer-part {
-          margin-top: 20px;
+          margin-top: 10px;
+        }
+        .about-content {
+          padding-top: 20px;
+        }
+        .c-headline-text {
+          width: 80%;
         }
       }
       @media (min-width: 576px) and (max-width: 991.98px) {
@@ -358,6 +392,12 @@
         }
         .footer-part {
           margin-top: 0;
+        }
+        .about-content {
+          padding-top: 20px;
+        }
+        .c-headline-text {
+          width: 80%;
         }
       }
 
@@ -393,6 +433,24 @@
         background: var(--secondary-color);
         transform: translateY(-4px);
       }
+
+      .image-container {
+        position: relative;
+        width: 100%;
+      }
+
+      .overlay-text {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        text-align: center;
+        margin: 0;
+        z-index: 1;
+        width: 100%;
+        padding: 10px 0;
+      }
     </style>
   </head>
   <body>
@@ -424,15 +482,13 @@
               <a class="nav-link" href="index.html">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">ABOUT US</a>
+              <a class="nav-link active" href="about.html">ABOUT US</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="product.html">OUR PRODUCT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="faq.html"
-                >FAQ</a
-              >
+              <a class="nav-link" aria-current="page" href="faq.html">FAQ</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">CONTACT US</a>
@@ -455,147 +511,166 @@
 
     <!-- MAIN CONTENT -->
     <main>
-      <section class="faq-section">
-        <div class="container">
-          <div class="row jutify-content-center align-items-center">
-            <div class="col-lg-6">
-              <img
-                src="assets/img/faq-assets/FAQ.svg"
-                class="img-fluid mb-4 reveal"
-                srcset=""
-              />
-              <p class="fs-1 fw-medium reveal reveal-delay-1">
-                Frequently Asked Questions
-              </p>
+      <section class="about-content">
+        <div class="image-container">
+          <img
+            src="assets/img/about-assets/headline-bg.png"
+            class="img-fluid"
+            width="100%"
+            alt=""
+            srcset=""
+          />
+          <div class="overlay-text">
+            <img
+              src="assets/img/about-assets/headline-text.svg"
+              class="img-fluid c-headline-text"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <!-- Section kuning: deskripsi -->
+        <div class="bg-primary-color py-5" style="overflow: visible">
+          <div class="container">
+            <div class="row fs-5 fw-medium">
+              <div class="col-md-6 text-justify">
+                Gadoeh Rasa adalah merek yang hadir untuk mendukung kebutuhan
+                makan anak, terutama di masa pertumbuhan yang sering penuh
+                tantangan. Kami percaya momen makan seharusnya menjadi
+                pengalaman menyenangkan, bukan drama yang melelahkan bagi orang
+                tua. Karena itu, Gadoeh Rasa menghadirkan produk makanan anak
+                yang sehat, praktis, dan aman, mulai dari Kremes Hati Ayam, Abon
+                Ayam, Bawang Goreng, hingga Healthy Snack berbahan buah-buahan
+                alami. Semua produk dibuat tanpa MSG dan menggunakan bahan
+                pilihan berkualitas, sehingga aman sekaligus bergizi untuk
+                anak-anak.
+              </div>
+              <div class="col-md-6 text-justify">
+                Lebih dari sekadar makanan, Gadoeh Rasa hadir sebagai solusi
+                untuk membantu orang tua mengatasi anak yang sulit makan. Dengan
+                inovasi rasa yang ramah di lidah anak, kami berkomitmen
+                menghadirkan produk yang tidak hanya menutrisi tubuh, tetapi
+                juga membangkitkan selera dan menciptakan kebahagiaan di setiap
+                suapan.
+              </div>
             </div>
-            <div class="col-lg-6">
-              <div class="text-end">
+          </div>
+        </div>
+
+        <!-- Section putih: History -->
+        <div class="bg-white-color" id="history-text">
+          <div class="container">
+            <div class="row justify-content-center align-items-start">
+              <div class="col-md-6">
+                <h1 class="fs-1 fw-bold text-green-dark mb-5 mt-5">History</h1>
+                <p class="fs-5 fw-medium text-justify">
+                  Gadoeh Rasa didirikan pada Desember 2022 dengan semangat
+                  menghadirkan produk makanan yang praktis, lezat, dan
+                  berkualitas untuk keluarga Indonesia. Berawal dari skala
+                  rumahan dengan proses produksi sederhana, Gadoeh Rasa tumbuh
+                  melalui komitmen pada kualitas bahan, rasa yang konsisten,
+                  serta inovasi produk yang mengikuti kebutuhan pasar.
+                  <br /><br />
+                  Seiring berjalannya waktu, kepercayaan pelanggan terus
+                  meningkat dan mendorong perkembangan kapasitas produksi,
+                  sistem operasional, serta tim yang lebih profesional. Gadoeh
+                  Rasa tidak hanya berfokus pada penjualan, tetapi juga pada
+                  pembangunan brand yang dekat dengan konsumen, khususnya
+                  keluarga yang mengutamakan kualitas dan keamanan produk.
+                  <br /><br />
+                  Hari ini, Gadoeh Rasa terus berkembang sebagai brand lokal
+                  yang berkomitmen menghadirkan produk pangan berkualitas dengan
+                  standar produksi yang baik, inovatif, dan relevan dengan gaya
+                  hidup modern. Perjalanan ini masih panjang, dan kami percaya
+                  setiap produk yang kami hasilkan adalah bagian dari langkah
+                  menuju visi yang lebih besar di masa depan. <br /><br />
+                </p>
+              </div>
+
+              <!-- 
+                Kolom gambar dengan class history-img-overlap:
+                margin-top negatif membuat gambar "naik" ke section kuning di atasnya.
+                Sesuaikan nilai margin-top di CSS (.history-img-overlap) jika perlu.
+              -->
+              <div class="col-md-6 history-img-overlap">
                 <img
-                  src="assets/img/faq-assets/new-boy.png"
-                  class="img-fluid reveal reveal-delay-3"
-                  srcset=""
+                  src="assets/img/about-assets/gudang-gadoehrasa.png"
+                  class="img-fluid w-100"
+                  alt="Gudang Gadoeh Rasa"
                 />
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      <!-- Section FAQ Content dengan background pattern -->
-      <section class="faq-content">
-        <div class="bg-content">
-          <div class="container mb-5">
-            <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
-            >
-              <h1 class="fw-bold section-shimmer">Apa itu Gadoeh Rasa?</h1>
-            </button>
-            <p class="fs-2 ms-4">
-              Gadoeh Rasa adalah brand camilan dan lauk pendamping makan anak &
-              keluarga seperti Kremes, Abon, Cheesy Bites, dan Healthy Snack.
-              Produk kami praktis, siap santap, dan cocok jadi topping atau
-              camilan si kecil.
-            </p>
-          </div>
-          <div class="container mb-5">
-            <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
-            >
-              <h1 class="fw-bold section-shimmer">
-                Berapa usia si kecil bisa mencoba Gadoeh Rasa?
-              </h1>
-            </button>
-            <div class="fs-2 ms-4">
-              Berikut rekomendasi usia konsumsi: <br /><br />
-              <ul class="fs-2 ms-4">
-                <li>
-                  Kremes Hati Ayam bisa mulai dikenalkan sejak usia 7 bulan ke
-                  atas (fase MPASI lanjut), ditaburkan secukupnya sebagai
-                  topping makanan. Pastikan tekstur sudah sesuai kemampuan makan
-                  si kecil ya moms.
-                </li>
-                <li>
-                  Cheesy Bites & Abon Ayam direkomendasikan untuk anak usia 1
-                  tahun ke atas, saat anak sudah lebih terbiasa dengan variasi
-                  tekstur dan rasa. Berikan dengan porsi yang disesuaikan.
-                </li>
-                <li>
-                  Healthy Snack direkomendasikan untuk usia 2 tahun ke atas
-                  karena teksturnya lebih crunchy, sehingga lebih aman saat anak
-                  sudah bisa mengunyah dengan baik.
-                </li>
-              </ul>
-              Tetap sesuaikan dengan kemampuan makan dan perkembangan
-              masing-masing anak ya moms 🤍
-            </div>
-          </div>
-          <div class="container mb-5">
-            <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
-            >
-              <h1 class="fw-bold section-shimmer">
-                Apakah produk bisa dikonsumsi anak dengan alergi?
-              </h1>
-            </button>
-            <div class="fs-2 ms-4">
-              Produk kami menggunakan bahan pilihan, namun tetap mengandung
-              bahan makanan umum seperti Ayam, Keju, atau bahan turunannya
-              (tergantung varian produk). Untuk si kecil dengan riwayat alergi
-              tertentu, sangat disarankan membaca komposisi terlebih dahulu dan
-              konsultasi dengan dokter sebelum konsumsi ya moms.
-            </div>
-          </div>
-          <div class="container mb-5">
-            <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
-            >
-              <h1 class="fw-bold section-shimmer">
-                Bagaimana pengiriman dan agar produk sampai dengan aman?
-              </h1>
-            </button>
-            <div class="fs-2 ms-4">
-              <b>Pengiriman Reguler</b> : Senin–Sabtu, pesanan diproses hingga
-              pukul 12.00 siang <br /><b>Pengiriman Instant</b> : Senin–Sabtu,
-              diproses hingga pukul 15.00 ⚡ <br /><br />Pesanan yang masuk hari
-              Sabtu setelah pukul 12.00 dan hari Minggu akan diproses dan
-              dikirim pada hari serta jam kerja berikutnya ya moms 🤍
-              <br /><br />
-              Semua pesanan melalui proses QC sebelum dikirim. Untuk keamanan
-              ekstra selama pengiriman, moms bisa menambahkan opsi bubble wrap
-              saat checkout agar produk lebih aman sampai tujuan.
-              <br /><br />Jika produk yang diterima kurang atau tidak sesuai,
-              moms bisa segera chat admin dengan menyertakan video unboxing
-              lengkap (tanpa jeda) serta foto resi paket, agar kami bisa bantu
-              proses pengecekan dengan cepat ya moms 😊<br /><br />
-            </div>
-          </div>
+        <div class="bg-white-color py-5">
           <div class="container">
-            <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
-            >
-              <h1 class="fw-bold section-shimmer">
-                Bagaimana agar si kecil bisa suka dengan produk Gadoeh Rasa?
-              </h1>
-            </button>
-            <div class="fs-2 ms-4">
-              <ul class="fs-2 ms-4">
-                <li>Kenalkan sedikit demi sedikit terlebih dahulu.</li>
-                <li>
-                  Campurkan sebagai topping makanan favoritnya (nasi, bubur,
-                  sup, dll).
-                </li>
-                <li>
-                  Sajikan saat anak dalam kondisi lapar ringan dan mood baik.
-                </li>
-                <li>
-                  Jangan dipaksa, ya moms. Biarkan anak beradaptasi dengan rasa
-                  baru.
-                </li>
-                <li>
-                  Moms juga bisa cek resep-resep di sosial media kami untuk
-                  variasi menu agar si kecil tidak bosan dan makin lahap.
-                </li>
-              </ul>
+            <div class="row justify-content-center align-items-end">
+              <div class="col-lg-6 mb-3">
+                <img
+                  src="assets/img/about-assets/anak-perempuan-nunjuk.png"
+                  class="img-fluid"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-5">
+                  <button
+                    class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+                  >
+                    <h1 class="fw-bold section-shimmer">Untuk Siapa?</h1>
+                  </button>
+                  <ul class="fs-5 fw-medium">
+                    <li>
+                      Orang tua (terutama ibu) dengan anak usia MPASI – Balita
+                    </li>
+                    <li>
+                      Keluarga muda yang mencari makanan sehat, praktis, dan
+                      aman untuk anak
+                    </li>
+                    <li>
+                      Moms yang sering menghadapi anak susah makan atau GTM
+                    </li>
+                  </ul>
+                </div>
+                <div class="mb-5">
+                  <button
+                    class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+                  >
+                    <h1 class="fw-bold section-shimmer">Tagline</h1>
+                  </button>
+                  <div class="ms-4">
+                    <h2 class="fs-2 fw-bold">Lahap Tanpa Drama!</h2>
+                  </div>
+                </div>
+                <div class="mb-5">
+                  <button
+                    class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+                  >
+                    <h1 class="fw-bold section-shimmer">
+                      Kenapa Jadi Pilihan Para Moms?
+                    </h1>
+                  </button>
+                  <ul class="fs-5 fw-medium">
+                    <li>
+                      <b>Sehat</b> » produk tanpa MSG, berbahan pilihan, aman
+                      untuk anak
+                    </li>
+                    <li>
+                      <b>Praktis</b> » mudah disajikan, cocok untuk orang tua
+                      yang sibuk
+                    </li>
+                    <li>
+                      <b>Fun</b> » rasa ramah di lidah anak, menjadikan makan
+                      lebih menyenangkan
+                    </li>
+                    <li>
+                      <b>Supportive</b> » hadir sebagai solusi, bukan sekadar
+                      makanan
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
