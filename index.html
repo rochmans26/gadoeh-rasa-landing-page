@@ -1,0 +1,1899 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <script src="../files/assets/bs-example/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.122.0" />
+    <title>Gadoeh Rasa</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.3/examples/navbar-fixed/"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+    />
+
+    <link
+      href="../files/assets/bs-example/assets/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Swiper CSS — WAJIB -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+      :root {
+        --primary-color: #f6ce5b;
+        --secondary-color: #f39c12;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
+        --text-primary: #5d2c13;
+        --white: #ffffff;
+        --cream: #fff8e7;
+        --blue: #00adee;
+        --blue-dark: #1c6264;
+        --navbar-height: 56px;
+      }
+      @media (min-width: 1200px) {
+        :root {
+          --navbar-height: 78px;
+        }
+      }
+      @media (min-width: 1400px) {
+        :root {
+          --navbar-height: 92px;
+        }
+      }
+      * {
+        font-family: "Fredoka", sans-serif;
+        color: var(--text-primary);
+      }
+
+      body {
+        background-image: url("assets/img/divider-about-gadoeh-rasa.svg");
+        background-repeat: repeat;
+        background-size: contain;
+      }
+
+      .bg-primary-color {
+        background-color: var(--primary-color);
+      }
+      .bg-white-color {
+        background-color: var(--white);
+      }
+      .bg-cream {
+        background-color: var(--cream);
+      }
+      .text-blue {
+        color: var(--blue);
+      }
+      .text-blue-dark {
+        color: var(--blue-dark);
+      }
+
+      .text-primary-color {
+        color: var(--text-primary);
+      }
+
+      .control-sizing {
+        margin-left: 122px;
+        margin-right: 122px;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow:
+          inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* ── NAVBAR LINK: efek underline hover ── */
+      .navbar-nav .nav-link {
+        color: var(--text-primary);
+        font-weight: 400;
+        margin: 0 8px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .navbar-nav .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background-color: var(--text-primary);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .navbar-nav .nav-link:hover::after,
+      .navbar-nav .nav-link.active::after {
+        width: 100%;
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--text-primary);
+        font-weight: bolder;
+      }
+
+      /* Mobile: nonaktifkan efek underline, gunakan style collapse biasa */
+      @media (max-width: 991.98px) {
+        .navbar-nav .nav-link {
+          margin: 0;
+          padding: 0.6rem 1rem;
+          border-bottom: 1px solid rgba(93, 44, 19, 0.1);
+        }
+        .navbar-nav .nav-link::after {
+          display: none;
+        }
+        .navbar-nav .nav-item:last-child .nav-link {
+          border-bottom: none;
+        }
+        /* Social media saat collapse: tampil horizontal di bawah menu */
+        .social-media {
+          padding: 0.75rem 1rem;
+          border-top: 1px solid rgba(93, 44, 19, 0.15);
+        }
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+
+      .social-media a {
+        padding: 0 10px;
+      }
+
+      /* ── NAVBAR: padding & ukuran responsif ── */
+      .navbar {
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+      }
+
+      .navbar .nav-link {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+      }
+
+      .social-media a i {
+        font-size: 1rem;
+      }
+
+      @media (min-width: 1200px) {
+        .navbar {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        }
+        .navbar-brand img {
+          width: 62px;
+        }
+        .navbar .nav-link {
+          font-size: 1.15rem;
+        }
+        .social-media a {
+          padding: 0 14px;
+        }
+        .social-media a i {
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (min-width: 1400px) {
+        .navbar {
+          padding-top: 1.25rem;
+          padding-bottom: 1.25rem;
+        }
+        .navbar-brand img {
+          width: 72px;
+        }
+        .navbar .nav-link {
+          font-size: 1.25rem;
+        }
+        .social-media a {
+          padding: 0 16px;
+        }
+        .social-media a i {
+          font-size: 1.35rem;
+        }
+      }
+
+      /* ── BODY: geser seluruh konten ke bawah navbar fixed ── */
+      body {
+        padding-top: 3.5rem;
+      }
+
+      @media (min-width: 1200px) {
+        body {
+          padding-top: 4.5rem;
+        }
+      }
+
+      @media (min-width: 1400px) {
+        body {
+          padding-top: 5rem;
+        }
+      }
+
+      /* ── SECTION HOME & bg-img-home: tanpa celah ── */
+      #home {
+        padding-top: 0;
+        margin-top: 0;
+      }
+
+      /* ── DESKTOP (>=992px): contain + aspect-ratio asli gambar ── */
+      .bg-img-home {
+        background-image: url("./assets/img/home-1(2).png");
+        width: 100%;
+        aspect-ratio: 1440 / 621;
+        background-size: contain;
+        background-position: center top;
+        background-repeat: no-repeat;
+        position: relative;
+        box-sizing: border-box;
+        margin-top: 0;
+      }
+
+      /* ── HEADLINE-TEXT: base style (desktop) ── */
+      .headline-text {
+        margin-top: clamp(2rem, 15%, 9rem);
+      }
+
+      /* Gambar headline (Headline.svg) */
+      .headline-text img {
+        width: clamp(180px, 35vw, 520px);
+        height: auto;
+      }
+
+      /* Paragraf deskripsi */
+      .headline-text p {
+        font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+        line-height: 1.6;
+        max-width: 420px;
+      }
+
+      /* Tombol Read More */
+      .headline-text .btn {
+        font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+        padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(1rem, 2vw, 1.75rem);
+        border-radius: 50px;
+      }
+      .navbar-spacer {
+        width: 100%;
+        height: 3rem;
+        background-color: var(--primary-color);
+      }
+
+      /* ── TABLET (768px - 991px): cover ── */
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        .bg-img-home {
+          aspect-ratio: auto;
+          min-height: 45vw;
+          background-size: cover;
+          background-position: center center;
+        }
+        .headline-text {
+          margin-top: clamp(3rem, 8vw, 6rem);
+        }
+        .headline-text img {
+          width: clamp(160px, 30vw, 340px);
+        }
+        .headline-text p {
+          font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+          max-width: 340px;
+        }
+        .navbar-spacer {
+          height: 1rem;
+        }
+      }
+
+      /* ── SMARTPHONE (s/d 767px): cover ── */
+      @media (max-width: 767.98px) {
+        .bg-img-home {
+          aspect-ratio: auto;
+          min-height: 55vw;
+          background-size: cover;
+          background-position: center center;
+        }
+        .headline-text {
+          margin-top: clamp(3.5rem, 12vw, 6rem);
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .headline-text img {
+          width: clamp(140px, 55vw, 260px);
+        }
+        .headline-text p {
+          font-size: clamp(0.82rem, 3.5vw, 1rem);
+          max-width: 90%;
+          text-align: center;
+        }
+        .headline-text .btn {
+          font-size: clamp(0.82rem, 3.5vw, 1rem);
+          padding: 0.5rem 1.5rem;
+        }
+        .navbar-spacer {
+          height: 0;
+        }
+      }
+
+      /* ===============================
+   Video Section
+   =============================== */
+      .video-section {
+        background-color: var(--white);
+        padding: 80px 0;
+      }
+
+      .video-wrapper {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .video-placeholder {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .play-button {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: var(--white);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--secondary-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .play-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .mascot {
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      .bounce {
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* ── SWIPER GALLERY ── */
+      .gallery-swiper-wrap {
+        position: relative;
+        padding-bottom: 16px;
+        overflow: hidden; /* cegah slide meluber ke luar layar di mobile */
+      }
+
+      .gallery-swiper-wrap::before,
+      .gallery-swiper-wrap::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-image: repeating-linear-gradient(
+          to right,
+          #eddcca 0,
+          #eddcca 8px,
+          transparent 8px,
+          transparent 16px
+        );
+      }
+      .gallery-swiper-wrap::before {
+        top: 0;
+      }
+      .gallery-swiper-wrap::after {
+        bottom: 56px;
+      }
+
+      .swiper-gallery {
+        padding: 28px 0 28px !important;
+        overflow: visible !important;
+      }
+
+      .swiper-gallery .swiper-slide {
+        /* Responsif: 85vw mobile, 320px tablet, 340px desktop */
+        width: clamp(220px, 85vw, 340px) !important;
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+        opacity: 0.5;
+        transform: scale(0.87);
+      }
+      @media (min-width: 576px) {
+        .swiper-gallery .swiper-slide {
+          width: clamp(280px, 55vw, 340px) !important;
+        }
+      }
+      @media (min-width: 992px) {
+        .swiper-gallery .swiper-slide {
+          width: 340px !important;
+        }
+      }
+
+      .swiper-gallery .swiper-slide-active {
+        opacity: 1;
+        transform: scale(1.05);
+        z-index: 2;
+      }
+
+      .swiper-gallery .swiper-slide-prev,
+      .swiper-gallery .swiper-slide-next {
+        opacity: 0.82;
+        transform: scale(0.95);
+      }
+
+      .gallery-card {
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fdf6ec;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+        cursor: grab;
+        transition: box-shadow 0.3s;
+      }
+      .gallery-card:active {
+        cursor: grabbing;
+      }
+
+      .swiper-slide-active .gallery-card {
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery-img-wrap {
+        position: relative;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+      }
+
+      .gallery-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+      .gallery-card:hover .gallery-img-wrap img {
+        transform: scale(1.05);
+      }
+
+      .gallery-card-body {
+        padding: 16px 20px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .card-product-name {
+        font-weight: 800;
+        font-size: 1rem;
+        color: #8b5e3c;
+        margin-bottom: 2px;
+      }
+      .card-product-sub {
+        font-size: 0.78rem;
+        color: #9e9e9e;
+      }
+
+      .card-badge {
+        background: #ffecd1;
+        color: #f5a623;
+        font-weight: 700;
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border-radius: 50px;
+        white-space: nowrap;
+      }
+
+      /* ── DOT NAVIGATION ── */
+      .swiper-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 20px 0 0;
+      }
+
+      .swiper-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ddd;
+        border: none;
+        cursor: pointer;
+        transition:
+          background 0.3s,
+          width 0.3s;
+        padding: 0;
+      }
+      .swiper-dot.active {
+        background: var(--blue);
+        width: 28px;
+        border-radius: 5px;
+      }
+
+      /* ── ARROW BUTTONS ── */
+      .swiper-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-60%);
+        z-index: 10;
+        width: 44px;
+        height: 44px;
+        background: #fff;
+        border: 1px solid #eddcca;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+        font-size: 1rem;
+        color: #8b5e3c;
+      }
+      .swiper-arrow:hover {
+        background: #f5a623;
+        border-color: #f5a623;
+        color: #fff;
+        transform: translateY(-60%) scale(1.1);
+      }
+
+      .footer-logo {
+        margin-top: 0;
+      }
+      .footer-part {
+        margin-top: 100px;
+      }
+      /* Mobile: mascot gambar center */
+      @media (max-width: 991.98px) {
+        .mascot-col {
+          text-align: center !important;
+        }
+      }
+
+      /* Mobile: sembunyikan arrow, gunakan swipe gesture */
+      @media (max-width: 575.98px) {
+        .swiper-arrow {
+          display: none;
+        }
+
+        .footer-part {
+          margin-top: 20px;
+        }
+      }
+      /* Tablet: arrow lebih kecil, mepet ke tepi */
+      @media (min-width: 576px) and (max-width: 991.98px) {
+        .swiper-arrow {
+          width: 36px;
+          height: 36px;
+          font-size: 0.85rem;
+        }
+        .arrow-prev {
+          left: 8px;
+        }
+        .arrow-next {
+          right: 8px;
+        }
+        .footer-logo {
+          margin-top: 0;
+        }
+        .footer-part {
+          margin-top: 0;
+        }
+      }
+      /* Desktop */
+      @media (min-width: 992px) {
+        .arrow-prev {
+          left: 24px;
+        }
+        .arrow-next {
+          right: 24px;
+        }
+      }
+      .gallery-section {
+        background-color: var(--white);
+        padding: 60px 0 72px;
+      }
+
+      /* ── SECTION HEADER ── */
+      .section-label {
+        text-align: center;
+        margin-bottom: 28px;
+        padding: 0 24px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: #fff3cd;
+        color: var(--secondary-color);
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 5px 16px;
+        border-radius: 50px;
+        margin-bottom: 12px;
+      }
+
+      .section-title {
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+
+      .section-sub {
+        font-size: 0.92rem;
+        color: var(--text-light);
+      }
+
+      /* ── FILTER TAG CHIPS ── */
+      .tag-strip {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 24px 36px;
+      }
+
+      .tag-chip {
+        background: var(--cream);
+        border: 1.5px solid #e8c97a;
+        border-radius: 50px;
+        padding: 6px 18px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .tag-chip:hover,
+      .tag-chip.active {
+        background: var(--primary-color);
+        border-color: var(--secondary-color);
+        color: var(--text-primary);
+      }
+
+      /* ══════════════════════════════════════
+         ANIMATIONS
+      ══════════════════════════════════════ */
+
+      /* --- Scroll-reveal base --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.from-left {
+        transform: translateX(-50px);
+      }
+      .reveal.from-right {
+        transform: translateX(50px);
+      }
+      .reveal.scale-in {
+        transform: scale(0.85);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Stagger delays */
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+      .reveal-delay-5 {
+        transition-delay: 0.5s;
+      }
+
+      /* --- Navbar logo spin-in --- */
+      @keyframes logoSpin {
+        0% {
+          transform: rotate(-15deg) scale(0.5);
+          opacity: 0;
+        }
+        100% {
+          transform: rotate(0deg) scale(1);
+          opacity: 1;
+        }
+      }
+      .navbar-brand img {
+        animation: logoSpin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+
+      /* --- Hero headline float-in --- */
+      @keyframes floatUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .headline-text img {
+        animation: floatUp 0.8s ease 0.2s both;
+      }
+      .headline-text p {
+        animation: floatUp 0.8s ease 0.45s both;
+      }
+      .headline-text .btn {
+        animation: floatUp 0.8s ease 0.65s both;
+      }
+
+      /* --- Hero button pulse --- */
+      @keyframes pulseBorder {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 173, 238, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(0, 173, 238, 0);
+        }
+      }
+      .headline-text .btn {
+        animation:
+          floatUp 0.8s ease 0.65s both,
+          pulseBorder 2.5s ease 1.5s infinite;
+      }
+
+      /* --- Navbar links slide-down --- */
+      @keyframes navLinkDrop {
+        0% {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .navbar-nav .nav-item {
+        animation: navLinkDrop 0.5s ease both;
+      }
+      .navbar-nav .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .navbar-nav .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .navbar-nav .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .navbar-nav .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .navbar-nav .nav-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      /* --- Mascot/character gentle float --- */
+      @keyframes gentleFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+      .boys-kremes-img,
+      .girl-kremes-img {
+        animation: gentleFloat 3.5s ease-in-out infinite;
+      }
+      .girl-kremes-img {
+        animation-delay: 0.5s;
+      }
+
+      /* --- Section title shimmer highlight --- */
+      @keyframes shimmer {
+        0% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+      .section-shimmer {
+        background: linear-gradient(
+          90deg,
+          var(--text-primary) 30%,
+          var(--secondary-color) 50%,
+          var(--text-primary) 70%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s linear infinite;
+      }
+
+      /* --- Counter number roll-up --- */
+      @keyframes countUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* --- Promo card hover lift --- */
+      .promo-card {
+        transition:
+          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s ease;
+        border-radius: 12px;
+        padding: 16px;
+      }
+      .promo-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        background: #fff8e7;
+      }
+
+      /* --- Tag chip bounce on hover --- */
+      .tag-chip {
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          color 0.2s,
+          transform 0.2s;
+      }
+      .tag-chip:hover {
+        transform: scale(1.08);
+      }
+
+      /* --- Footer items slide up --- */
+      .footer-item-anim {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .footer-item-anim.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- Scroll-to-top button --- */
+      #scrollTopBtn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        border: 2px solid var(--secondary-color);
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+      #scrollTopBtn.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      #scrollTopBtn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-4px);
+      }
+
+      /* --- Floating particles background --- */
+      .particles-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(243, 156, 18, 0.2);
+        animation: particleDrift linear infinite;
+      }
+      @keyframes particleDrift {
+        0% {
+          transform: translateY(100%) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    </style>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom styles for this template -->
+    <link
+      href="../files/assets/bs-example/navbar-fixed/navbar-fixed.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Scroll to top button -->
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path
+          d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"
+        />
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path
+          d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+        />
+        <path
+          d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
+        />
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path
+          d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+        />
+      </symbol>
+    </svg>
+
+    <!-- <div
+      class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+    >
+      <button
+        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        aria-label="Toggle theme (auto)"
+      >
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+          <use href="#circle-half"></use>
+        </svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul
+        class="dropdown-menu dropdown-menu-end shadow"
+        aria-labelledby="bd-theme-text"
+      >
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="light"
+            aria-pressed="false"
+          >
+            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+              <use href="#sun-fill"></use>
+            </svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="dark"
+            aria-pressed="false"
+          >
+            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+              <use href="#moon-stars-fill"></use>
+            </svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center active"
+            data-bs-theme-value="auto"
+            aria-pressed="true"
+          >
+            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+              <use href="#circle-half"></use>
+            </svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div> -->
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary-color">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="./assets/img/Logo.svg" alt="" width="46" srcset="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product.html">OUR PRODUCT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">CONTACT US</a>
+            </li>
+          </ul>
+          <div class="social-media ms-auto">
+            <a href="https://www.facebook.com/" target="_blank"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="https://www.instagram.com/" target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://www.instagram.com/" target="_blank"
+              ><i class="fab fa-pinterest"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section id="home">
+        <div class="bg-primary-color navbar-spacer"></div>
+        <div class="bg-img-home" style="position: relative">
+          <div class="particles-container"></div>
+          <div
+            class="container p-3 rounded"
+            style="position: relative; z-index: 1"
+          >
+            <div class="headline-text">
+              <img src="assets/img/Headline.svg" class="img-fluid" srcset="" />
+              <p class="col-md-5 mt-3">
+                Solusi pendamping makan & snack anak yang bikin waktu makan
+                lebih tenang dan menyenangkan.
+              </p>
+              <button
+                class="btn btn-lg bg-cream text-primary-color fw-bold fs-5 rounded-3 px-4 py-1"
+                type="button"
+              >
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="about" class="">
+        <!-- Bagian Deskripsi -->
+        <div class="container mb-5 reveal">
+          <p class="fs-4 text-center text-md-start">
+            Gadoeh Rasa adalah brand pendamping makan & snack anak yang fokus
+            pada rasa, kualitas, dan kebutuhan keluarga. Setiap produk dibuat
+            dari bahan pilihan, tanpa MSG, bebas pengawet & pewarna. Kami hadir
+            untuk menjadi solusi praktis moms menghadapi tantangan makan anak.
+          </p>
+        </div>
+
+        <!-- Bagian Fitur dengan Flexbox -->
+        <div class="container-fluid bg-white py-5">
+          <div class="container">
+            <!-- Menggunakan Flexbox untuk tata letak fitur -->
+            <div
+              class="d-flex flex-column flex-md-row justify-content-around align-items-center gap-4"
+            >
+              <!-- Item Fitur 1 -->
+              <div class="text-center reveal scale-in reveal-delay-1">
+                <img
+                  src="./assets/img/bahan-organik.svg"
+                  alt="Bahan Organik"
+                  class="mb-3"
+                  style="max-width: 150px; height: auto"
+                />
+                <h3 class="">
+                  Bahan <br />
+                  Organik
+                </h3>
+              </div>
+
+              <!-- Item Fitur 2 -->
+              <div class="text-center reveal scale-in reveal-delay-2">
+                <img
+                  src="./assets/img/no-msg.svg"
+                  alt="No MSG"
+                  class="mb-3"
+                  style="max-width: 150px; height: auto"
+                />
+                <h3 class="">No<br />MSG</h3>
+              </div>
+
+              <!-- Item Fitur 3 -->
+              <div class="text-center reveal scale-in reveal-delay-3">
+                <img
+                  src="./assets/img/kids-friendly.svg"
+                  alt="Kids Friendly"
+                  class="mb-3"
+                  style="max-width: 150px; height: auto"
+                />
+                <h3 class="">
+                  Kids <br />
+                  Friendly
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="video-section pt-2">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-7 reveal from-left">
+              <div class="video-wrapper">
+                <div class="video-placeholder">
+                  <button class="play-button">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-lg-5 text-end mascot-col reveal from-right reveal-delay-2"
+            >
+              <img
+                src="./assets/img/boys-with-green-clothes.svg"
+                alt="Happy Kid"
+                class="img-fluid mascot bounce"
+                style="max-width: 300px"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="gallery-section" id="products">
+        <!-- Swiper Wrap -->
+        <div class="gallery-swiper-wrap">
+          <button class="swiper-arrow arrow-prev" id="arrowPrev">
+            &#8592;
+          </button>
+          <button class="swiper-arrow arrow-next" id="arrowNext">
+            &#8594;
+          </button>
+
+          <div class="swiper swiper-gallery" id="gallerySwiper">
+            <div class="swiper-wrapper">
+              <!-- ✏️ Ganti src dengan path gambar produk asli Anda -->
+
+              <div class="swiper-slide" data-cat="kresmes">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p01/680/510"
+                      alt="Kresmes Hari Ayam"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Kresmes Hari Ayam</div>
+                      <div class="card-product-sub">
+                        Renyah · Gurih · Bergizi
+                      </div>
+                    </div>
+                    <span class="card-badge">New</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="abon">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p02/680/510"
+                      alt="Abon Ayam"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Abon Ayam</div>
+                      <div class="card-product-sub">
+                        Lembut · Alami · Favorit
+                      </div>
+                    </div>
+                    <span class="card-badge">Best Seller</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="snack">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p03/680/510"
+                      alt="Healthy Snack Tempe"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Healthy Snack Tempe</div>
+                      <div class="card-product-sub">
+                        Protein Tinggi · Crispy
+                      </div>
+                    </div>
+                    <span class="card-badge">Populer</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="abon">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p04/680/510"
+                      alt="Abon Sapi"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Abon Sapi</div>
+                      <div class="card-product-sub">Empuk · Kaya Rasa</div>
+                    </div>
+                    <span class="card-badge">Halal</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="snack">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p05/680/510"
+                      alt="Snack Bayam"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Snack Bayam</div>
+                      <div class="card-product-sub">
+                        Sayuran · Rendah Kalori
+                      </div>
+                    </div>
+                    <span class="card-badge">Baru</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="kresmes">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p06/680/510"
+                      alt="Kresmes Jagung"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Kresmes Jagung</div>
+                      <div class="card-product-sub">Manis Alami · Renyah</div>
+                    </div>
+                    <span class="card-badge">Limited</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="abon">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p07/680/510"
+                      alt="Abon Ikan Cakalang"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Abon Ikan Cakalang</div>
+                      <div class="card-product-sub">Omega-3 · Lezat</div>
+                    </div>
+                    <span class="card-badge">Sehat</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="snack">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p08/680/510"
+                      alt="Keripik Pisang"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Keripik Pisang</div>
+                      <div class="card-product-sub">Manis · Alami · Crispy</div>
+                    </div>
+                    <span class="card-badge">Favorit</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="kresmes">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p09/680/510"
+                      alt="Kresmes Wortel"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Kresmes Wortel</div>
+                      <div class="card-product-sub">Vitamin A · Enak</div>
+                    </div>
+                    <span class="card-badge">Best</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="snack">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p10/680/510"
+                      alt="Snack Ubi Ungu"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Snack Ubi Ungu</div>
+                      <div class="card-product-sub">Antioksidan · Unik</div>
+                    </div>
+                    <span class="card-badge">Baru</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="abon">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p11/680/510"
+                      alt="Abon Jamur"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Abon Jamur</div>
+                      <div class="card-product-sub">Vegan · Serat Tinggi</div>
+                    </div>
+                    <span class="card-badge">Vegan</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide" data-cat="kresmes">
+                <div class="gallery-card">
+                  <div class="gallery-img-wrap">
+                    <img
+                      src="https://picsum.photos/seed/p12/680/510"
+                      alt="Keripik Singkong"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="gallery-card-body">
+                    <div>
+                      <div class="card-product-name">Keripik Singkong</div>
+                      <div class="card-product-sub">Tradisional · Renyah</div>
+                    </div>
+                    <span class="card-badge">Klasik</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /swiper-wrapper -->
+          </div>
+          <!-- /swiper -->
+
+          <!-- Dot Navigation -->
+          <div class="swiper-dots" id="swiperDots"></div>
+        </div>
+        <!-- /gallery-swiper-wrap -->
+      </section>
+      <section id="promo" class="bg-white">
+        <div class="container-fluid bg-white py-5">
+          <div class="container">
+            <!-- Tombol Judul -->
+            <div class="mb-3 reveal">
+              <button
+                class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3"
+              >
+                <h1 class="fw-bold section-shimmer">
+                  Kenapa harus Gadoeh Rasa?
+                </h1>
+              </button>
+            </div>
+
+            <!-- Row 1: Teks kiri, Gambar kanan -->
+            <div class="row justify-content-between align-items-center mb-4">
+              <div class="col-lg-7">
+                <div class="mb-3 promo-card reveal from-left reveal-delay-1">
+                  <h5 class="fw-bold">Terbukti Dipercaya Moms</h5>
+                  <p>
+                    Terjual puluhan ribu produk setiap bulan dengan rating toko
+                    4,9/5 di marketplace utama, bukti nyata kepercayaan dari
+                    banyak keluarga.
+                  </p>
+                </div>
+                <div class="mb-3 promo-card reveal from-left reveal-delay-2">
+                  <h5 class="fw-bold">Banyak Dicari, Siap Offline</h5>
+                  <p>
+                    Sering ditanya "di mana bisa beli langsung?". Meski belum
+                    memiliki gerai fisik, seluruh minat offline kami arahkan ke
+                    mitra ritel yang bekerja sama.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="col-lg-5 text-center reveal from-right reveal-delay-2"
+              >
+                <img
+                  src="assets/img/boys-kremes.svg"
+                  alt="Boys Kremes"
+                  class="img-fluid boys-kremes-img"
+                  style="max-height: 300px"
+                />
+              </div>
+            </div>
+
+            <!-- Row 2: Gambar kiri, Teks kanan -->
+            <div class="row justify-content-between align-items-center">
+              <div class="col-lg-5 text-center reveal from-left reveal-delay-1">
+                <img
+                  src="assets/img/girl-kremes.svg"
+                  alt="Girl Kremes"
+                  class="img-fluid girl-kremes-img"
+                  style="max-height: 300px"
+                />
+              </div>
+              <div class="col-lg-7">
+                <div class="mb-3 promo-card reveal from-right reveal-delay-2">
+                  <h5 class="fw-bold">Aman, Legal, dan Terpercaya</h5>
+                  <p>
+                    Produk memiliki izin edar, sertifikat Halal MUI, serta hasil
+                    uji laboratorium untuk menjamin keamanan dan kualitas.
+                  </p>
+                </div>
+                <div class="mb-3 promo-card reveal from-right reveal-delay-3">
+                  <h5 class="fw-bold">
+                    Fokus Camilan Anak yang Aman &amp; Enak
+                  </h5>
+                  <p>
+                    Resep tanpa MSG &amp; tanpa bahan pengawet, cocok untuk
+                    pasar keluarga muda yang mengutamakan gizi sekaligus rasa.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="jumbotron">
+        <div class="bg-primary-color">
+          <img
+            src="assets/img/Headline-2.png"
+            class="img-fluid w-100"
+            alt="Kremes Hati Ayam Pilihan No.1 Favorit si Kecil"
+          />
+        </div>
+      </section>
+    </main>
+    <footer class="bg-primary-color py-5">
+      <div class="container">
+        <div class="row align-items-start">
+          <!-- Logo -->
+          <div
+            class="col-md-4 text-center mb-3 footer-item-anim"
+            style="transition-delay: 0.1s"
+          >
+            <img
+              src="assets/img/Logo.svg"
+              class="footer-logo"
+              width="80%"
+              alt="Gadoeh Rasa Logo"
+            />
+            <p class="mt-3" style="font-size: 1rem">
+              <i>© 2025 Gadoeh Rasa</i>
+            </p>
+          </div>
+          <!-- Office Info -->
+          <div
+            class="col-md-4 mb-3 footer-item-anim"
+            style="transition-delay: 0.2s"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-5">Gadoeh Rasa</h5>
+              <p class="mb-0"><b>Office</b></p>
+              <p style="font-size: 1rem">
+                Ruko Magna Commercial, Summarecon, Komplek Jl. Magna Barat Blok
+                MB. 19, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat
+                40295
+              </p>
+            </div>
+          </div>
+          <!-- Official Online Store -->
+          <div
+            class="col-md-2 mb-3 footer-item-anim"
+            style="transition-delay: 0.3s"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-3">Official Online Store</h5>
+              <ul class="list-unstyled" style="font-size: 1rem">
+                <li>Shopee</li>
+                <li>TikTok Shop</li>
+                <li>Tokopedia</li>
+                <li>Lazada</li>
+              </ul>
+              <div class="mt-2 d-flex gap-3">
+                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                  ><i class="fab fa-tiktok"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!-- Main Menu -->
+          <div
+            class="col-md-2 mb-3 footer-item-anim"
+            style="transition-delay: 0.4s"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-4">Main Menu</h5>
+              <ul class="list-unstyled" style="font-size: 1rem">
+                <li>
+                  <a href="#" class="text-primary-color text-decoration-none"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-primary-color text-decoration-none"
+                    >About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-primary-color text-decoration-none"
+                    >Our Product</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-primary-color text-decoration-none"
+                    >FAQ</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-primary-color text-decoration-none"
+                    >Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../files/assets/bs-example/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS — WAJIB, taruh sebelum </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      (function () {
+        const TOTAL = 12; // ✏️ Sesuaikan dengan jumlah slide Anda
+
+        // ── Build dots ──
+        const dotsEl = document.getElementById("swiperDots");
+        for (let i = 0; i < TOTAL; i++) {
+          const d = document.createElement("button");
+          d.className = "swiper-dot" + (i === 0 ? " active" : "");
+          d.setAttribute("aria-label", `Slide ${i + 1}`);
+          dotsEl.appendChild(d);
+        }
+        const allDots = () => dotsEl.querySelectorAll(".swiper-dot");
+
+        // ── Init Swiper ──
+        const swiper = new Swiper("#gallerySwiper", {
+          slidesPerView: "auto",
+          centeredSlides: true,
+          spaceBetween: 20,
+          grabCursor: true,
+          loop: true,
+          speed: 480,
+          on: {
+            slideChange(s) {
+              const idx = s.realIndex;
+              allDots().forEach((d, i) =>
+                d.classList.toggle("active", i === idx),
+              );
+            },
+          },
+        });
+
+        // ── Dots click ──
+        allDots().forEach((d, i) =>
+          d.addEventListener("click", () => swiper.slideToLoop(i)),
+        );
+
+        // ── Arrows ──
+        const arrowPrev = document.getElementById("arrowPrev");
+        const arrowNext = document.getElementById("arrowNext");
+        if (arrowPrev)
+          arrowPrev.addEventListener("click", () => swiper.slidePrev());
+        if (arrowNext)
+          arrowNext.addEventListener("click", () => swiper.slideNext());
+
+        // ── Keyboard ──
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") swiper.slidePrev();
+          if (e.key === "ArrowRight") swiper.slideNext();
+        });
+
+        // ── Filter Chips ──
+        const tagStrip = document.getElementById("tagStrip");
+        if (tagStrip)
+          tagStrip.addEventListener("click", (e) => {
+            const chip = e.target.closest(".tag-chip");
+            if (!chip) return;
+            document
+              .querySelectorAll(".tag-chip")
+              .forEach((c) => c.classList.remove("active"));
+            chip.classList.add("active");
+            // Filter visual: sembunyikan slide yang tidak sesuai kategori
+            // Catatan: karena mode loop aktif, ini hanya efek visual highlight chip
+            // Untuk filter penuh, nonaktifkan loop: true di config Swiper di atas
+          });
+        // ── Scroll-to-top button ──
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        if (scrollBtn) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 400) {
+              scrollBtn.classList.add("visible");
+            } else {
+              scrollBtn.classList.remove("visible");
+            }
+          });
+          scrollBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        // ── Scroll reveal ──
+        const revealEls = document.querySelectorAll(
+          ".reveal, .footer-item-anim",
+        );
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.15 },
+        );
+        revealEls.forEach((el) => revealObserver.observe(el));
+
+        // ── Floating particles in hero ──
+        const particleContainer = document.querySelector(
+          ".particles-container",
+        );
+        if (particleContainer) {
+          for (let i = 0; i < 15; i++) {
+            const p = document.createElement("div");
+            p.className = "particle";
+            const size = Math.random() * 20 + 8;
+            p.style.cssText = `
+              width: ${size}px;
+              height: ${size}px;
+              left: ${Math.random() * 100}%;
+              bottom: ${Math.random() * 20}%;
+              animation-duration: ${Math.random() * 8 + 6}s;
+              animation-delay: ${Math.random() * 5}s;
+              opacity: ${Math.random() * 0.4 + 0.1};
+            `;
+            particleContainer.appendChild(p);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

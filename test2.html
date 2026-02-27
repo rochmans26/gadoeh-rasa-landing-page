@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeri Produk</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <style>
+      :root {
+        --warm-white: #fffdf9;
+        --cream: #fdf6ec;
+        --orange: #f5a623;
+        --orange-light: #ffecd1;
+        --green: #6abf69;
+        --green-light: #e8f5e9;
+        --brown: #8b5e3c;
+        --text-dark: #2d2d2d;
+        --text-muted: #9e9e9e;
+        --border: #eddcca;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--warm-white);
+        font-family: "Nunito Sans", sans-serif;
+        color: var(--text-dark);
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      nav {
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        padding: 16px 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      }
+
+      .nav-brand {
+        font-family: "Nunito", sans-serif;
+        font-weight: 900;
+        font-size: 1.4rem;
+        color: var(--brown);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-brand .dot {
+        width: 10px;
+        height: 10px;
+        background: var(--orange);
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+      .nav-links a {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--brown);
+      }
+
+      .nav-cta {
+        background: var(--orange);
+        color: #fff !important;
+        padding: 8px 22px;
+        border-radius: 50px;
+        font-weight: 700 !important;
+        transition:
+          background 0.2s,
+          transform 0.2s !important;
+      }
+      .nav-cta:hover {
+        background: #e09510 !important;
+        transform: translateY(-1px);
+      }
+
+      /* ── HERO ── */
+      .hero {
+        background: linear-gradient(135deg, #fffdf9 0%, #fdf0dc 100%);
+        padding: 72px 48px 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(circle, #ffecd1 0%, transparent 70%);
+        border-radius: 50%;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -80px;
+        left: -60px;
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, #e8f5e9 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: var(--orange-light);
+        color: var(--orange);
+        font-family: "Nunito", sans-serif;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 6px 18px;
+        border-radius: 50px;
+        margin-bottom: 20px;
+      }
+
+      .hero-title {
+        font-family: "Nunito", sans-serif;
+        font-weight: 900;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        line-height: 1.15;
+        color: var(--text-dark);
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-title .highlight {
+        color: var(--orange);
+        position: relative;
+      }
+      .hero-title .highlight::after {
+        content: "";
+        position: absolute;
+        bottom: 4px;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: var(--orange-light);
+        z-index: -1;
+        border-radius: 4px;
+      }
+
+      .hero-sub {
+        font-size: 1rem;
+        color: var(--text-muted);
+        max-width: 440px;
+        margin: 0 auto 36px;
+        line-height: 1.75;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+        position: relative;
+        z-index: 1;
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "Nunito", sans-serif;
+        font-weight: 900;
+        font-size: 1.8rem;
+        color: var(--brown);
+      }
+      .stat-label {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        font-weight: 600;
+        margin-top: 2px;
+      }
+      .stat-div {
+        width: 1px;
+        background: var(--border);
+        align-self: stretch;
+      }
+
+      /* ── WAVY DIVIDER ── */
+      .wavy {
+        line-height: 0;
+      }
+      .wavy svg {
+        display: block;
+      }
+
+      /* ── GALLERY SECTION ── */
+      .gallery-section {
+        background: #fff;
+        padding: 64px 0 72px;
+      }
+
+      .section-label {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 0 24px;
+      }
+      .section-tag {
+        display: inline-block;
+        background: var(--green-light);
+        color: var(--green);
+        font-family: "Nunito", sans-serif;
+        font-weight: 700;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 5px 16px;
+        border-radius: 50px;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-family: "Nunito", sans-serif;
+        font-weight: 900;
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        color: var(--text-dark);
+        margin-bottom: 8px;
+      }
+      .section-sub {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+
+      /* ── SWIPER GALLERY ── */
+      .gallery-swiper-wrap {
+        position: relative;
+        padding-bottom: 16px;
+      }
+
+      /* dashed top & bottom border like reference */
+      .gallery-swiper-wrap::before,
+      .gallery-swiper-wrap::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-image: repeating-linear-gradient(
+          to right,
+          var(--border) 0,
+          var(--border) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+      }
+      .gallery-swiper-wrap::before {
+        top: 0;
+      }
+      .gallery-swiper-wrap::after {
+        bottom: 56px;
+      }
+
+      .swiper-gallery {
+        padding: 28px 0 28px !important;
+        overflow: visible !important;
+      }
+
+      .swiper-gallery .swiper-slide {
+        width: 340px !important;
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+        opacity: 0.5;
+        transform: scale(0.87);
+      }
+
+      .swiper-gallery .swiper-slide-active {
+        opacity: 1;
+        transform: scale(1.05);
+        z-index: 2;
+      }
+
+      .swiper-gallery .swiper-slide-prev,
+      .swiper-gallery .swiper-slide-next {
+        opacity: 0.82;
+        transform: scale(0.95);
+      }
+
+      .gallery-card {
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--cream);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+        cursor: grab;
+        transition: box-shadow 0.3s;
+      }
+      .gallery-card:active {
+        cursor: grabbing;
+      }
+
+      .swiper-slide-active .gallery-card {
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery-img-wrap {
+        position: relative;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+      }
+
+      .gallery-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+      .gallery-card:hover .gallery-img-wrap img {
+        transform: scale(1.05);
+      }
+
+      .gallery-card-body {
+        padding: 16px 20px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .card-product-name {
+        font-family: "Nunito", sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        color: var(--brown);
+        margin-bottom: 2px;
+      }
+      .card-product-sub {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .card-badge {
+        background: var(--orange-light);
+        color: var(--orange);
+        font-family: "Nunito", sans-serif;
+        font-weight: 700;
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border-radius: 50px;
+        white-space: nowrap;
+      }
+
+      /* ── DOT NAVIGATION (like reference) ── */
+      .swiper-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 20px 0 0;
+      }
+
+      .swiper-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ddd;
+        border: none;
+        cursor: pointer;
+        transition:
+          background 0.3s,
+          width 0.3s;
+        padding: 0;
+      }
+      .swiper-dot.active {
+        background: var(--orange);
+        width: 28px;
+        border-radius: 5px;
+      }
+
+      /* Arrow buttons */
+      .swiper-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-60%);
+        z-index: 10;
+        width: 44px;
+        height: 44px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+        font-size: 1rem;
+        color: var(--brown);
+      }
+      .swiper-arrow:hover {
+        background: var(--orange);
+        border-color: var(--orange);
+        color: #fff;
+        transform: translateY(-60%) scale(1.1);
+      }
+      .arrow-prev {
+        left: 24px;
+      }
+      .arrow-next {
+        right: 24px;
+      }
+
+      /* ── Filter Tags ── */
+      .tag-strip {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 24px 40px;
+      }
+      .tag-chip {
+        background: var(--cream);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 6px 16px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--brown);
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+      }
+      .tag-chip:hover,
+      .tag-chip.active {
+        background: var(--orange-light);
+        border-color: var(--orange);
+        color: var(--orange);
+      }
+
+      /* ── CTA SECTION ── */
+      .cta-section {
+        background: linear-gradient(135deg, #fdf6ec, #fdebd0);
+        padding: 64px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-section::before {
+        content: "🌾";
+        position: absolute;
+        font-size: 8rem;
+        top: -20px;
+        left: -20px;
+        opacity: 0.08;
+      }
+      .cta-section::after {
+        content: "🌿";
+        position: absolute;
+        font-size: 8rem;
+        bottom: -20px;
+        right: -20px;
+        opacity: 0.08;
+      }
+
+      .cta-title {
+        font-family: "Nunito", sans-serif;
+        font-weight: 900;
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        color: var(--brown);
+        margin-bottom: 12px;
+      }
+      .cta-sub {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 32px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .cta-btn {
+        display: inline-block;
+        background: var(--orange);
+        color: #fff;
+        font-family: "Nunito", sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        padding: 14px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 6px 20px rgba(245, 166, 35, 0.35);
+      }
+      .cta-btn:hover {
+        background: #e09510;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(245, 166, 35, 0.4);
+        color: #fff;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--brown);
+        color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        padding: 28px 24px;
+        font-size: 0.82rem;
+      }
+      footer strong {
+        color: #fff;
+        font-family: "Nunito", sans-serif;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 768px) {
+        nav {
+          padding: 14px 20px;
+        }
+        .nav-links a:not(.nav-cta) {
+          display: none;
+        }
+        .hero {
+          padding: 56px 24px 48px;
+        }
+        .hero-stats {
+          gap: 24px;
+        }
+        .stat-num {
+          font-size: 1.4rem;
+        }
+        .swiper-gallery .swiper-slide {
+          width: 260px !important;
+        }
+        .arrow-prev {
+          left: 8px;
+        }
+        .arrow-next {
+          right: 8px;
+        }
+      }
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.show {
+        opacity: 1;
+        transform: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="#" class="nav-brand"> <span class="dot"></span> SnackKids </a>
+      <div class="nav-links">
+        <a href="#">Beranda</a>
+        <a href="#gallery">Produk</a>
+        <a href="#">Tentang</a>
+        <a href="#" class="nav-cta">Pesan Sekarang</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">🌿 100% Natural &amp; Sehat</div>
+      <h1 class="hero-title reveal">
+        Camilan Sehat<br />
+        untuk Si <span class="highlight">Kecil</span>
+      </h1>
+      <p class="hero-sub reveal" style="transition-delay: 0.1s">
+        Dibuat dengan bahan alami pilihan, tanpa pengawet, dan aman untuk anak.
+        Nikmati kelezatan dalam setiap gigitan!
+      </p>
+      <div class="hero-stats reveal" style="transition-delay: 0.2s">
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Varian Produk</div>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Bahan Alami</div>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <div class="stat-num">5K+</div>
+          <div class="stat-label">Pelanggan</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wavy separator -->
+    <div class="wavy" style="background: var(--warm-white)">
+      <svg viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0,20 C360,40 1080,0 1440,20 L1440,40 L0,40 Z"
+          fill="#ffffff"
+        />
+      </svg>
+    </div>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section" id="gallery">
+      <div class="section-label reveal">
+        <div class="section-tag">✨ Koleksi Produk</div>
+        <h2 class="section-title">Geser untuk Melihat Produk</h2>
+        <p class="section-sub">
+          Klik &amp; geser kiri atau kanan untuk menjelajahi semua varian kami
+        </p>
+      </div>
+
+      <!-- Filter Tags -->
+      <div class="tag-strip reveal">
+        <button class="tag-chip active">Semua</button>
+        <button class="tag-chip">Abon</button>
+        <button class="tag-chip">Healthy Snack</button>
+        <button class="tag-chip">Kresmes</button>
+      </div>
+
+      <div class="gallery-swiper-wrap">
+        <button class="swiper-arrow arrow-prev" id="arrowPrev">&#8592;</button>
+        <button class="swiper-arrow arrow-next" id="arrowNext">&#8594;</button>
+
+        <div class="swiper swiper-gallery" id="gallerySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p01/680/510"
+                    alt="Kresmes Hari Ayam"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Kresmes Hari Ayam</div>
+                    <div class="card-product-sub">Renyah · Gurih · Bergizi</div>
+                  </div>
+                  <span class="card-badge">New</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p02/680/510"
+                    alt="Abon Ayam"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Abon Ayam</div>
+                    <div class="card-product-sub">Lembut · Alami · Favorit</div>
+                  </div>
+                  <span class="card-badge">Best Seller</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p03/680/510"
+                    alt="Healthy Snack Tempe"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Healthy Snack Tempe</div>
+                    <div class="card-product-sub">Protein Tinggi · Crispy</div>
+                  </div>
+                  <span class="card-badge">Populer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p04/680/510"
+                    alt="Abon Sapi"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Abon Sapi</div>
+                    <div class="card-product-sub">Empuk · Kaya Rasa</div>
+                  </div>
+                  <span class="card-badge">Halal</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p05/680/510"
+                    alt="Snack Bayam"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Snack Bayam</div>
+                    <div class="card-product-sub">Sayuran · Rendah Kalori</div>
+                  </div>
+                  <span class="card-badge">Baru</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p06/680/510"
+                    alt="Kresmes Jagung"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Kresmes Jagung</div>
+                    <div class="card-product-sub">Manis Alami · Renyah</div>
+                  </div>
+                  <span class="card-badge">Limited</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p07/680/510"
+                    alt="Abon Ikan Cakalang"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Abon Ikan Cakalang</div>
+                    <div class="card-product-sub">Omega-3 · Lezat</div>
+                  </div>
+                  <span class="card-badge">Sehat</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p08/680/510"
+                    alt="Keripik Pisang"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Keripik Pisang</div>
+                    <div class="card-product-sub">Manis · Alami · Crispy</div>
+                  </div>
+                  <span class="card-badge">Favorit</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p09/680/510"
+                    alt="Kresmes Wortel"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Kresmes Wortel</div>
+                    <div class="card-product-sub">Vitamin A · Enak</div>
+                  </div>
+                  <span class="card-badge">Best</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p10/680/510"
+                    alt="Snack Ubi Ungu"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Snack Ubi Ungu</div>
+                    <div class="card-product-sub">Antioksidan · Unik</div>
+                  </div>
+                  <span class="card-badge">Baru</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p11/680/510"
+                    alt="Abon Jamur"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Abon Jamur</div>
+                    <div class="card-product-sub">Vegan · Serat Tinggi</div>
+                  </div>
+                  <span class="card-badge">Vegan</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-card">
+                <div class="gallery-img-wrap">
+                  <img
+                    src="https://picsum.photos/seed/p12/680/510"
+                    alt="Keripik Singkong"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-card-body">
+                  <div>
+                    <div class="card-product-name">Keripik Singkong</div>
+                    <div class="card-product-sub">Tradisional · Renyah</div>
+                  </div>
+                  <span class="card-badge">Klasik</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom Dots -->
+        <div class="swiper-dots" id="swiperDots"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section reveal">
+      <h2 class="cta-title">Tertarik dengan Produk Kami?</h2>
+      <p class="cta-sub">
+        Dapatkan penawaran spesial dan pengiriman gratis untuk pembelian pertama
+        Anda!
+      </p>
+      <a href="#" class="cta-btn">🛒 Pesan Sekarang</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <strong>SnackKids</strong> &mdash; Camilan Sehat untuk Buah Hati &copy;
+      2024
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+      const TOTAL = 12;
+      const dotsEl = document.getElementById("swiperDots");
+
+      // Build dots
+      for (let i = 0; i < TOTAL; i++) {
+        const d = document.createElement("button");
+        d.className = "swiper-dot" + (i === 0 ? " active" : "");
+        d.setAttribute("aria-label", `Slide ${i + 1}`);
+        dotsEl.appendChild(d);
+      }
+
+      const allDots = () => dotsEl.querySelectorAll(".swiper-dot");
+
+      const swiper = new Swiper("#gallerySwiper", {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        spaceBetween: 20,
+        grabCursor: true,
+        loop: true,
+        speed: 480,
+        on: {
+          slideChange(s) {
+            const idx = s.realIndex;
+            allDots().forEach((d, i) =>
+              d.classList.toggle("active", i === idx),
+            );
+          },
+        },
+      });
+
+      // Dots click
+      allDots().forEach((d, i) =>
+        d.addEventListener("click", () => swiper.slideToLoop(i)),
+      );
+
+      // Arrow buttons
+      document
+        .getElementById("arrowPrev")
+        .addEventListener("click", () => swiper.slidePrev());
+      document
+        .getElementById("arrowNext")
+        .addEventListener("click", () => swiper.slideNext());
+
+      // Keyboard
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") swiper.slidePrev();
+        if (e.key === "ArrowRight") swiper.slideNext();
+      });
+
+      // Filter chips (visual only — extend with real filtering as needed)
+      document.querySelectorAll(".tag-chip").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tag-chip")
+            .forEach((c) => c.classList.remove("active"));
+          chip.classList.add("active");
+        });
+      });
+
+      // Scroll reveal
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add("show");
+              obs.unobserve(en.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>

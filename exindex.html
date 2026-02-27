@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Gadoeh Rasa</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Font: Fredoka (variable, cheerful) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style_custom.css" />
+    <style>
+      body {
+        background-image: url("assets/img/divider-about-gadoeh-rasa.svg");
+      }
+      .bg-img {
+        background-image: url("assets/img/divider-about-gadoeh-rasa.svg");
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-color-primary fixed-top"
+      id="mainNav"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" data-aos="fade-right">
+          <!-- <div class="logo-circle">
+                    <span class="logo-text">Gadoeh<br>Rasa</span>
+                </div> -->
+          <div>
+            <img src="assets/img/Logo.svg" alt="" width="90" srcset="" />
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#products">OUR PRODUCT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#faq">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">CONTACT US</a>
+            </li>
+          </ul>
+          <div class="social-icons ms-3">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="" style="margin-top: 9vh">
+      <div class="container bg-color-primary">
+        <div class="position-relative">
+          <img src="assets/img/home-1.png" class="img-fluid" alt="..." />
+          <div class="position-absolute top-50 start-0 translate-middle-y">
+            <div class="ms-3">
+              <img src="assets/img/Headline.svg" class="img-fluid" srcset="" />
+              <p class="col-md-5 fs-4 mt-3">
+                Solusi pendamping makan & snack anak yang bikin waktu makan
+                lebih tenang dan menyenangkan.
+              </p>
+              <button class="btn btn-primary btn-lg" type="button">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="position-relative">
+        <img
+          src="assets/img/divider-about-gadoeh-rasa.svg"
+          class="img-fluid"
+          width="100%"
+          alt=""
+        />
+      </div> -->
+    </section>
+
+    <!-- About Section -->
+
+    <!-- Video Section -->
+    <section class="video-section py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7" data-aos="fade-right">
+            <div class="video-wrapper">
+              <div class="video-placeholder">
+                <button class="play-button">
+                  <i class="fas fa-play"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 text-center" data-aos="fade-left">
+            <img
+              src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400"
+              alt="Happy Kid"
+              class="img-fluid mascot bounce"
+              style="max-width: 300px"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section class="gallery-section py-5">
+      <div class="container">
+        <div class="swiper productSwiper" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600"
+                alt="Product 1"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.unsplash.com/photo-1599599591686-e5c9a1fd5a7e?w=600"
+                alt="Product 2"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.unsplash.com/photo-1587334206607-d5b76e6fb6fd?w=600"
+                alt="Product 3"
+              />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="products" class="why-section py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-5" data-aos="fade-up">
+          Kenapa harus Gadoeh Rasa?
+        </h2>
+
+        <div class="row g-4">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="why-card">
+              <h4>Terbukti Dipercaya Moms</h4>
+              <p>
+                Terjual puluhan ribu produk setiap bulan dengan rating toko
+                4.9/5 di marketplace. Bukti nyata kepercayaan dan hanya
+                testimoni real.
+              </p>
+            </div>
+
+            <div class="why-card">
+              <h4>Banyak Diskon, Siap Offline</h4>
+              <p>
+                Sistem "gak mau rugi kok langsung"? Meski boleh aja gampil ganti
+                fisik, sekali aja minat offline kami arahin ke mitra ritel
+                terdekat sama.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 text-center" data-aos="fade-left">
+            <img
+              src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400"
+              alt="Happy Kid"
+              class="img-fluid mascot-large pulse"
+              style="max-width: 350px"
+            />
+          </div>
+        </div>
+
+        <div class="row g-4 mt-4">
+          <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="why-card">
+              <h4>Aman, Legal, dan Terpercaya</h4>
+              <p>
+                Produk memiliki ijin edar, sertifikat Halal MUI, serta hasil uji
+                laboratorium untuk menjamin kemanan dan kualitas.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="why-card">
+              <h4>Fokus Camilan Anak yang Aman & Enak</h4>
+              <p>
+                Resep tanpa MSG & tanpa bahan pengawet, cocok untuk pasar
+                keluarga muda yang mengutamakan gizi sekaligus rasa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Seller Product -->
+    <section class="bestseller-section py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="product-image-wrapper">
+              <span class="badge-bestseller">BEST SELLER</span>
+              <img
+                src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600"
+                alt="Kremes Hati Ayam"
+                class="img-fluid product-image"
+              />
+              <div class="product-features">
+                <div class="feature-badge">Raya Zat Besi & Protein</div>
+                <div class="feature-badge">Gurih Aromanya Khas</div>
+                <div class="feature-badge">Homemade Tanpa Bahan</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <h2 class="product-highlight-title">
+              Kremes Hati Ayam<br />Pilihan No.1<br />Favorit si Kecil
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="footer-logo">
+              <div class="logo-circle-footer">
+                <span class="logo-text">Gadoeh<br />Rasa</span>
+              </div>
+              <p class="mt-3">© 2025 Gadoeh Rasa</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <h5>Gadoeh Rasa</h5>
+            <p class="footer-address">
+              Office<br />
+              Ruko Magna Commercial, Summarecon,<br />
+              Komplek B Magna Barat Blok B/6, 19,<br />
+              Bandungkidul, Kec. Sinduharjo, Kota<br />
+              Bandung, Jawa Barat 40212, ID
+            </p>
+          </div>
+
+          <div class="col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <h5>Official Online Store</h5>
+            <ul class="footer-links">
+              <li><a href="#">Tik Tok Shop</a></li>
+              <li><a href="#">Tokopedia</a></li>
+              <li><a href="#">Lazada</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+            <h5>Main Menu</h5>
+            <ul class="footer-links">
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#products">Our Product</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" class="scroll-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+  </body>
+</html>

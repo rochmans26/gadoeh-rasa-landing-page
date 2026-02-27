@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="FAQ - Gadoeh Rasa" />
+    <title>Gadoeh Rasa - FAQ</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+    />
+    <link
+      href="../files/assets/bs-example/assets/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ── VARIABLES ── */
+      :root {
+        --primary-color: #f6ce5b;
+        --secondary-color: #f39c12;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
+        --text-primary: #5d2c13;
+        --white: #ffffff;
+        --cream: #fff8e7;
+        --blue: #00adee;
+        --blue-dark: #1c6264;
+        --navbar-height: 56px;
+      }
+      @media (min-width: 1200px) {
+        :root {
+          --navbar-height: 78px;
+        }
+      }
+      @media (min-width: 1400px) {
+        :root {
+          --navbar-height: 92px;
+        }
+      }
+
+      /* ── GLOBAL ── */
+      * {
+        font-family: "Fredoka", sans-serif;
+        color: var(--text-primary);
+      }
+
+      body {
+        background-image: url("assets/img/divider-about-gadoeh-rasa.svg");
+        background-repeat: repeat;
+        background-size: contain;
+        padding-top: 3.5rem;
+      }
+      @media (min-width: 1200px) {
+        body {
+          padding-top: 4.5rem;
+        }
+      }
+      @media (min-width: 1400px) {
+        body {
+          padding-top: 5rem;
+        }
+      }
+
+      /* ── UTILITY ── */
+      .bg-primary-color {
+        background-color: var(--primary-color);
+      }
+      .bg-white-color {
+        background-color: var(--white);
+      }
+      .bg-cream {
+        background-color: var(--cream);
+      }
+      .text-blue {
+        color: var(--blue);
+      }
+      .text-blue-dark {
+        color: var(--blue-dark);
+      }
+      .text-primary-color {
+        color: var(--text-primary);
+      }
+      .bg-content {
+        background-image: url("./assets/img/faq-assets/pattern.png");
+        background-size: contain;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        padding-bottom: 0; /* Hapus padding bottom */
+      }
+
+      /* Tambahan class untuk menghapus margin bottom pada container terakhir */
+      .bg-content .container:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 3rem; /* Tambah padding bottom untuk ruang konten terakhir */
+      }
+
+      /* ── NAVBAR LINKS ── */
+      .navbar {
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+      }
+      .navbar .nav-link {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+      }
+      .navbar-nav .nav-link {
+        color: var(--text-primary);
+        font-weight: 400;
+        margin: 0 8px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .navbar-nav .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background-color: var(--text-primary);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      .navbar-nav .nav-link:hover::after,
+      .navbar-nav .nav-link.active::after {
+        width: 100%;
+      }
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--text-primary);
+        font-weight: bolder;
+      }
+
+      @media (max-width: 991.98px) {
+        .navbar-nav .nav-link {
+          margin: 0;
+          padding: 0.6rem 1rem;
+          border-bottom: 1px solid rgba(93, 44, 19, 0.1);
+        }
+        .navbar-nav .nav-link::after {
+          display: none;
+        }
+        .navbar-nav .nav-item:last-child .nav-link {
+          border-bottom: none;
+        }
+        .social-media {
+          padding: 0.75rem 1rem;
+          border-top: 1px solid rgba(93, 44, 19, 0.15);
+        }
+      }
+
+      .social-media a {
+        padding: 0 10px;
+      }
+      .social-media a i {
+        font-size: 1rem;
+      }
+
+      @media (min-width: 1200px) {
+        .navbar {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        }
+        .navbar-brand img {
+          width: 62px;
+        }
+        .navbar .nav-link {
+          font-size: 1.15rem;
+        }
+        .social-media a {
+          padding: 0 14px;
+        }
+        .social-media a i {
+          font-size: 1.2rem;
+        }
+      }
+      @media (min-width: 1400px) {
+        .navbar {
+          padding-top: 1.25rem;
+          padding-bottom: 1.25rem;
+        }
+        .navbar-brand img {
+          width: 72px;
+        }
+        .navbar .nav-link {
+          font-size: 1.25rem;
+        }
+        .social-media a {
+          padding: 0 16px;
+        }
+        .social-media a i {
+          font-size: 1.35rem;
+        }
+      }
+
+      /* ── NAVBAR BRAND ANIMATION ── */
+      @keyframes logoSpin {
+        0% {
+          transform: rotate(-15deg) scale(0.5);
+          opacity: 0;
+        }
+        100% {
+          transform: rotate(0deg) scale(1);
+          opacity: 1;
+        }
+      }
+      .navbar-brand img {
+        animation: logoSpin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+
+      /* ── NAVBAR LINKS ANIMATION ── */
+      @keyframes navLinkDrop {
+        0% {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .navbar-nav .nav-item {
+        animation: navLinkDrop 0.5s ease both;
+      }
+      .navbar-nav .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .navbar-nav .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .navbar-nav .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .navbar-nav .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .navbar-nav .nav-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      /* ── FAQ TITLE ── */
+      .faq-title {
+        font-size: 5rem;
+        font-weight: 900;
+        color: #5c2d0a;
+        -webkit-text-stroke: 3px #3b1a05;
+        letter-spacing: 6px;
+        text-shadow:
+          3px 3px 0px #3b1a05,
+          -1px -1px 0px #3b1a05,
+          1px -1px 0px #3b1a05,
+          -1px 1px 0px #3b1a05;
+        line-height: 1;
+      }
+
+      /* ── FAQ SECTION ── */
+      .faq-section {
+        background-color: var(--primary-color);
+        padding: 80px 0;
+      }
+      .faq-accordion .accordion-button {
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: var(--text-primary);
+        background-color: var(--cream);
+      }
+      .faq-accordion .accordion-button:not(.collapsed) {
+        color: var(--text-primary);
+        background-color: var(--primary-color);
+        box-shadow: none;
+      }
+      .faq-accordion .accordion-button::after {
+        filter: invert(30%) sepia(60%) saturate(600%) hue-rotate(340deg);
+      }
+      .faq-accordion .accordion-item {
+        border: 1.5px solid #e8c97a;
+        border-radius: 12px !important;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+      .faq-accordion .accordion-body {
+        background-color: var(--white);
+        font-size: 0.97rem;
+        line-height: 1.7;
+        color: var(--text-primary);
+      }
+
+      .faq-content {
+        background-color: var(--white);
+        padding-top: 80px;
+        padding-bottom: 0; /* Hapus padding bottom */
+        margin-bottom: 0; /* Hapus margin bottom */
+      }
+
+      /* ── SCROLL REVEAL ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+
+      /* ── FOOTER ANIMATIONS ── */
+      .footer-item-anim {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .footer-item-anim.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .footer-logo {
+        margin-top: 0;
+      }
+      .footer-part {
+        margin-top: 100px;
+      }
+
+      @media (max-width: 575.98px) {
+        .footer-part {
+          margin-top: 20px;
+        }
+      }
+      @media (min-width: 576px) and (max-width: 991.98px) {
+        .footer-logo {
+          margin-top: 0;
+        }
+        .footer-part {
+          margin-top: 0;
+        }
+      }
+
+      /* ── SCROLL TO TOP BUTTON ── */
+      #scrollTopBtn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        border: 2px solid var(--secondary-color);
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+      #scrollTopBtn.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      #scrollTopBtn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-4px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scroll to top button -->
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary-color">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="./assets/img/Logo.svg" alt="Gadoeh Rasa Logo" width="46" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product.html">OUR PRODUCT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="faq.html"
+                >FAQ</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">CONTACT US</a>
+            </li>
+          </ul>
+          <div class="social-media ms-auto">
+            <a href="https://www.facebook.com/" target="_blank"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="https://www.instagram.com/" target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://www.pinterest.com/" target="_blank"
+              ><i class="fab fa-pinterest"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="faq-section">
+        <div class="container">
+          <div class="row jutify-content-center align-items-center">
+            <div class="col-lg-6">
+              <img
+                src="assets/img/faq-assets/FAQ.svg"
+                class="img-fluid mb-4 reveal"
+                srcset=""
+              />
+              <p class="fs-1 fw-medium reveal reveal-delay-1">
+                Frequently Asked Questions
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <div class="text-end">
+                <img
+                  src="assets/img/faq-assets/new-boy.png"
+                  class="img-fluid reveal reveal-delay-3"
+                  srcset=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section FAQ Content dengan background pattern -->
+      <section class="faq-content">
+        <div class="bg-content">
+          <div class="container mb-5">
+            <button
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+            >
+              <h1 class="fw-bold section-shimmer">Apa itu Gadoeh Rasa?</h1>
+            </button>
+            <p class="fs-2 ms-4">
+              Gadoeh Rasa adalah brand camilan dan lauk pendamping makan anak &
+              keluarga seperti Kremes, Abon, Cheesy Bites, dan Healthy Snack.
+              Produk kami praktis, siap santap, dan cocok jadi topping atau
+              camilan si kecil.
+            </p>
+          </div>
+          <div class="container mb-5">
+            <button
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+            >
+              <h1 class="fw-bold section-shimmer">
+                Berapa usia si kecil bisa mencoba Gadoeh Rasa?
+              </h1>
+            </button>
+            <div class="fs-2 ms-4">
+              Berikut rekomendasi usia konsumsi: <br /><br />
+              <ul class="fs-2 ms-4">
+                <li>
+                  Kremes Hati Ayam bisa mulai dikenalkan sejak usia 7 bulan ke
+                  atas (fase MPASI lanjut), ditaburkan secukupnya sebagai
+                  topping makanan. Pastikan tekstur sudah sesuai kemampuan makan
+                  si kecil ya moms.
+                </li>
+                <li>
+                  Cheesy Bites & Abon Ayam direkomendasikan untuk anak usia 1
+                  tahun ke atas, saat anak sudah lebih terbiasa dengan variasi
+                  tekstur dan rasa. Berikan dengan porsi yang disesuaikan.
+                </li>
+                <li>
+                  Healthy Snack direkomendasikan untuk usia 2 tahun ke atas
+                  karena teksturnya lebih crunchy, sehingga lebih aman saat anak
+                  sudah bisa mengunyah dengan baik.
+                </li>
+              </ul>
+              Tetap sesuaikan dengan kemampuan makan dan perkembangan
+              masing-masing anak ya moms 🤍
+            </div>
+          </div>
+          <div class="container mb-5">
+            <button
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+            >
+              <h1 class="fw-bold section-shimmer">
+                Apakah produk bisa dikonsumsi anak dengan alergi?
+              </h1>
+            </button>
+            <div class="fs-2 ms-4">
+              Produk kami menggunakan bahan pilihan, namun tetap mengandung
+              bahan makanan umum seperti Ayam, Keju, atau bahan turunannya
+              (tergantung varian produk). Untuk si kecil dengan riwayat alergi
+              tertentu, sangat disarankan membaca komposisi terlebih dahulu dan
+              konsultasi dengan dokter sebelum konsumsi ya moms.
+            </div>
+          </div>
+          <div class="container mb-5">
+            <button
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+            >
+              <h1 class="fw-bold section-shimmer">
+                Bagaimana pengiriman dan agar produk sampai dengan aman?
+              </h1>
+            </button>
+            <div class="fs-2 ms-4">
+              <b>Pengiriman Reguler</b> : Senin–Sabtu, pesanan diproses hingga
+              pukul 12.00 siang <br /><b>Pengiriman Instant</b> : Senin–Sabtu,
+              diproses hingga pukul 15.00 ⚡ <br /><br />Pesanan yang masuk hari
+              Sabtu setelah pukul 12.00 dan hari Minggu akan diproses dan
+              dikirim pada hari serta jam kerja berikutnya ya moms 🤍
+              <br /><br />
+              Semua pesanan melalui proses QC sebelum dikirim. Untuk keamanan
+              ekstra selama pengiriman, moms bisa menambahkan opsi bubble wrap
+              saat checkout agar produk lebih aman sampai tujuan.
+              <br /><br />Jika produk yang diterima kurang atau tidak sesuai,
+              moms bisa segera chat admin dengan menyertakan video unboxing
+              lengkap (tanpa jeda) serta foto resi paket, agar kami bisa bantu
+              proses pengecekan dengan cepat ya moms 😊<br /><br />
+            </div>
+          </div>
+          <div class="container">
+            <button
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+            >
+              <h1 class="fw-bold section-shimmer">
+                Bagaimana agar si kecil bisa suka dengan produk Gadoeh Rasa?
+              </h1>
+            </button>
+            <div class="fs-2 ms-4">
+              <ul class="fs-2 ms-4">
+                <li>Kenalkan sedikit demi sedikit terlebih dahulu.</li>
+                <li>
+                  Campurkan sebagai topping makanan favoritnya (nasi, bubur,
+                  sup, dll).
+                </li>
+                <li>
+                  Sajikan saat anak dalam kondisi lapar ringan dan mood baik.
+                </li>
+                <li>
+                  Jangan dipaksa, ya moms. Biarkan anak beradaptasi dengan rasa
+                  baru.
+                </li>
+                <li>
+                  Moms juga bisa cek resep-resep di sosial media kami untuk
+                  variasi menu agar si kecil tidak bosan dan makin lahap.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-primary-color py-5">
+      <div class="container">
+        <div class="row align-items-start">
+          <!-- Logo -->
+          <div
+            class="col-md-4 text-center mb-3 footer-item-anim"
+            style="transition-delay: 0.1s"
+          >
+            <img
+              src="assets/img/Logo.svg"
+              class="footer-logo"
+              width="80%"
+              alt="Gadoeh Rasa Logo"
+            />
+            <p class="mt-3" style="font-size: 1rem">
+              <i>© 2025 Gadoeh Rasa</i>
+            </p>
+          </div>
+
+          <!-- Office Info -->
+          <div
+            class="col-md-4 mb-3 footer-item-anim"
+            style="transition-delay: 0.2s"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-5">Gadoeh Rasa</h5>
+              <p class="mb-0"><b>Office</b></p>
+              <p style="font-size: 1rem">
+                Ruko Magna Commercial, Summarecon, Komplek Jl. Magna Barat Blok
+                MB. 19, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat
+                40295
+              </p>
+            </div>
+          </div>
+
+          <!-- Official Online Store -->
+          <div
+            class="col-md-2 mb-3 footer-item-anim"
+            style="transition-delay: 0.3s"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-3">Official Online Store</h5>
+              <ul class="list-unstyled" style="font-size: 1rem">
+                <li>Shopee</li>
+                <li>TikTok Shop</li>
+                <li>Tokopedia</li>
+                <li>Lazada</li>
+              </ul>
+              <div class="mt-2 d-flex gap-3">
+                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                  ><i class="fab fa-tiktok"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Menu -->
+          <div
+            class="col-md-2 mb-3 footer-item-anim"
+            style="transition-delay: 0.4s"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-4">Main Menu</h5>
+              <ul class="list-unstyled" style="font-size: 1rem">
+                <li>
+                  <a
+                    href="index.html"
+                    class="text-primary-color text-decoration-none"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="about.html"
+                    class="text-primary-color text-decoration-none"
+                    >About Us</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="product.html"
+                    class="text-primary-color text-decoration-none"
+                    >Our Product</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="faq.html"
+                    class="text-primary-color text-decoration-none"
+                    >FAQ</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="contact.html"
+                    class="text-primary-color text-decoration-none"
+                    >Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../files/assets/bs-example/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      (function () {
+        // ── Scroll-to-top button ──
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        if (scrollBtn) {
+          window.addEventListener("scroll", () => {
+            scrollBtn.classList.toggle("visible", window.scrollY > 400);
+          });
+          scrollBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        // ── Scroll reveal ──
+        const revealEls = document.querySelectorAll(
+          ".reveal, .footer-item-anim",
+        );
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("visible");
+            });
+          },
+          { threshold: 0.15 },
+        );
+        revealEls.forEach((el) => revealObserver.observe(el));
+      })();
+    </script>
+  </body>
+</html>
