@@ -3,462 +3,120 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>On Dev – Gadoeh Rasa</title>
+    <meta name="description" content="Contact Us - Gadoeh Rasa" />
+    <title>Gadoeh Rasa - Contact Us</title>
+
+    <link
+      href="assets/bs-example/assets/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- SweetAlert2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
 
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
-
+      /* ── VARIABLES ── */
       :root {
         --primary-color: #f6ce5b;
         --secondary-color: #f39c12;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
         --text-primary: #5d2c13;
+        --white: #ffffff;
         --cream: #fff8e7;
         --blue: #00adee;
         --blue-dark: #1c6264;
-        --white: #ffffff;
+        --teal: #1b5e5b;
+        --navbar-height: 56px;
+      }
+      @media (min-width: 1200px) {
+        :root {
+          --navbar-height: 78px;
+        }
+      }
+      @media (min-width: 1400px) {
+        :root {
+          --navbar-height: 92px;
+        }
       }
 
+      /* ── GLOBAL ── */
       * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
         font-family: "Fredoka", sans-serif;
-      }
-
-      /* ─────────────────────────────────────
-         SECTION: fullscreen
-      ───────────────────────────────────── */
-      .ondev-section {
-        position: relative;
-        width: 100%;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        background-color: var(--primary-color);
-      }
-
-      /* ── Animated gradient background ── */
-      .ondev-bg {
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(
-            ellipse 80% 60% at 20% 30%,
-            rgba(243, 156, 18, 0.55) 0%,
-            transparent 70%
-          ),
-          radial-gradient(
-            ellipse 60% 70% at 80% 70%,
-            rgba(0, 173, 238, 0.18) 0%,
-            transparent 65%
-          ),
-          var(--primary-color);
-        animation: bgPulse 6s ease-in-out infinite alternate;
-      }
-
-      @keyframes bgPulse {
-        0% {
-          filter: brightness(1);
-        }
-        100% {
-          filter: brightness(1.08);
-        }
-      }
-
-      /* ── Floating circles decoration ── */
-      .circle {
-        position: absolute;
-        border-radius: 50%;
-        opacity: 0.18;
-        background: var(--secondary-color);
-        animation: floatCircle linear infinite;
-      }
-      .circle:nth-child(1) {
-        width: 340px;
-        height: 340px;
-        top: -100px;
-        left: -120px;
-        animation-duration: 14s;
-      }
-      .circle:nth-child(2) {
-        width: 200px;
-        height: 200px;
-        bottom: -60px;
-        right: -60px;
-        background: var(--blue);
-        animation-duration: 10s;
-        animation-direction: reverse;
-      }
-      .circle:nth-child(3) {
-        width: 120px;
-        height: 120px;
-        top: 60%;
-        left: 8%;
-        animation-duration: 9s;
-        animation-delay: 2s;
-      }
-      .circle:nth-child(4) {
-        width: 90px;
-        height: 90px;
-        top: 15%;
-        right: 12%;
-        background: var(--text-primary);
-        opacity: 0.08;
-        animation-duration: 12s;
-        animation-delay: 1s;
-      }
-      .circle:nth-child(5) {
-        width: 60px;
-        height: 60px;
-        bottom: 20%;
-        left: 42%;
-        background: var(--blue-dark);
-        opacity: 0.12;
-        animation-duration: 8s;
-      }
-
-      @keyframes floatCircle {
-        0% {
-          transform: translateY(0) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-30px) rotate(180deg);
-        }
-        100% {
-          transform: translateY(0) rotate(360deg);
-        }
-      }
-
-      /* ── Dotted grid overlay ── */
-      .ondev-grid {
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(
-          circle,
-          rgba(93, 44, 19, 0.12) 1.5px,
-          transparent 1.5px
-        );
-        background-size: 36px 36px;
-        pointer-events: none;
-      }
-
-      /* ── Center content ── */
-      .ondev-content {
-        position: relative;
-        z-index: 10;
-        text-align: center;
-        padding: 2rem;
-      }
-
-      /* ── Tag pill ── */
-      .ondev-tag {
-        display: inline-block;
-        background: rgba(93, 44, 19, 0.1);
-        border: 1.5px dashed var(--text-primary);
         color: var(--text-primary);
-        font-weight: 600;
-        font-size: 0.82rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        padding: 6px 20px;
-        border-radius: 50px;
-        margin-bottom: 28px;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.7s ease 0.2s forwards;
       }
 
-      /* ── Main heading ── */
-      .ondev-title {
-        font-size: clamp(3.5rem, 12vw, 10rem);
-        font-weight: 700;
-        color: var(--text-primary);
-        line-height: 1;
-        letter-spacing: -0.02em;
-        opacity: 0;
-        transform: translateY(40px);
-        animation: fadeUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s forwards;
-      }
-
-      .ondev-title span {
-        display: inline-block;
-        color: var(--white);
-        -webkit-text-stroke: 3px var(--text-primary);
-        text-shadow: 6px 6px 0 var(--text-primary);
-        transition: transform 0.3s;
-      }
-
-      /* ── Blinking cursor ── */
-      .cursor {
-        display: inline-block;
-        width: clamp(8px, 1.5vw, 22px);
-        height: clamp(3rem, 10vw, 8rem);
-        background: var(--text-primary);
-        margin-left: 8px;
-        vertical-align: middle;
-        border-radius: 3px;
-        animation: blink 1s step-end infinite;
-        opacity: 0;
-        animation:
-          blink 1s step-end 1.5s infinite,
-          fadeUp 0.9s ease 0.9s forwards;
-      }
-
-      @keyframes blink {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-        }
-      }
-
-      /* ── Subtitle ── */
-      .ondev-subtitle {
-        margin-top: 24px;
-        font-size: clamp(1rem, 2.5vw, 1.5rem);
-        font-weight: 400;
-        color: var(--text-primary);
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.7s ease 0.75s forwards;
-        max-width: 560px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.5;
-      }
-
-      /* ── Progress bar ── */
-      .ondev-progress-wrap {
-        margin-top: 40px;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.7s ease 1s forwards;
-      }
-
-      .ondev-progress-label {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-        max-width: 420px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .ondev-progress-bar-bg {
-        max-width: 420px;
-        margin: 0 auto;
-        height: 12px;
-        background: rgba(93, 44, 19, 0.15);
-        border-radius: 50px;
-        overflow: hidden;
-      }
-
-      .ondev-progress-bar-fill {
-        height: 100%;
-        width: 0;
-        background: linear-gradient(90deg, var(--secondary-color), var(--blue));
-        border-radius: 50px;
-        animation: fillBar 2.5s cubic-bezier(0.4, 0, 0.2, 1) 1.3s forwards;
-      }
-
-      @keyframes fillBar {
-        0% {
-          width: 0;
-        }
-        100% {
-          width: 40%;
-        }
-      }
-
-      /* ── Gear icons spinning ── */
-      .gear-group {
-        margin-top: 36px;
-        opacity: 0;
-        animation: fadeUp 0.7s ease 1.2s forwards;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-      }
-
-      .gear {
-        font-size: 2.4rem;
-        display: inline-block;
-        color: var(--text-primary);
-        filter: drop-shadow(2px 2px 0 rgba(93, 44, 19, 0.2));
-      }
-      .gear-spin {
-        animation: spinGear 4s linear infinite;
-      }
-      .gear-spin-r {
-        animation: spinGearR 3s linear infinite;
-      }
-      .gear-spin-s {
-        animation: spinGear 5s linear infinite;
-        font-size: 1.6rem;
-      }
-
-      @keyframes spinGear {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes spinGearR {
-        to {
-          transform: rotate(-360deg);
-        }
-      }
-
-      /* ── Back badge ── */
-      .ondev-badge {
-        margin-top: 32px;
-        opacity: 0;
-        animation: fadeUp 0.7s ease 1.5s forwards;
-        font-size: 0.78rem;
-        font-weight: 500;
-        color: rgba(93, 44, 19, 0.65);
-        letter-spacing: 0.08em;
-      }
-
-      .ondev-badge strong {
-        color: var(--blue-dark);
-        font-weight: 700;
-      }
-
-      /* ── Shared fade-up keyframe ── */
-      @keyframes fadeUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* ── Floating snacks (decorative) ── */
-      .snack {
-        position: absolute;
-        font-size: clamp(1.4rem, 3vw, 2.8rem);
-        opacity: 0;
-        pointer-events: none;
-        animation: snackFloat linear infinite;
-        z-index: 5;
-      }
-
-      @keyframes snackFloat {
-        0% {
-          transform: translateY(0) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.55;
-        }
-        90% {
-          opacity: 0.55;
-        }
-        100% {
-          transform: translateY(-110vh) rotate(360deg);
-          opacity: 0;
-        }
-      }
-
-      /* Responsive tweaks */
-      @media (max-width: 480px) {
-        .ondev-title span {
-          -webkit-text-stroke: 2px var(--text-primary);
-          text-shadow: 3px 3px 0 var(--text-primary);
-        }
-        .gear {
-          font-size: 1.8rem;
-        }
-      }
-
-      /* ─────────────────────────────────────
-         NAVBAR
-      ───────────────────────────────────── */
       body {
-        padding-top: 56px;
+        background-color: var(--primary-color);
+        padding-top: 3.5rem;
       }
       @media (min-width: 1200px) {
         body {
-          padding-top: 78px;
+          padding-top: 4.5rem;
         }
       }
       @media (min-width: 1400px) {
         body {
-          padding-top: 92px;
+          padding-top: 5rem;
         }
       }
 
+      /* ── UTILITY ── */
+      .bg-primary-color {
+        background-color: var(--primary-color);
+      }
+      .bg-white-color {
+        background-color: var(--white);
+      }
+      .bg-cream {
+        background-color: var(--cream);
+      }
+      .bg-teal {
+        background-color: var(--teal);
+      }
+      .text-blue {
+        color: var(--blue);
+      }
+      .text-blue-dark {
+        color: var(--blue-dark);
+      }
+      .text-primary-color {
+        color: var(--text-primary);
+      }
+      .text-teal {
+        color: var(--teal);
+      }
+      .text-white {
+        color: var(--white) !important;
+      }
+
+      /* ── NAVBAR LINKS ── */
       .navbar {
         padding-top: 0.6rem;
         padding-bottom: 0.6rem;
-        background-color: var(--primary-color) !important;
       }
-      @media (min-width: 1200px) {
-        .navbar {
-          padding-top: 1rem;
-          padding-bottom: 1rem;
-        }
+      .navbar .nav-link {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.03em;
       }
-      @media (min-width: 1400px) {
-        .navbar {
-          padding-top: 1.25rem;
-          padding-bottom: 1.25rem;
-        }
-      }
-
-      .navbar-brand img {
-        width: 46px;
-        animation: logoSpin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-      }
-      @media (min-width: 1200px) {
-        .navbar-brand img {
-          width: 62px;
-        }
-      }
-      @media (min-width: 1400px) {
-        .navbar-brand img {
-          width: 72px;
-        }
-      }
-
-      @keyframes logoSpin {
-        0% {
-          transform: rotate(-15deg) scale(0.5);
-          opacity: 0;
-        }
-        100% {
-          transform: rotate(0deg) scale(1);
-          opacity: 1;
-        }
-      }
-
       .navbar-nav .nav-link {
         color: var(--text-primary);
         font-weight: 400;
-        font-size: 1rem;
         margin: 0 8px;
         transition: all 0.3s ease;
         position: relative;
-        letter-spacing: 0.03em;
       }
-      @media (min-width: 1200px) {
-        .navbar-nav .nav-link {
-          font-size: 1.15rem;
-        }
-      }
-      @media (min-width: 1400px) {
-        .navbar-nav .nav-link {
-          font-size: 1.25rem;
-        }
-      }
-
       .navbar-nav .nav-link::after {
         content: "";
         position: absolute;
@@ -480,6 +138,94 @@
         font-weight: bolder;
       }
 
+      @media (max-width: 991.98px) {
+        .navbar-nav .nav-link {
+          margin: 0;
+          padding: 0.6rem 1rem;
+          border-bottom: 1px solid rgba(93, 44, 19, 0.1);
+        }
+        .navbar-nav .nav-link::after {
+          display: none;
+        }
+        .navbar-nav .nav-item:last-child .nav-link {
+          border-bottom: none;
+        }
+        .social-media {
+          padding: 0.75rem 1rem;
+          border-top: 1px solid rgba(93, 44, 19, 0.15);
+        }
+      }
+
+      .social-media a {
+        padding: 0 10px;
+      }
+      .social-media a i {
+        font-size: 1rem;
+      }
+
+      @media (min-width: 1200px) {
+        .navbar {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        }
+        .navbar-brand img {
+          width: 62px;
+        }
+        .navbar .nav-link {
+          font-size: 1.15rem;
+        }
+        .social-media a {
+          padding: 0 14px;
+        }
+        .social-media a i {
+          font-size: 1.2rem;
+        }
+      }
+      @media (min-width: 1400px) {
+        .navbar {
+          padding-top: 1.25rem;
+          padding-bottom: 1.25rem;
+        }
+        .navbar-brand img {
+          width: 72px;
+        }
+        .navbar .nav-link {
+          font-size: 1.25rem;
+        }
+        .social-media a {
+          padding: 0 16px;
+        }
+        .social-media a i {
+          font-size: 1.35rem;
+        }
+      }
+
+      /* ── NAVBAR BRAND ANIMATION ── */
+      @keyframes logoSpin {
+        0% {
+          transform: rotate(-15deg) scale(0.5);
+          opacity: 0;
+        }
+        100% {
+          transform: rotate(0deg) scale(1);
+          opacity: 1;
+        }
+      }
+      .navbar-brand img {
+        animation: logoSpin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+
+      /* ── NAVBAR LINKS ANIMATION ── */
+      @keyframes navLinkDrop {
+        0% {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
       .navbar-nav .nav-item {
         animation: navLinkDrop 0.5s ease both;
       }
@@ -499,109 +245,338 @@
         animation-delay: 0.5s;
       }
 
-      @keyframes navLinkDrop {
-        0% {
-          opacity: 0;
-          transform: translateY(-12px);
+      /* ── HERO SECTION ── */
+      .contact-hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contact-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 150vh; /* Extend downwards to cover the cards section */
+        background-image: url("assets/img/contactus-assets/bg-gadoehrasa-transparent.png");
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+
+        /* Fade out the bottom of the background image */
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, transparent 100%);
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, transparent 100%);
+
+        opacity: 0.35;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .contact-hero .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .contact-hero .headline-img {
+        max-width: 700px;
+        width: 100%;
+      }
+
+      @media (max-width: 767.98px) {
+        .contact-hero {
+          min-height: 400px;
         }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
+        .contact-hero .headline-img {
+          max-width: 90%;
         }
       }
 
-      .social-media a {
-        padding: 0 10px;
+      /* ── CONTACT CARDS ── */
+      .contact-cards-section {
+        background-color: transparent;
+        margin-top: 5vh; /* Start slightly lower so circular logos are fully exposed */
+        position: relative;
+        z-index: 2;
+        padding-bottom: 80px;
+      }
+      .contact-card {
+        background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent to let the door show through */
+        backdrop-filter: blur(4px); /* Slight blur for readability */
+        border-radius: 20px;
+        padding: 2rem 2rem 1.5rem;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        border: 1.5px solid var(--text-primary);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .contact-card .icon-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .contact-card .icon-circle i {
+        color: var(--white) !important;
+        font-size: 1.3rem;
+      }
+      .contact-card .card-label {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .contact-card .card-value {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--teal);
+        margin-bottom: 1.5rem;
+      }
+      .contact-card .card-link {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 0.95rem;
         color: var(--text-primary);
         text-decoration: none;
-        transition:
-          transform 0.2s,
-          color 0.2s;
-        display: inline-block;
       }
-      .social-media a:hover {
-        transform: scale(1.2);
-        color: var(--blue-dark);
+      .contact-card .card-link:hover {
+        color: var(--teal);
       }
-      .social-media a i {
+      .contact-card .card-link i {
+        color: var(--text-primary);
+      }
+
+      /* ── FORM SECTION ── */
+      .form-pill-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        text-align: center;
+        z-index: 10;
+      }
+      .form-pill {
+        display: block;
+        background-color: var(--teal);
+        border-radius: 50px;
+        padding: 12px 48px;
+        position: relative;
+        z-index: 3;
+      }
+      .form-pill h2 {
+        color: var(--white) !important;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+      .contact-form-section {
+        position: relative;
+        background-color: var(--white);
+        padding-top: 50px; /* Reduced to bring subtitle closer to pill */
+        padding-bottom: 200px;
+      }
+      .contact-form-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("assets/img/contactus-assets/pattern.png");
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        opacity: 0.53;
+        z-index: 0;
+      }
+      .contact-form-section .container {
+        position: relative;
+        z-index: 1;
+      }
+      .contact-form .form-label {
+        font-weight: 600;
+        color: var(--teal);
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+      }
+      .contact-form .form-control {
+        border: 1.5px solid var(--teal);
+        border-radius: 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 12px 16px;
         font-size: 1rem;
         color: var(--text-primary);
       }
-      @media (min-width: 1200px) {
-        .social-media a {
-          padding: 0 14px;
+      .contact-form .form-control:focus {
+        box-shadow: 0 0 0 0.2rem rgba(27, 94, 91, 0.15);
+        border-color: var(--teal);
+      }
+      .contact-form .btn-submit {
+        background-color: var(--teal);
+        color: var(--white);
+        font-weight: 700;
+        font-size: 1.15rem;
+        border-radius: 0;
+        padding: 14px;
+        border: none;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+      .contact-form .btn-submit:hover {
+        background-color: #164a48;
+      }
+      .form-subtitle {
+        color: var(--teal);
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+
+      @media (max-width: 767.98px) {
+        .form-pill {
+          padding: 10px 28px;
         }
-        .social-media a i {
-          font-size: 1.2rem;
+        .form-pill h2 {
+          font-size: 1.4rem;
+        }
+        .contact-form-section {
+          padding-bottom: 80px;
         }
       }
-      @media (min-width: 1400px) {
-        .social-media a {
-          padding: 0 16px;
-        }
-        .social-media a i {
-          font-size: 1.35rem;
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        .contact-form-section {
+          padding-bottom: 120px;
         }
       }
 
-      @media (max-width: 991.98px) {
-        .navbar-nav .nav-link {
-          margin: 0;
-          padding: 0.6rem 1rem;
-          border-bottom: 1px solid rgba(93, 44, 19, 0.1);
+      /* ── SCROLL REVEAL ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+
+      /* ── FOOTER ANIMATIONS ── */
+      .footer-item-anim {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .footer-item-anim.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .footer-logo {
+        margin-top: 0;
+      }
+      .footer-part {
+        margin-top: 100px;
+      }
+      /* Footer animation delays */
+      .footer-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .footer-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .footer-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .footer-delay-4 {
+        transition-delay: 0.4s;
+      }
+      /* Footer text sizing */
+      .footer-text {
+        font-size: 1rem;
+      }
+      .footer-social-icon {
+        font-size: 1.8rem;
+      }
+
+      @media (max-width: 575.98px) {
+        .footer-part {
+          margin-top: 20px;
         }
-        .navbar-nav .nav-link::after {
-          display: none;
+      }
+      @media (min-width: 576px) and (max-width: 991.98px) {
+        .footer-logo {
+          margin-top: 0;
         }
-        .navbar-nav .nav-item:last-child .nav-link {
-          border-bottom: none;
-        }
-        .social-media {
-          padding: 0.75rem 1rem;
-          border-top: 1px solid rgba(93, 44, 19, 0.15);
+        .footer-part {
+          margin-top: 0;
         }
       }
 
-      .navbar-toggler {
-        border-color: rgba(93, 44, 19, 0.3);
+      /* ── SCROLL TO TOP BUTTON ── */
+      #scrollTopBtn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        border: 2px solid var(--secondary-color);
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
       }
-      .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(93,44,19,0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      #scrollTopBtn.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
-
-      /* Section height accounts for navbar */
-      .ondev-section {
-        min-height: calc(100vh - 56px);
-      }
-      @media (min-width: 1200px) {
-        .ondev-section {
-          min-height: calc(100vh - 78px);
-        }
-      }
-      @media (min-width: 1400px) {
-        .ondev-section {
-          min-height: calc(100vh - 92px);
-        }
+      #scrollTopBtn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-4px);
       }
     </style>
-
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    />
   </head>
   <body>
-    <!-- ── NAVBAR ── -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Scroll to top button -->
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary-color">
       <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="./assets/img/Logo.svg" alt="Gadoeh Rasa" width="46" />
+        <a class="navbar-brand" href="index.html">
+          <img src="./assets/img/Logo.svg" alt="Gadoeh Rasa Logo" width="46" />
         </a>
         <button
           class="navbar-toggler"
@@ -629,7 +604,12 @@
               <a class="nav-link" href="faq.html">FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="contact.html">CONTACT US</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="contact.html"
+                >CONTACT US</a
+              >
             </li>
           </ul>
           <div class="social-media ms-auto">
@@ -639,7 +619,7 @@
             <a href="https://www.instagram.com/" target="_blank"
               ><i class="fab fa-instagram"></i
             ></a>
-            <a href="https://www.instagram.com/" target="_blank"
+            <a href="https://www.pinterest.com/" target="_blank"
               ><i class="fab fa-pinterest"></i
             ></a>
           </div>
@@ -647,108 +627,408 @@
       </div>
     </nav>
 
-    <!-- ── ON DEV SECTION ── -->
-    <section class="ondev-section">
-      <!-- Animated background -->
-      <div class="ondev-bg"></div>
-      <div class="ondev-grid"></div>
-
-      <!-- Floating circles -->
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-
-      <!-- Floating food emojis (populated by JS) -->
-
-      <!-- Main content -->
-      <div class="ondev-content">
-        <div class="ondev-tag">🔧 &nbsp; Sedang Dibangun &nbsp; 🔧</div>
-
-        <div class="ondev-title">
-          <span id="devText">On Dev</span><span class="cursor"></span>
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- Hero Section -->
+      <section class="contact-hero">
+        <div class="contact-hero-bg"></div>
+        <div class="container text-center reveal">
+          <img
+            src="assets/img/contactus-assets/headline-ada-pertanyaan-hubungi-kami.svg"
+            alt="Ada Pertanyaan? Hubungi Kami"
+            class="img-fluid headline-img"
+          />
         </div>
+      </section>
 
-        <p class="ondev-subtitle">
-          Halaman ini sedang dalam proses pengembangan.<br />
-          Kami sedang memasak sesuatu yang spesial untukmu! 🍟
-        </p>
-
-        <div class="ondev-progress-wrap">
-          <div class="ondev-progress-label">
-            <span>Progress</span>
-            <span id="progressPct">0%</span>
+      <!-- Contact Cards -->
+      <section class="contact-cards-section">
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-md-6 col-lg-5 reveal reveal-delay-1">
+              <div class="contact-card">
+                <div class="icon-circle">
+                  <i class="far fa-envelope"></i>
+                </div>
+                <p class="card-label">Email kami</p>
+                <p class="card-value">info@gadoehrasa.com</p>
+                <a href="#formSection" class="card-link">
+                  Leave a Message
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-5 reveal reveal-delay-2">
+              <div class="contact-card">
+                <div class="icon-circle">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <p class="card-label">Hubungi kami</p>
+                <p class="card-value">Senin - Sabtu : 08.00 - 16.00</p>
+                <a href="#formSection" class="card-link">
+                  Leave a Message
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="ondev-progress-bar-bg">
-            <div class="ondev-progress-bar-fill" id="progressFill"></div>
+        </div>
+      </section>
+
+      <!-- Form Section -->
+      <section id="formSection" class="contact-form-section">
+        <!-- Pill Container (positioned at top boundary) -->
+        <div class="form-pill-container">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-7 col-xl-6">
+                <div class="form-pill reveal">
+                  <h2>Leave a Message</h2>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="contact-form-bg"></div>
+        <div class="container">
+          <p class="text-center form-subtitle mb-5 reveal reveal-delay-1">
+            Isi formulir di bawah ini dan kami akan segera menghubungi Anda.
+          </p>
 
-        <div class="gear-group">
-          <span class="gear gear-spin">⚙️</span>
-          <span class="gear gear-spin-r">⚙️</span>
-          <span class="gear gear-spin-s">⚙️</span>
+          <div class="row justify-content-center">
+            <div class="col-lg-7 col-xl-6">
+              <form id="contactForm" class="contact-form reveal reveal-delay-2">
+                <div class="mb-4">
+                  <label for="contactName" class="form-label">Your name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="contactName"
+                    name="name"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="contactPhone" class="form-label"
+                    >Your phone</label
+                  >
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="contactPhone"
+                    name="phone"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="contactEmail" class="form-label"
+                    >Your email</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="contactEmail"
+                    name="email"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="contactSubject" class="form-label"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="contactSubject"
+                    name="subject"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="contactMessage" class="form-label"
+                    >Your message (optional)</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="contactMessage"
+                    name="message"
+                    rows="5"
+                  ></textarea>
+                </div>
+                <button type="submit" id="submitBtn" class="btn-submit">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
+      </section>
+    </main>
 
-        <p class="ondev-badge">
-          Pantau terus update di &nbsp;<strong>@gadoehrasa</strong>
-        </p>
+    <!-- FOOTER -->
+    <footer class="bg-primary-color py-5">
+      <div class="container">
+        <div class="row align-items-start">
+          <!-- Logo -->
+          <div
+            class="col-md-4 text-center mb-3 footer-item-anim footer-delay-1"
+          >
+            <img
+              src="assets/img/Logo.svg"
+              class="footer-logo"
+              width="80%"
+              alt="Gadoeh Rasa Logo"
+            />
+            <p class="mt-3 footer-text">
+              <i>© 2026 Gadoeh Rasa</i>
+            </p>
+          </div>
+
+          <!-- Office Info -->
+          <div
+            class="col-md-4 mb-3 footer-item-anim footer-delay-2"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-5">Gadoeh Rasa</h5>
+              <p class="mb-0"><b>Office</b></p>
+              <p class="footer-text">
+                Ruko Magna Commercial, Summarecon, Komplek Jl. Magna Barat Blok
+                MB. 19, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat
+                40295
+              </p>
+            </div>
+          </div>
+
+          <!-- Official Online Store -->
+          <div
+            class="col-md-2 mb-3 footer-item-anim footer-delay-3"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-3">Official Online Store</h5>
+              <ul class="list-unstyled footer-text">
+                <li>Shopee</li>
+                <li>TikTok Shop</li>
+                <li>Tokopedia</li>
+                <li>Lazada</li>
+              </ul>
+              <div class="mt-2 d-flex gap-3">
+                <a href="#" class="text-dark footer-social-icon"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" class="text-dark footer-social-icon"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" class="text-dark footer-social-icon"
+                  ><i class="fab fa-tiktok"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Menu -->
+          <div
+            class="col-md-2 mb-3 footer-item-anim footer-delay-4"
+          >
+            <div class="footer-part">
+              <h5 class="fw-bold mb-4">Main Menu</h5>
+              <ul class="list-unstyled footer-text">
+                <li>
+                  <a
+                    href="index.html"
+                    class="text-primary-color text-decoration-none"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="about.html"
+                    class="text-primary-color text-decoration-none"
+                    >About Us</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="product.html"
+                    class="text-primary-color text-decoration-none"
+                    >Our Product</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="faq.html"
+                    class="text-primary-color text-decoration-none"
+                    >FAQ</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="contact.html"
+                    class="text-primary-color text-decoration-none"
+                    >Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </footer>
 
+    <script src="assets/bs-example/assets/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // ── Floating snacks ──
-      const snacks = ["🍟", "🧀", "🥨", "🍿", "🌽", "🍔", "🧆", "🥐", "🍗"];
-      const section = document.querySelector(".ondev-section");
-      for (let i = 0; i < 18; i++) {
-        const s = document.createElement("span");
-        s.className = "snack";
-        s.textContent = snacks[Math.floor(Math.random() * snacks.length)];
-        const size = Math.random() * 1.8 + 1.2;
-        s.style.cssText = `
-          left: ${Math.random() * 100}%;
-          bottom: ${-10 + Math.random() * 10}%;
-          font-size: ${size}rem;
-          animation-duration: ${8 + Math.random() * 10}s;
-          animation-delay: ${Math.random() * 8}s;
-        `;
-        section.appendChild(s);
-      }
+      (function () {
+        // ── Scroll-to-top button ──
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        if (scrollBtn) {
+          window.addEventListener("scroll", () => {
+            scrollBtn.classList.toggle("visible", window.scrollY > 400);
+          });
+          scrollBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
 
-      // ── Progress counter animation ──
-      const pct = document.getElementById("progressPct");
-      const fill = document.getElementById("progressFill");
-      const target = 40;
-      let current = 0;
-      setTimeout(() => {
-        const interval = setInterval(() => {
-          current++;
-          pct.textContent = current + "%";
-          if (current >= target) clearInterval(interval);
-        }, 2500 / target);
-      }, 1300);
-
-      // ── Title letter hover wobble ──
-      const titleSpan = document.getElementById("devText");
-      titleSpan.innerHTML = [...titleSpan.textContent]
-        .map((ch) =>
-          ch === " "
-            ? " "
-            : `<span style="display:inline-block;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1)">${ch}</span>`,
-        )
-        .join("");
-      titleSpan.querySelectorAll("span").forEach((letter) => {
-        letter.addEventListener("mouseenter", () => {
-          letter.style.transform = `translateY(-12px) rotate(${(Math.random() - 0.5) * 14}deg) scale(1.15)`;
-        });
-        letter.addEventListener("mouseleave", () => {
-          letter.style.transform = "";
-        });
-      });
+        // ── Scroll reveal ──
+        const revealEls = document.querySelectorAll(
+          ".reveal, .footer-item-anim",
+        );
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("visible");
+            });
+          },
+          { threshold: 0.15 },
+        );
+        revealEls.forEach((el) => revealObserver.observe(el));
+      })();
     </script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Spreadsheet Integration -->
+    <script>
+      (function () {
+        const endpoint = "https://script.google.com/macros/s/AKfycbzfAPpwW8Mq4rdl5K_HdQ5AHNx7Npcs4gZcxDosQKYsB1AqSaeLGuGUcTczGK2ryG6U/exec";
+        const form = document.getElementById("contactForm");
+        const submitBtn = document.getElementById("submitBtn");
+
+        /* ── Validation helpers ── */
+        function validateEmail(email) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function validatePhone(phone) {
+          return /^[0-9+\-\s()]{8,15}$/.test(phone);
+        }
+
+        function validateForm() {
+          const name = form.elements["name"].value.trim();
+          const phone = form.elements["phone"].value.trim();
+          const email = form.elements["email"].value.trim();
+          const subject = form.elements["subject"].value.trim();
+
+          if (!name || name.length < 2) {
+            Swal.fire({
+              icon: "warning",
+              title: "Nama tidak valid",
+              text: "Silakan masukkan nama lengkap Anda (minimal 2 karakter).",
+              confirmButtonColor: "#1b5e5b",
+            });
+            form.elements["name"].focus();
+            return false;
+          }
+
+          if (!phone || !validatePhone(phone)) {
+            Swal.fire({
+              icon: "warning",
+              title: "Nomor telepon tidak valid",
+              text: "Silakan masukkan nomor telepon yang valid (8-15 digit).",
+              confirmButtonColor: "#1b5e5b",
+            });
+            form.elements["phone"].focus();
+            return false;
+          }
+
+          if (!email || !validateEmail(email)) {
+            Swal.fire({
+              icon: "warning",
+              title: "Email tidak valid",
+              text: "Silakan masukkan alamat email yang valid.",
+              confirmButtonColor: "#1b5e5b",
+            });
+            form.elements["email"].focus();
+            return false;
+          }
+
+          if (!subject || subject.length < 3) {
+            Swal.fire({
+              icon: "warning",
+              title: "Subject tidak valid",
+              text: "Silakan masukkan subject pesan Anda (minimal 3 karakter).",
+              confirmButtonColor: "#1b5e5b",
+            });
+            form.elements["subject"].focus();
+            return false;
+          }
+
+          return true;
+        }
+
+        /* ── Form submit handler ── */
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          if (!validateForm()) return;
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending...";
+
+          Swal.fire({
+            title: "Mengirim pesan...",
+            text: "Mohon tunggu sebentar.",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading(),
+          });
+
+          const fd = new FormData(form);
+          const body = new URLSearchParams(fd);
+
+          try {
+            const response = await fetch(endpoint, {
+              method: "POST",
+              mode: "cors",
+              body: body,
+            });
+
+            if (response.ok || response.status === 302) {
+              Swal.fire({
+                icon: "success",
+                title: "Pesan Terkirim!",
+                text: "Terima kasih telah menghubungi kami. Kami akan segera merespons pesan Anda.",
+                confirmButtonColor: "#1b5e5b",
+              });
+              form.reset();
+            } else {
+              throw new Error("Server error: " + response.status);
+            }
+          } catch (err) {
+            Swal.fire({
+              icon: "error",
+              title: "Gagal Mengirim",
+              text: "Terjadi kesalahan saat mengirim pesan. Silakan coba lagi.",
+              confirmButtonColor: "#1b5e5b",
+            });
+            console.error("Error:", err);
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit";
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
