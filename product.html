@@ -16,7 +16,10 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap"
@@ -38,6 +41,13 @@
         --blue: #00adee;
         --blue-dark: #1c6264;
         --navbar-height: 56px;
+
+        /* ── Per-kategori accent ── */
+        --c-kremes: #f39c12;
+        --c-abon: #2e8b57;
+        --c-healthy: #00adee;
+        --c-cheesy: #c0392b;
+        --c-madu: #e6ac00;
       }
       @media (min-width: 1200px) {
         :root {
@@ -57,7 +67,6 @@
         font-family: "Fredoka", sans-serif;
         color: var(--text-primary);
       }
-
       body {
         background-color: #fffdf5;
         padding-top: 3.5rem;
@@ -91,6 +100,9 @@
       .text-blue-dark {
         color: var(--blue-dark);
       }
+      .text-green-dark {
+        color: #1c6264;
+      }
       .text-primary-color {
         color: var(--text-primary);
       }
@@ -101,6 +113,9 @@
       .bg-content .container:last-child {
         margin-bottom: 0 !important;
         padding-bottom: 3rem;
+      }
+      .text-justify {
+        text-align: justify;
       }
 
       /* ══════════════════════════════
@@ -166,7 +181,6 @@
       .social-media a i {
         font-size: 1rem;
       }
-
       @media (min-width: 1200px) {
         .navbar {
           padding-top: 1rem;
@@ -204,7 +218,6 @@
         }
       }
 
-      /* Navbar brand animation */
       @keyframes logoSpin {
         0% {
           transform: rotate(-15deg) scale(0.5);
@@ -219,7 +232,6 @@
         animation: logoSpin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
       }
 
-      /* Navbar links animation */
       @keyframes navLinkDrop {
         0% {
           opacity: 0;
@@ -248,6 +260,7 @@
       .navbar-nav .nav-item:nth-child(5) {
         animation-delay: 0.5s;
       }
+
       .navbar-spacer {
         width: 100%;
         height: 3rem;
@@ -262,22 +275,17 @@
         width: 100%;
         padding: 20px 20px 40px;
       }
-
-      /* Carousel box dengan border-radius */
       .hero-carousel {
         border-radius: 28px;
         overflow: hidden;
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        position: relative; /* Penting: hero-overlay di-absolute terhadap ini */
-      }
-
-      /* Tinggi carousel mengikuti rasio gambar asli ~3:2 (1215 x 810px) */
-      .hero-carousel .carousel-item {
-        height: 0;
-        padding-bottom: 66.67%; /* rasio 3:2 sesuai gambar 1215x810 */
         position: relative;
       }
-
+      .hero-carousel .carousel-item {
+        height: 0;
+        padding-bottom: 66.67%;
+        position: relative;
+      }
       .hero-carousel .carousel-item img {
         position: absolute;
         top: 0;
@@ -287,8 +295,6 @@
         object-fit: cover;
         object-position: center;
       }
-
-      /* Gradient overlay kiri agar teks mudah dibaca */
       .hero-carousel .carousel-item::after {
         content: "";
         position: absolute;
@@ -302,8 +308,6 @@
         pointer-events: none;
         border-radius: inherit;
       }
-
-      /* ── Overlay teks ── */
       .hero-overlay {
         position: absolute;
         top: 50%;
@@ -320,8 +324,6 @@
       .hero-overlay button {
         pointer-events: auto;
       }
-
-      /* SVG "produk-kami" fluid per breakpoint */
       .hero-overlay .produk-img {
         width: 80%;
         max-width: 200px;
@@ -383,7 +385,6 @@
         }
       }
 
-      /* ── Tombol Beli Sekarang ── */
       .btn-beli {
         display: inline-flex;
         align-items: center;
@@ -402,42 +403,42 @@
         box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
         transition: all 0.3s ease;
         pointer-events: auto;
-        min-width: 201px; /* 200px × 100.5% */
+        min-width: 201px;
         animation: heroTitleIn 0.8s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) both;
       }
       @media (min-width: 576px) {
         .btn-beli {
           font-size: 1.1rem;
           padding: 0.45rem 0.45rem 0.45rem 1.4rem;
-          min-width: 281px; /* 280px × 100.5% */
+          min-width: 281px;
         }
       }
       @media (min-width: 768px) {
         .btn-beli {
           font-size: 1.3rem;
           padding: 0.5rem 0.5rem 0.5rem 1.6rem;
-          min-width: 382px; /* 380px × 100.5% */
+          min-width: 382px;
         }
       }
       @media (min-width: 992px) {
         .btn-beli {
           font-size: 1.55rem;
           padding: 0.55rem 0.55rem 0.55rem 1.8rem;
-          min-width: 450px; /* sama dengan produk-img max-width */
+          min-width: 450px;
         }
       }
       @media (min-width: 1200px) {
         .btn-beli {
           font-size: 1.8rem;
           padding: 0.6rem 0.6rem 0.6rem 2rem;
-          min-width: 470px; /* sama dengan produk-img max-width */
+          min-width: 470px;
         }
       }
       @media (min-width: 1400px) {
         .btn-beli {
           font-size: 1.8rem;
           padding: 0.6rem 0.6rem 0.6rem 2rem;
-          min-width: 470px; /* sama dengan produk-img max-width */
+          min-width: 470px;
         }
       }
       .btn-beli:hover {
@@ -479,7 +480,6 @@
         }
       }
 
-      /* ── Panah navigasi kiri-kanan ── */
       .hero-carousel .carousel-control-prev,
       .hero-carousel .carousel-control-next {
         width: 44px;
@@ -512,7 +512,6 @@
         height: 16px;
       }
 
-      /* ── Dots di LUAR gambar ── */
       .hero-dots {
         display: flex;
         justify-content: center;
@@ -537,7 +536,6 @@
         transform: scale(1.45);
       }
 
-      /* ── Animasi ── */
       @keyframes heroTitleIn {
         0% {
           opacity: 0;
@@ -596,7 +594,6 @@
       .footer-part {
         margin-top: 100px;
       }
-
       @media (max-width: 575.98px) {
         .footer-part {
           margin-top: 20px;
@@ -609,6 +606,42 @@
         .footer-part {
           margin-top: 0;
         }
+      }
+
+      /* ══════════════════════════════
+         DATA-ANIMATE SYSTEM
+         ══════════════════════════════ */
+      [data-animate] {
+        opacity: 0;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      [data-animate="fade-up"] {
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s,
+          transform 0.6s;
+      }
+      [data-animate="fade-left"] {
+        transform: translateX(-40px);
+        transition:
+          opacity 0.65s,
+          transform 0.65s;
+      }
+      [data-animate="fade-right"] {
+        transform: translateX(40px);
+        transition:
+          opacity 0.65s,
+          transform 0.65s;
+      }
+      [data-animate="stagger"] {
+        transform: translateY(25px);
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+      [data-animate].is-visible {
+        opacity: 1;
+        transform: none;
       }
 
       /* ══════════════════════════════
@@ -644,6 +677,426 @@
       #scrollTopBtn:hover {
         background: var(--secondary-color);
         transform: translateY(-4px);
+      }
+
+      /* ══════════════════════════════════════════════════
+         ★  PRODUCT CARD ANIMATION SYSTEM  ★
+         ══════════════════════════════════════════════════ */
+
+      /* ── Base card state ── */
+      .card-produk-animated {
+        position: relative;
+        border-radius: 16px !important;
+        border: 2.5px solid transparent !important;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(36px) scale(0.95);
+        transition:
+          transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s ease,
+          border-color 0.3s ease,
+          background 0.35s ease;
+      }
+      .card-produk-animated.is-card-visible {
+        opacity: 1;
+      }
+
+      /* Shimmer streak on hover */
+      .card-produk-animated::after {
+        content: "";
+        position: absolute;
+        top: -60%;
+        left: -80%;
+        width: 55%;
+        height: 220%;
+        background: linear-gradient(
+          105deg,
+          transparent 35%,
+          rgba(255, 255, 255, 0.65) 50%,
+          transparent 65%
+        );
+        transform: skewX(-20deg);
+        transition: left 0.55s ease;
+        pointer-events: none;
+        z-index: 3;
+      }
+      .card-produk-animated:hover::after {
+        left: 130%;
+      }
+
+      /* Radial glow overlay */
+      .card-produk-animated .card-glow {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        pointer-events: none;
+        border-radius: inherit;
+        transition: opacity 0.35s ease;
+        z-index: 1;
+      }
+      .card-produk-animated:hover .card-glow {
+        opacity: 1;
+      }
+
+      /* Product image */
+      .card-produk-animated .card-img-inner {
+        transition:
+          transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+          filter 0.35s ease;
+        will-change: transform;
+      }
+
+      /* Card label colour shift */
+      .card-produk-animated .card-title-inner {
+        transition: color 0.3s ease;
+      }
+
+      /* Tooltip "Lihat Produk" */
+      .card-produk-animated .card-tip {
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--text-primary);
+        color: #fff !important;
+        font-size: 0.76rem;
+        font-weight: 600;
+        padding: 0.28rem 0.85rem;
+        border-radius: 30px;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        transition:
+          bottom 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          opacity 0.3s ease;
+        z-index: 5;
+      }
+      .card-tip i {
+        font-size: 0.7rem;
+        margin-right: 4px;
+      }
+      .card-produk-animated:hover .card-tip {
+        bottom: 10px;
+        opacity: 1;
+      }
+
+      /* ── Theme: Kremes Hati Ayam ── */
+      #produk-kremes-ayam .card-produk-animated:hover {
+        transform: translateY(-10px) scale(1.04);
+        border-color: var(--c-kremes) !important;
+        box-shadow: 0 22px 48px rgba(243, 156, 18, 0.28) !important;
+        background: linear-gradient(160deg, #fffbef, #fff3d0) !important;
+      }
+      #produk-kremes-ayam .card-glow {
+        background: radial-gradient(
+          circle at 50% 90%,
+          rgba(243, 156, 18, 0.18),
+          transparent 70%
+        );
+      }
+      #produk-kremes-ayam .card-produk-animated:hover .card-img-inner {
+        transform: rotate(-6deg) scale(1.15) translateY(-8px);
+        filter: drop-shadow(0 10px 20px rgba(243, 156, 18, 0.4));
+      }
+      #produk-kremes-ayam .card-produk-animated:hover .card-title-inner {
+        color: var(--c-kremes) !important;
+      }
+
+      /* ── Theme: Abon Ayam MPASI ── */
+      #produk-abon-ayam-mpasi .card-produk-animated:hover {
+        transform: translateY(-12px) scale(1.03);
+        border-color: var(--c-abon) !important;
+        box-shadow: 0 24px 52px rgba(46, 139, 87, 0.26) !important;
+        background: linear-gradient(160deg, #f0faf5, #e2f4ea) !important;
+      }
+      #produk-abon-ayam-mpasi .card-glow {
+        background: radial-gradient(
+          circle at 50% 85%,
+          rgba(46, 139, 87, 0.16),
+          transparent 70%
+        );
+      }
+      #produk-abon-ayam-mpasi .card-produk-animated:hover .card-img-inner {
+        transform: translateY(-14px) scale(1.12);
+        filter: drop-shadow(0 12px 22px rgba(28, 98, 100, 0.32));
+      }
+      #produk-abon-ayam-mpasi .card-produk-animated:hover .card-title-inner {
+        color: var(--c-abon) !important;
+      }
+
+      /* ── Theme: Healthy Snack ── */
+      #produk-healthy-snack .card-produk-animated:hover {
+        transform: translateY(-10px) scale(1.04);
+        border-color: var(--c-healthy) !important;
+        box-shadow: 0 22px 48px rgba(0, 173, 238, 0.24) !important;
+        background: linear-gradient(160deg, #eef9ff, #dcf2fc) !important;
+      }
+      #produk-healthy-snack .card-glow {
+        background: radial-gradient(
+          circle at 50% 85%,
+          rgba(0, 173, 238, 0.15),
+          transparent 70%
+        );
+      }
+      #produk-healthy-snack .card-produk-animated:hover .card-img-inner {
+        transform: scale(1.14) rotate(6deg) translateY(-6px);
+        filter: drop-shadow(0 10px 18px rgba(0, 173, 238, 0.35));
+      }
+      #produk-healthy-snack .card-produk-animated:hover .card-title-inner {
+        color: var(--c-healthy) !important;
+      }
+
+      /* ── Theme: Cheesy Bites ── */
+      #produk-cheesy-bites .card-produk-animated:hover {
+        transform: translateY(-10px) scale(1.06);
+        border-color: var(--c-cheesy) !important;
+        box-shadow: 0 24px 52px rgba(192, 57, 43, 0.22) !important;
+        background: linear-gradient(160deg, #fff5f5, #ffe8e8) !important;
+      }
+      #produk-cheesy-bites .card-glow {
+        background: radial-gradient(
+          circle at 50% 85%,
+          rgba(192, 57, 43, 0.14),
+          transparent 70%
+        );
+      }
+      #produk-cheesy-bites .card-produk-animated:hover .card-img-inner {
+        transform: scale(1.18) translateY(-10px);
+        filter: drop-shadow(0 12px 24px rgba(192, 57, 43, 0.35));
+      }
+      #produk-cheesy-bites .card-produk-animated:hover .card-title-inner {
+        color: var(--c-cheesy) !important;
+      }
+
+      /* ── Theme: Madu Murni Akasia ── */
+      #produk-madu-murni-akasia .card-produk-animated:hover {
+        transform: translateY(-10px) scale(1.04);
+        border-color: var(--c-madu) !important;
+        box-shadow: 0 22px 52px rgba(230, 172, 0, 0.3) !important;
+        background: linear-gradient(160deg, #fffbea, #fff3c2) !important;
+      }
+      #produk-madu-murni-akasia .card-glow {
+        background: radial-gradient(
+          circle at 50% 85%,
+          rgba(230, 172, 0, 0.18),
+          transparent 70%
+        );
+      }
+      #produk-madu-murni-akasia .card-produk-animated:hover .card-img-inner {
+        transform: scale(1.13) translateY(-8px);
+        filter: drop-shadow(0 10px 20px rgba(230, 172, 0, 0.45))
+          brightness(1.06);
+      }
+      #produk-madu-murni-akasia .card-produk-animated:hover .card-title-inner {
+        color: var(--c-madu) !important;
+      }
+
+      /* ── Scroll-in keyframes (per section) ── */
+      @keyframes kfFlip {
+        0% {
+          opacity: 0;
+          transform: perspective(700px) rotateY(-28deg) translateY(28px)
+            scale(0.88);
+        }
+        65% {
+          opacity: 1;
+          transform: perspective(700px) rotateY(4deg) translateY(-4px)
+            scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: perspective(700px) rotateY(0) translateY(0) scale(1);
+        }
+      }
+      @keyframes kfBounce {
+        0% {
+          opacity: 0;
+          transform: translateY(55px) scale(0.86);
+        }
+        55% {
+          opacity: 1;
+          transform: translateY(-10px) scale(1.03);
+        }
+        75% {
+          transform: translateY(4px) scale(0.99);
+        }
+        90% {
+          transform: translateY(-3px) scale(1.01);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes kfSlide {
+        0% {
+          opacity: 0;
+          transform: translateX(-55px) rotate(-5deg) scale(0.9);
+        }
+        65% {
+          opacity: 1;
+          transform: translateX(5px) rotate(1deg) scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+        }
+      }
+      @keyframes kfZoom {
+        0% {
+          opacity: 0;
+          transform: scale(0.45) rotate(10deg);
+        }
+        60% {
+          opacity: 1;
+          transform: scale(1.07) rotate(-2deg);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+      @keyframes kfDrop {
+        0% {
+          opacity: 0;
+          transform: translateY(-50px) scale(0.88);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(8px) scale(1.03);
+        }
+        80% {
+          transform: translateY(-3px) scale(0.99);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* ── Per-card hover image keyframes ── */
+      @keyframes imgWiggle {
+        0%,
+        100% {
+          transform: rotate(0) scale(1.1) translateY(-6px);
+        }
+        20% {
+          transform: rotate(-8deg) scale(1.1) translateY(-8px);
+        }
+        40% {
+          transform: rotate(8deg) scale(1.12) translateY(-10px);
+        }
+        60% {
+          transform: rotate(-4deg) scale(1.1) translateY(-7px);
+        }
+        80% {
+          transform: rotate(4deg) scale(1.1) translateY(-8px);
+        }
+      }
+      @keyframes imgBounce {
+        0% {
+          transform: translateY(0) scale(1);
+        }
+        35% {
+          transform: translateY(-18px) scale(1.14);
+        }
+        65% {
+          transform: translateY(-6px) scale(1.1);
+        }
+        85% {
+          transform: translateY(-13px) scale(1.12);
+        }
+        100% {
+          transform: translateY(-8px) scale(1.1);
+        }
+      }
+      @keyframes imgPop {
+        0% {
+          transform: scale(1);
+        }
+        40% {
+          transform: scale(1.25);
+        }
+        70% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1.18) translateY(-10px);
+        }
+      }
+      @keyframes imgFloat {
+        0% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-16px) scale(1.12);
+        }
+        100% {
+          transform: translateY(-8px) scale(1.1);
+        }
+      }
+
+      /* ── Sparkle particles ── */
+      .sparkle-dot {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        z-index: 6;
+      }
+      @keyframes sparklePop {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0) scale(1.2);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--tx), var(--ty)) scale(0);
+        }
+      }
+
+      /* ── Click ripple ── */
+      .ripple-wave {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.22;
+        transform: scale(0);
+        pointer-events: none;
+        z-index: 4;
+        animation: rippleGrow 0.6s ease forwards;
+      }
+      @keyframes rippleGrow {
+        to {
+          transform: scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* ── Badge float animations ── */
+      @keyframes floatBadge {
+        0%,
+        100% {
+          transform: translate(10%, -10%) rotate(0deg);
+        }
+        50% {
+          transform: translate(10%, -16%) rotate(4deg);
+        }
+      }
+      @keyframes floatBadge2 {
+        0%,
+        100% {
+          transform: translate(-10%, 100%) rotate(0deg);
+        }
+        50% {
+          transform: translate(-10%, 93%) rotate(-4deg);
+        }
+      }
+      #best-seller {
+        animation: floatBadge 3s ease-in-out infinite;
+      }
+      #best-seller-2 {
+        animation: floatBadge2 3s ease-in-out infinite;
       }
     </style>
   </head>
@@ -710,44 +1163,41 @@
          ══════════════════════════════ -->
     <main>
       <div class="bg-primary-color navbar-spacer"></div>
+
       <!-- ── HERO / JUMBOTRON CAROUSEL ── -->
       <section class="hero-carousel-wrapper">
-        <!-- Bootstrap Carousel -->
         <div
           id="heroCarousel"
           class="carousel slide hero-carousel"
           data-bs-ride="carousel"
           data-bs-interval="4000"
         >
-          <!-- Slides -->
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img
-                src="https://picsum.photos/seed/gadoeh1/1400/700"
+                src="./assets/img/product-assets/footage-headline-0.jpg"
                 alt="Produk Gadoeh Rasa 1"
               />
             </div>
             <div class="carousel-item">
               <img
-                src="https://picsum.photos/seed/gadoeh2/1400/700"
+                src="./assets/img/product-assets/footage-headline-1.png"
                 alt="Produk Gadoeh Rasa 2"
               />
             </div>
             <div class="carousel-item">
               <img
-                src="https://picsum.photos/seed/gadoeh3/1400/700"
+                src="./assets/img/product-assets/footage-headline-2.png"
                 alt="Produk Gadoeh Rasa 3"
               />
             </div>
             <div class="carousel-item">
               <img
-                src="https://picsum.photos/seed/gadoeh4/1400/700"
+                src="./assets/img/product-assets/footage-headline-3.png"
                 alt="Produk Gadoeh Rasa 4"
               />
             </div>
           </div>
-
-          <!-- Panah kiri-kanan -->
           <button
             class="carousel-control-prev"
             type="button"
@@ -766,8 +1216,6 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
-
-          <!-- Overlay teks — DIPINDAH ke dalam .hero-carousel agar top:50% akurat -->
           <div class="hero-overlay">
             <img
               src="assets/img/product-assets/produk-kami.svg"
@@ -776,15 +1224,12 @@
             />
             <a href="product.html" class="btn-beli">
               Beli Sekarang
-              <span class="me-2">
-                <i class="fas fa-arrow-right text-white"></i>
-              </span>
+              <span class="me-2"
+                ><i class="fas fa-arrow-right text-white"></i
+              ></span>
             </a>
           </div>
         </div>
-        <!-- /#heroCarousel -->
-
-        <!-- Dots di LUAR gambar -->
         <div class="hero-dots" id="heroDots">
           <button class="active" data-slide="0" aria-label="Slide 1"></button>
           <button data-slide="1" aria-label="Slide 2"></button>
@@ -792,14 +1237,837 @@
           <button data-slide="3" aria-label="Slide 4"></button>
         </div>
       </section>
-      <section class="bg-primary-color">
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-4"></div>
-          <div class="col-md-4"></div>
+
+      <!-- ── CATEGORY PILLS ── -->
+      <section class="bg-primary-color p-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center mb-3">
+              <div class="bg-white p-2 rounded-pill" style="width: 438px">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <img
+                      src="./assets/img/product-assets/kremes-hati-ayam.png"
+                      alt=""
+                      width="200"
+                    />
+                  </div>
+                  <div class="fs-3 fw-semibold text-center ms-2">
+                    Kremes <br />Hati Ayam
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-3">
+              <div class="bg-white p-2 rounded-pill" style="width: 438px">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <img
+                      src="./assets/img/product-assets/abon-ayam-premium.png"
+                      alt=""
+                      width="200"
+                    />
+                  </div>
+                  <div class="fs-3 fw-semibold text-center ms-3">
+                    Abon Ayam <br />Premium
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-3">
+              <div class="bg-white p-2 rounded-pill" style="width: 438px">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <img
+                      src="./assets/img/product-assets/healthy-snack.png"
+                      alt=""
+                      width="200"
+                    />
+                  </div>
+                  <div class="fs-3 fw-semibold text-center ms-4">
+                    Healthy <br />Snack
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-3">
+              <div class="bg-white p-2 rounded-pill" style="width: 438px">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <img
+                      src="./assets/img/product-assets/icon-cheesy-bites.png"
+                      alt=""
+                      width="200"
+                    />
+                  </div>
+                  <div class="fs-3 fw-semibold text-center ms-4">
+                    Cheesy <br />Bites
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-3">
+              <div class="bg-white p-2 rounded-pill" style="width: 438px">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <img
+                      src="./assets/img/product-assets/icon-madu-murni-akasia.png"
+                      alt=""
+                      width="200"
+                    />
+                  </div>
+                  <div class="fs-3 fw-semibold text-center ms-4">
+                    Madu Murni <br />Akasia
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-      <!-- ── END HERO ── -->
+
+      <!-- ── PRODUCT SECTIONS ── -->
+      <section class="bg-white p-3 mb-5">
+        <div class="container">
+          <!-- ================= Kremes Hati Ayam ================= -->
+          <div class="row justify-content-center align-items-center mb-5 mt-5">
+            <div class="col-md-6 mb-4">
+              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
+                Kremes Hati Ayam
+              </h1>
+              <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                Taburan gurih renyah dari hati ayam pilihan, kaya zat besi dan
+                diproses higienis tanpa MSG. Cocok sebagai pendamping MPASI
+                maupun makanan anak sehari-hari. Praktis ditaburkan di atas
+                nasi, bubur, atau lauk kesukaan, bikin si kecil lebih lahap dan
+                bebas drama makan.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="position-relative d-inline-block w-100">
+                <img
+                  src="./assets/img/product-assets/promo-kremes-hati-ayam.png"
+                  alt="Kremes Hati Ayam"
+                  id="gambar-produk"
+                  class="img-fluid w-100"
+                />
+                <img
+                  src="./assets/img/product-assets/best seller.png"
+                  alt="Best Seller"
+                  id="best-seller"
+                  class="position-absolute"
+                  style="
+                    width: 150px;
+                    top: 0;
+                    right: 0;
+                    transform: translate(10%, -10%);
+                    z-index: 10;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row g-4 justify-content-start mb-3"
+            id="produk-kremes-ayam"
+          >
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/KMHA-150g.png"
+                      alt="Kremes Hati Ayam 150g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Kremes Hati Ayam <br />150 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/KMHA-50g.png"
+                      alt="Kremes Hati Ayam 50g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Kremes Hati Ayam <br />50 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/KMHA-150g-refill.png"
+                      alt="Kremes Hati Ayam Refill 150g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Kremes Hati Ayam <br />Refill 150 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/KMHA-15g-sachet.png"
+                      alt="Kremes Hati Ayam Sachet 15g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Kremes Hati Ayam <br />Sachet 15 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/KMHA-box-12pcs.png"
+                      alt="Kremes Hati Ayam Box 12 Sachet"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Kremes Hati Ayam <br />Box isi 12 Sachet
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= Abon Ayam MPASI ================= -->
+          <div class="row justify-content-center align-items-center mb-5 mt-5">
+            <div class="col-md-6 mb-4">
+              <div class="position-relative d-inline-block w-100">
+                <img
+                  src="./assets/img/product-assets/promo-abon-ayam-MPASI.png"
+                  alt="Abon Ayam MPASI"
+                  id="gambar-produk"
+                  class="img-fluid w-100"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
+                Abon Ayam MPASI
+              </h1>
+              <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                Dibuat dari daging ayam pilihan berkualitas, Abon Ayam Premium
+                Gadoeh Rasa hadir dengan tekstur lembut dan rasa gurih alami
+                yang ramah untuk anak. Tanpa MSG dan diproses higienis, abon ini
+                kaya protein serta praktis dijadikan lauk atau taburan MPASI.
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row g-4 justify-content-start mb-3"
+            id="produk-abon-ayam-mpasi"
+          >
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/AAM-Refill-100g.png"
+                      alt="Abon Ayam Refill 100g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Abon Ayam <br />Refill 100 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/AAM-Refill-200g.png"
+                      alt="Abon Ayam Refill 200g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Abon Ayam <br />Refill 200 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/AAM-Topless-200g.png"
+                      alt="Abon Ayam 200g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Abon Ayam <br />200 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/AAM-Sachet-10g.png"
+                      alt="Abon Ayam Sachet 10g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Abon Ayam <br />Sachet 10 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/AAM-Box-12-Sachet.png"
+                      alt="Abon Ayam Box 12 Sachet"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Abon Ayam <br />Box isi 12 Sachet
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= Healthy Snack ================= -->
+          <div class="row justify-content-center align-items-center mb-5 mt-5">
+            <div class="col-md-6 mb-4">
+              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
+                Healthy Snack
+              </h1>
+              <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                Kini ngemil sehat makin seru dengan varian terbaru dari Gadoeh
+                Rasa! Dibuat dari bahan pilihan dan diproses dengan teknik
+                modern, sehingga tetap renyah, bergizi, dan pastinya aman untuk
+                anak maupun keluarga.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="position-relative d-inline-block w-100">
+                <img
+                  src="./assets/img/product-assets/promo-healthy-snack.png"
+                  alt="Healthy Snack"
+                  id="gambar-produk"
+                  class="img-fluid w-100"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row g-4 justify-content-start mb-3"
+            id="produk-healthy-snack"
+          >
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/HS-tempe-70g.png"
+                      alt="Tempe 70g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Tempe <br />70 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/HS-mixed-fruit-75g.png"
+                      alt="Mixed Fruit 75g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Mixed Fruit <br />75 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/HS-mixed-vegetable-75g.png"
+                      alt="Mixed Vegetable 75g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Mixed Vegetable <br />75 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/HS-brocoli-crispy-50g.png"
+                      alt="Broccoli Crispy 50g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Broccoli Crispy <br />50 g
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= Cheesy Bites ================= -->
+          <div class="row justify-content-center align-items-center mb-5 mt-5">
+            <div class="col-md-6 mb-4">
+              <div class="position-relative d-inline-block w-100">
+                <img
+                  src="./assets/img/product-assets/promo-cheesy-bites.png"
+                  alt="Cheesy-Bites"
+                  id="gambar-produk-bs-2"
+                  class="img-fluid w-100"
+                />
+                <img
+                  src="./assets/img/product-assets/best seller 2.png"
+                  alt="Best Seller"
+                  id="best-seller-2"
+                  class="position-absolute"
+                  style="
+                    width: 150px;
+                    top: 0;
+                    left: 0;
+                    transform: translate(-10%, 100%);
+                    z-index: 10;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
+                Cheesy Bites
+              </h1>
+              <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                Camilan keju dengan tekstur renyah di luar, creamy dan lumer di
+                dalam. Dibuat dari bahan pilihan dengan rasa keju yang ringan,
+                sehingga nyaman dinikmati oleh anak-anak. Cocok sebagai camilan
+                harian, teman bekal, atau pendamping waktu bermain.
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row g-4 justify-content-start mb-3"
+            id="produk-cheesy-bites"
+          >
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/CB-75g.png"
+                      alt="Cheesy Bites 75g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Cheesy Bites <br />75 g
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= Madu Murni Akasia ================= -->
+          <div class="row justify-content-center align-items-center mb-5 mt-5">
+            <div class="col-md-6 mb-4">
+              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
+                Madu Murni Akasia
+              </h1>
+              <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                Madu Murni Bunga Akasia Gadoeh Rasa adalah madu 100% alami tanpa
+                campuran. Dipanen dari nektar bunga akasia yang ringan dan
+                manis, madu ini aman untuk pencernaan anak. Tanpa tambahan gula,
+                pewarna, perisa, atau pengawet, cocok dikonsumsi anak usia 1
+                tahun ke atas untuk mendukung tumbuh kembang dan kesehatannya
+                secara alami.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="position-relative d-inline-block w-100">
+                <img
+                  src="./assets/img/product-assets/promo-madu-murni-akasia.png"
+                  alt="Madu Murni Akasia"
+                  id="gambar-produk"
+                  class="img-fluid w-100"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row g-4 justify-content-start mb-3"
+            id="produk-madu-murni-akasia"
+          >
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/MM-madu-murni-akasia-350g.png"
+                      alt="Madu Murni Akasia 350g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Madu Murni Akasia <br />350 g
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div
+                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                style="min-height: 320px"
+              >
+                <div class="card-glow"></div>
+                <div
+                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    style="height: 220px"
+                  >
+                    <img
+                      src="./assets/img/product-assets/MM-madu-murni-akasia-150g.png"
+                      alt="Madu Murni Akasia 150g"
+                      class="card-img-inner"
+                      style="
+                        max-height: 200px;
+                        max-width: 100%;
+                        object-fit: contain;
+                      "
+                    />
+                  </div>
+                  <div
+                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                  >
+                    Madu Murni Akasia <br />150 g
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <img
+          src="./assets/img/product-assets/headline-bottom.png"
+          class="img-fluid w-100"
+          alt=""
+          srcset=""
+          data-animate="fade-up"
+        />
+      </section>
     </main>
 
     <!-- ══════════════════════════════
@@ -808,7 +2076,6 @@
     <footer class="bg-primary-color py-5">
       <div class="container">
         <div class="row align-items-start">
-          <!-- Logo -->
           <div
             class="col-md-4 text-center mb-3 footer-item-anim"
             style="transition-delay: 0.1s"
@@ -823,8 +2090,6 @@
               <i>© 2025 Gadoeh Rasa</i>
             </p>
           </div>
-
-          <!-- Office Info -->
           <div
             class="col-md-4 mb-3 footer-item-anim"
             style="transition-delay: 0.2s"
@@ -839,8 +2104,6 @@
               </p>
             </div>
           </div>
-
-          <!-- Official Online Store -->
           <div
             class="col-md-2 mb-3 footer-item-anim"
             style="transition-delay: 0.3s"
@@ -866,8 +2129,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Main Menu -->
           <div
             class="col-md-2 mb-3 footer-item-anim"
             style="transition-delay: 0.4s"
@@ -917,10 +2178,12 @@
       </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+      /* ════════════════════════════════════
+         1. ORIGINAL SCRIPTS (unchanged)
+         ════════════════════════════════════ */
       (function () {
         /* ── Scroll-to-top ── */
         const scrollBtn = document.getElementById("scrollTopBtn");
@@ -949,26 +2212,222 @@
         /* ── Carousel: dots & overlay animation ── */
         const carousel = document.getElementById("heroCarousel");
         if (!carousel) return;
-
         const btnBeli = document.querySelector(".btn-beli");
         const dots = document.querySelectorAll("#heroDots button");
-
-        // Sinkronisasi dot aktif + animasi ulang tombol saat slide berganti
         carousel.addEventListener("slid.bs.carousel", (e) => {
           dots.forEach((d, i) => d.classList.toggle("active", i === e.to));
-
           if (btnBeli) {
             void btnBeli.offsetWidth;
             btnBeli.style.animation =
               "heroTitleIn 0.8s 0.12s cubic-bezier(0.34,1.56,0.64,1) both";
           }
         });
-
-        // Klik dot → pindah slide
         dots.forEach((dot) => {
           dot.addEventListener("click", () => {
-            const idx = parseInt(dot.dataset.slide, 10);
-            bootstrap.Carousel.getInstance(carousel)?.to(idx);
+            bootstrap.Carousel.getInstance(carousel)?.to(
+              parseInt(dot.dataset.slide, 10),
+            );
+          });
+        });
+      })();
+
+      document.addEventListener("DOMContentLoaded", () => {
+        /* ── Pill navigasi (fade-up staggered) ── */
+        document
+          .querySelectorAll(".bg-primary-color .rounded-pill")
+          .forEach((pill, idx) => {
+            pill.setAttribute("data-animate", "fade-up");
+            pill.style.transitionDelay = `${idx * 0.12}s`;
+          });
+
+        /* ── Section produk: teks kiri/kanan, gambar fade-up ── */
+        document
+          .querySelectorAll(".row.justify-content-center.align-items-center")
+          .forEach((section) => {
+            section
+              .querySelectorAll(":scope > .col-md-6")
+              .forEach((col, idx) => {
+                const hasImg = col.querySelector("img");
+                if (hasImg) {
+                  col.setAttribute("data-animate", "fade-up");
+                } else {
+                  col.setAttribute(
+                    "data-animate",
+                    idx === 0 ? "fade-left" : "fade-right",
+                  );
+                }
+              });
+          });
+
+        /* ── Intersection Observer for data-animate ── */
+        const observer = new IntersectionObserver(
+          (entries) =>
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            }),
+          { threshold: 0.12 },
+        );
+        document
+          .querySelectorAll("[data-animate]")
+          .forEach((el) => observer.observe(el));
+      });
+
+      /* ════════════════════════════════════════════
+         2. CARD ANIMATION ENGINE  ★ NEW ★
+         ════════════════════════════════════════════ */
+      (function () {
+        /* Config: per section → scroll-in keyframe, accent colour, hover image fx */
+        const SECTION_CFG = {
+          "produk-kremes-ayam": {
+            anim: "kfFlip",
+            dur: 700,
+            color: "#f39c12",
+            hoverFn: (img) => triggerAnim(img, "imgWiggle 0.5s ease"),
+          },
+          "produk-abon-ayam-mpasi": {
+            anim: "kfBounce",
+            dur: 720,
+            color: "#2e8b57",
+            hoverFn: (img) =>
+              triggerAnim(
+                img,
+                "imgBounce 0.55s cubic-bezier(0.34,1.56,0.64,1)",
+              ),
+          },
+          "produk-healthy-snack": {
+            anim: "kfSlide",
+            dur: 660,
+            color: "#00adee",
+            hoverFn: (img) => spinImg(img),
+          },
+          "produk-cheesy-bites": {
+            anim: "kfZoom",
+            dur: 740,
+            color: "#c0392b",
+            hoverFn: (img) =>
+              triggerAnim(img, "imgPop 0.45s cubic-bezier(0.34,1.56,0.64,1)"),
+          },
+          "produk-madu-murni-akasia": {
+            anim: "kfDrop",
+            dur: 680,
+            color: "#e6ac00",
+            hoverFn: (img) => triggerAnim(img, "imgFloat 0.6s ease"),
+          },
+        };
+
+        /* Re-trigger a keyframe animation */
+        function triggerAnim(img, animStr) {
+          if (!img || img._busy) return;
+          img._busy = true;
+          img.style.animation = "none";
+          void img.offsetWidth;
+          img.style.animation = animStr;
+          img.addEventListener(
+            "animationend",
+            () => {
+              img.style.animation = "";
+              img._busy = false;
+            },
+            { once: true },
+          );
+        }
+
+        /* Full 360° CSS transition spin (Healthy Snack) */
+        function spinImg(img) {
+          if (!img || img._busy) return;
+          img._busy = true;
+          img.style.transition = "transform 0.45s ease";
+          img.style.transform = "rotate(360deg) scale(1.12) translateY(-6px)";
+          setTimeout(() => {
+            img.style.transition = "";
+            img.style.transform = "";
+            img._busy = false;
+          }, 460);
+        }
+
+        /* Sparkle burst on mouseenter */
+        function burstSparkles(card, color) {
+          const N = 8;
+          for (let i = 0; i < N; i++) {
+            const dot = document.createElement("span");
+            dot.className = "sparkle-dot";
+            const angle = (360 / N) * i + Math.random() * 15;
+            const dist = 34 + Math.random() * 26;
+            const tx =
+              Math.round(Math.cos((angle * Math.PI) / 180) * dist) + "px";
+            const ty =
+              Math.round(Math.sin((angle * Math.PI) / 180) * dist) + "px";
+            const sz = 5 + Math.random() * 5;
+            dot.style.cssText = `
+              width:${sz}px; height:${sz}px; background:${color};
+              top:50%; left:50%;
+              margin:-${sz / 2}px 0 0 -${sz / 2}px;
+              --tx:${tx}; --ty:${ty};
+              animation: sparklePop 0.55s ease forwards;
+            `;
+            card.appendChild(dot);
+            setTimeout(() => dot.remove(), 600);
+          }
+        }
+
+        /* Click ripple */
+        function addRipple(card, e, color) {
+          const rect = card.getBoundingClientRect();
+          const sz = Math.max(rect.width, rect.height) * 1.7;
+          const wave = document.createElement("span");
+          wave.className = "ripple-wave";
+          wave.style.cssText = `
+            width:${sz}px; height:${sz}px; background:${color};
+            top:${e.clientY - rect.top - sz / 2}px;
+            left:${e.clientX - rect.left - sz / 2}px;
+          `;
+          card.appendChild(wave);
+          setTimeout(() => wave.remove(), 650);
+        }
+
+        /* Wire up each section */
+        document.addEventListener("DOMContentLoaded", () => {
+          Object.entries(SECTION_CFG).forEach(([id, cfg]) => {
+            const row = document.getElementById(id);
+            if (!row) return;
+
+            const cards = row.querySelectorAll(".card-produk-animated");
+
+            /* Staggered scroll-in animation */
+            const rowObs = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (!entry.isIntersecting) return;
+                  cards.forEach((card, i) => {
+                    setTimeout(() => {
+                      card.style.animation = `${cfg.anim} ${cfg.dur}ms cubic-bezier(0.34,1.56,0.64,1) both`;
+                      card.classList.add("is-card-visible");
+                    }, i * 115);
+                  });
+                  rowObs.unobserve(entry.target);
+                });
+              },
+              { threshold: 0.1 },
+            );
+            rowObs.observe(row);
+
+            /* Hover & click events */
+            cards.forEach((card) => {
+              const img = card.querySelector(".card-img-inner");
+              card.addEventListener("mouseenter", () => {
+                burstSparkles(card, cfg.color);
+                cfg.hoverFn(img);
+              });
+              card.addEventListener("mouseleave", () => {
+                if (img) img.style.animation = "";
+              });
+              card.addEventListener("click", (e) =>
+                addRipple(card, e, cfg.color),
+              );
+            });
           });
         });
       })();

@@ -95,13 +95,12 @@
         background-size: contain;
         background-position: bottom;
         background-repeat: no-repeat;
-        padding-bottom: 0; /* Hapus padding bottom */
+        padding-bottom: 0;
       }
 
-      /* Tambahan class untuk menghapus margin bottom pada container terakhir */
       .bg-content .container:last-child {
         margin-bottom: 0 !important;
-        padding-bottom: 3rem; /* Tambah padding bottom untuk ruang konten terakhir */
+        padding-bottom: 3rem;
       }
 
       /* ── NAVBAR LINKS ── */
@@ -299,8 +298,8 @@
       .faq-content {
         background-color: var(--white);
         padding-top: 80px;
-        padding-bottom: 0; /* Hapus padding bottom */
-        margin-bottom: 0; /* Hapus margin bottom */
+        padding-bottom: 0;
+        margin-bottom: 0;
       }
 
       /* ── SCROLL REVEAL ── */
@@ -393,6 +392,173 @@
         background: var(--secondary-color);
         transform: translateY(-4px);
       }
+
+      /* ══════════════════════════════════════════
+         ANIMASI TAMBAHAN — hanya untuk <main>
+         ══════════════════════════════════════════ */
+
+      /* ── Hero: FAQ SVG slide-in dari kiri ── */
+      @keyframes slideInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-80px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* ── Hero: teks slide-in dari kiri dengan delay ── */
+      @keyframes slideInLeftSoft {
+        0% {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* ── Hero: karakter boy float masuk dari kanan ── */
+      @keyframes slideInRight {
+        0% {
+          opacity: 0;
+          transform: translateX(80px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* ── Hero: karakter boy floating terus-menerus ── */
+      @keyframes floatBoy {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+
+      /* ── Hero: latar faq-section masuk dari bawah (scale) ── */
+      @keyframes sectionFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── FAQ Content: tombol pertanyaan pop-in ── */
+      @keyframes popIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.85) translateY(20px);
+        }
+        70% {
+          transform: scale(1.03) translateY(-4px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      /* ── FAQ Content: teks jawaban fade slide-up ── */
+      @keyframes fadeSlideUp {
+        0% {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── Hover: tombol pertanyaan gentle bounce ── */
+      .faq-btn-anim {
+        transition:
+          transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.2s ease;
+      }
+      .faq-btn-anim:hover {
+        transform: scale(1.03) translateY(-2px);
+        box-shadow: 0 8px 24px rgba(93, 44, 19, 0.18) !important;
+      }
+
+      /* ── Terapkan animasi hero ── */
+      .hero-faq-svg {
+        animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .hero-faq-title {
+        animation: slideInLeftSoft 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s
+          both;
+      }
+      .hero-boy-wrap {
+        animation: slideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+      }
+      .hero-boy-wrap img {
+        animation: floatBoy 3.6s ease-in-out 1s infinite;
+        display: inline-block;
+      }
+
+      /* ── Terapkan animasi FAQ items (diatur via JS) ── */
+      .faq-item-btn {
+        opacity: 0;
+        animation: none;
+      }
+      .faq-item-btn.anim-active {
+        animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+
+      .faq-item-body {
+        opacity: 0;
+        animation: none;
+      }
+      .faq-item-body.anim-active {
+        animation: fadeSlideUp 0.55s ease both;
+      }
+
+      /* ── Animasi list item dalam jawaban ── */
+      @keyframes listItemAppear {
+        0% {
+          opacity: 0;
+          transform: translateX(-18px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .faq-item-body.anim-active li {
+        opacity: 0;
+        animation: listItemAppear 0.45s ease both;
+      }
+      /* delay bertingkat untuk setiap <li> */
+      .faq-item-body.anim-active li:nth-child(1) {
+        animation-delay: 0.15s;
+      }
+      .faq-item-body.anim-active li:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+      .faq-item-body.anim-active li:nth-child(3) {
+        animation-delay: 0.35s;
+      }
+      .faq-item-body.anim-active li:nth-child(4) {
+        animation-delay: 0.45s;
+      }
+      .faq-item-body.anim-active li:nth-child(5) {
+        animation-delay: 0.55s;
+      }
     </style>
   </head>
   <body>
@@ -459,20 +625,23 @@
         <div class="container">
           <div class="row jutify-content-center align-items-center">
             <div class="col-lg-6">
+              <!-- Animasi: FAQ SVG slide dari kiri -->
               <img
                 src="assets/img/faq-assets/FAQ.svg"
-                class="img-fluid mb-4 reveal"
+                class="img-fluid mb-4 reveal hero-faq-svg"
                 srcset=""
               />
-              <p class="fs-1 fw-medium reveal reveal-delay-1">
+              <!-- Animasi: teks slide dari kiri dengan delay -->
+              <p class="fs-1 fw-medium reveal reveal-delay-1 hero-faq-title">
                 Frequently Asked Questions
               </p>
             </div>
             <div class="col-lg-6">
-              <div class="text-end">
+              <!-- Animasi: karakter slide dari kanan + float -->
+              <div class="text-end hero-boy-wrap">
                 <img
                   src="assets/img/faq-assets/new-boy.png"
-                  class="img-fluid reveal reveal-delay-3"
+                  class="img-fluid"
                   srcset=""
                 />
               </div>
@@ -485,27 +654,30 @@
       <section class="faq-content">
         <div class="bg-content">
           <div class="container mb-5">
+            <!-- Animasi: tombol pertanyaan pop-in saat scroll -->
             <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm faq-item-btn faq-btn-anim"
             >
               <h1 class="fw-bold section-shimmer">Apa itu Gadoeh Rasa?</h1>
             </button>
-            <p class="fs-2 ms-4">
+            <!-- Animasi: jawaban fade slide-up saat scroll -->
+            <p class="fs-2 ms-4 faq-item-body">
               Gadoeh Rasa adalah brand camilan dan lauk pendamping makan anak &
               keluarga seperti Kremes, Abon, Cheesy Bites, dan Healthy Snack.
               Produk kami praktis, siap santap, dan cocok jadi topping atau
               camilan si kecil.
             </p>
           </div>
+
           <div class="container mb-5">
             <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm faq-item-btn faq-btn-anim"
             >
               <h1 class="fw-bold section-shimmer">
                 Berapa usia si kecil bisa mencoba Gadoeh Rasa?
               </h1>
             </button>
-            <div class="fs-2 ms-4">
+            <div class="fs-2 ms-4 faq-item-body">
               Berikut rekomendasi usia konsumsi: <br /><br />
               <ul class="fs-2 ms-4">
                 <li>
@@ -529,15 +701,16 @@
               masing-masing anak ya moms 🤍
             </div>
           </div>
+
           <div class="container mb-5">
             <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm faq-item-btn faq-btn-anim"
             >
               <h1 class="fw-bold section-shimmer">
                 Apakah produk bisa dikonsumsi anak dengan alergi?
               </h1>
             </button>
-            <div class="fs-2 ms-4">
+            <div class="fs-2 ms-4 faq-item-body">
               Produk kami menggunakan bahan pilihan, namun tetap mengandung
               bahan makanan umum seperti Ayam, Keju, atau bahan turunannya
               (tergantung varian produk). Untuk si kecil dengan riwayat alergi
@@ -545,15 +718,16 @@
               konsultasi dengan dokter sebelum konsumsi ya moms.
             </div>
           </div>
+
           <div class="container mb-5">
             <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm faq-item-btn faq-btn-anim"
             >
               <h1 class="fw-bold section-shimmer">
                 Bagaimana pengiriman dan agar produk sampai dengan aman?
               </h1>
             </button>
-            <div class="fs-2 ms-4">
+            <div class="fs-2 ms-4 faq-item-body">
               <b>Pengiriman Reguler</b> : Senin–Sabtu, pesanan diproses hingga
               pukul 12.00 siang <br /><b>Pengiriman Instant</b> : Senin–Sabtu,
               diproses hingga pukul 15.00 ⚡ <br /><br />Pesanan yang masuk hari
@@ -569,15 +743,16 @@
               proses pengecekan dengan cepat ya moms 😊<br /><br />
             </div>
           </div>
+
           <div class="container">
             <button
-              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
+              class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm faq-item-btn faq-btn-anim"
             >
               <h1 class="fw-bold section-shimmer">
                 Bagaimana agar si kecil bisa suka dengan produk Gadoeh Rasa?
               </h1>
             </button>
-            <div class="fs-2 ms-4">
+            <div class="fs-2 ms-4 faq-item-body">
               <ul class="fs-2 ms-4">
                 <li>Kenalkan sedikit demi sedikit terlebih dahulu.</li>
                 <li>
@@ -729,7 +904,7 @@
           });
         }
 
-        // ── Scroll reveal ──
+        // ── Scroll reveal (existing) ──
         const revealEls = document.querySelectorAll(
           ".reveal, .footer-item-anim",
         );
@@ -742,6 +917,48 @@
           { threshold: 0.15 },
         );
         revealEls.forEach((el) => revealObserver.observe(el));
+
+        // ── Animasi FAQ items (scroll-triggered, staggered) ──
+        const faqPairs = [];
+        const allBtns = document.querySelectorAll(".faq-item-btn");
+        const allBodies = document.querySelectorAll(".faq-item-body");
+
+        // Pasangkan tiap tombol dengan jawaban di bawahnya
+        allBtns.forEach((btn, i) => {
+          faqPairs.push({ btn, body: allBodies[i] || null });
+        });
+
+        const faqObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              const btn = entry.target;
+              const idx = [...allBtns].indexOf(btn);
+              if (idx === -1) return;
+
+              const pair = faqPairs[idx];
+
+              // Delay bertingkat antar item FAQ
+              const stagger = idx * 0.08;
+
+              // Animasikan tombol
+              pair.btn.style.animationDelay = stagger + "s";
+              pair.btn.classList.add("anim-active");
+
+              // Animasikan jawaban sedikit setelah tombol
+              if (pair.body) {
+                pair.body.style.animationDelay = stagger + 0.18 + "s";
+                pair.body.classList.add("anim-active");
+              }
+
+              faqObserver.unobserve(btn);
+            });
+          },
+          { threshold: 0.12 },
+        );
+
+        allBtns.forEach((btn) => faqObserver.observe(btn));
       })();
     </script>
   </body>

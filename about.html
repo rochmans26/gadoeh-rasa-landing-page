@@ -451,6 +451,137 @@
         width: 100%;
         padding: 10px 0;
       }
+
+      /* ═══════════════════════════════════════════════════
+         ANIMASI TAMBAHAN — hanya pada <main>, tidak mengubah desain
+         ═══════════════════════════════════════════════════ */
+
+      /* 1. Hero image: fade + zoom-in dari bawah */
+      @keyframes heroImgReveal {
+        0% {
+          opacity: 0;
+          transform: scale(1.06) translateY(18px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .image-container > img:first-child {
+        animation: heroImgReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      /* 2. Overlay headline text: slide-up setelah hero */
+      @keyframes overlayTextUp {
+        0% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(24px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+      .overlay-text {
+        animation: overlayTextUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+      }
+
+      /* 3. Deskripsi paragraf: scroll-reveal (dihandle JS) */
+      .main-reveal {
+        opacity: 0;
+        transform: translateY(36px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .main-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* 4. History title: slide dari kiri */
+      .history-title-anim {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+      }
+      .history-title-anim.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* 5. History image: slide dari kanan */
+      .history-img-anim {
+        opacity: 0;
+        transform: translateX(50px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .history-img-anim.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* 6. "Untuk Siapa" section – gadis image: float from bottom */
+      .girl-img-anim {
+        opacity: 0;
+        transform: translateY(50px);
+        transition:
+          opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .girl-img-anim.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* 7. Card/button blocks: staggered pop-in */
+      .card-anim {
+        opacity: 0;
+        transform: scale(0.94) translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .card-anim.visible {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+
+      /* 8. List items inside card: stagger via JS sibling index */
+      .list-item-anim {
+        opacity: 0;
+        transform: translateX(-16px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+      .list-item-anim.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* 9. Hover lift on btn pills */
+      main .btn {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      main .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(93, 44, 19, 0.18) !important;
+      }
+
+      /* 10. Hover subtle scale on history image */
+      .history-img-overlap img {
+        transition: transform 0.4s ease;
+      }
+      .history-img-overlap img:hover {
+        transform: scale(1.02);
+      }
     </style>
   </head>
   <body>
@@ -533,7 +664,7 @@
         <div class="bg-primary-color py-5" style="overflow: visible">
           <div class="container">
             <div class="row fs-5 fw-medium">
-              <div class="col-md-6 text-justify">
+              <div class="col-md-6 text-justify main-reveal">
                 Gadoeh Rasa adalah merek yang hadir untuk mendukung kebutuhan
                 makan anak, terutama di masa pertumbuhan yang sering penuh
                 tantangan. Kami percaya momen makan seharusnya menjadi
@@ -545,7 +676,10 @@
                 pilihan berkualitas, sehingga aman sekaligus bergizi untuk
                 anak-anak.
               </div>
-              <div class="col-md-6 text-justify">
+              <div
+                class="col-md-6 text-justify main-reveal"
+                style="transition-delay: 0.15s"
+              >
                 Lebih dari sekadar makanan, Gadoeh Rasa hadir sebagai solusi
                 untuk membantu orang tua mengatasi anak yang sulit makan. Dengan
                 inovasi rasa yang ramah di lidah anak, kami berkomitmen
@@ -562,8 +696,15 @@
           <div class="container">
             <div class="row justify-content-center align-items-start">
               <div class="col-md-6">
-                <h1 class="fs-1 fw-bold text-green-dark mb-5 mt-5">History</h1>
-                <p class="fs-5 fw-medium text-justify">
+                <h1
+                  class="fs-1 fw-bold text-green-dark mb-5 mt-5 history-title-anim"
+                >
+                  History
+                </h1>
+                <p
+                  class="fs-5 fw-medium text-justify main-reveal"
+                  style="transition-delay: 0.1s"
+                >
                   Gadoeh Rasa didirikan pada Desember 2022 dengan semangat
                   menghadirkan produk makanan yang praktis, lezat, dan
                   berkualitas untuk keluarga Indonesia. Berawal dari skala
@@ -587,12 +728,7 @@
                 </p>
               </div>
 
-              <!-- 
-                Kolom gambar dengan class history-img-overlap:
-                margin-top negatif membuat gambar "naik" ke section kuning di atasnya.
-                Sesuaikan nilai margin-top di CSS (.history-img-overlap) jika perlu.
-              -->
-              <div class="col-md-6 history-img-overlap">
+              <div class="col-md-6 history-img-overlap history-img-anim">
                 <img
                   src="assets/img/about-assets/gudang-gadoehrasa.png"
                   class="img-fluid w-100"
@@ -602,10 +738,11 @@
             </div>
           </div>
         </div>
+
         <div class="bg-white-color py-5">
           <div class="container">
             <div class="row justify-content-center align-items-end">
-              <div class="col-lg-6 mb-3">
+              <div class="col-lg-6 mb-3 girl-img-anim">
                 <img
                   src="assets/img/about-assets/anak-perempuan-nunjuk.png"
                   class="img-fluid"
@@ -614,36 +751,41 @@
                 />
               </div>
               <div class="col-lg-6">
-                <div class="mb-5">
+                <div class="mb-5 card-anim">
                   <button
                     class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
                   >
                     <h1 class="fw-bold section-shimmer">Untuk Siapa?</h1>
                   </button>
                   <ul class="fs-5 fw-medium">
-                    <li>
+                    <li class="list-item-anim">
                       Orang tua (terutama ibu) dengan anak usia MPASI – Balita
                     </li>
-                    <li>
+                    <li class="list-item-anim">
                       Keluarga muda yang mencari makanan sehat, praktis, dan
                       aman untuk anak
                     </li>
-                    <li>
+                    <li class="list-item-anim">
                       Moms yang sering menghadapi anak susah makan atau GTM
                     </li>
                   </ul>
                 </div>
-                <div class="mb-5">
+                <div class="mb-5 card-anim" style="transition-delay: 0.15s">
                   <button
                     class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
                   >
                     <h1 class="fw-bold section-shimmer">Tagline</h1>
                   </button>
                   <div class="ms-4">
-                    <h2 class="fs-2 fw-bold">Lahap Tanpa Drama!</h2>
+                    <h2
+                      class="fs-2 fw-bold main-reveal"
+                      style="transition-delay: 0.25s"
+                    >
+                      Lahap Tanpa Drama!
+                    </h2>
                   </div>
                 </div>
-                <div class="mb-5">
+                <div class="mb-5 card-anim" style="transition-delay: 0.3s">
                   <button
                     class="btn btn-lg bg-primary-color rounded-pill fw-bolder text-blue-dark px-4 mb-3 shadow-sm"
                   >
@@ -652,19 +794,19 @@
                     </h1>
                   </button>
                   <ul class="fs-5 fw-medium">
-                    <li>
+                    <li class="list-item-anim">
                       <b>Sehat</b> » produk tanpa MSG, berbahan pilihan, aman
                       untuk anak
                     </li>
-                    <li>
+                    <li class="list-item-anim">
                       <b>Praktis</b> » mudah disajikan, cocok untuk orang tua
                       yang sibuk
                     </li>
-                    <li>
+                    <li class="list-item-anim">
                       <b>Fun</b> » rasa ramah di lidah anak, menjadikan makan
                       lebih menyenangkan
                     </li>
-                    <li>
+                    <li class="list-item-anim">
                       <b>Supportive</b> » hadir sebagai solusi, bukan sekadar
                       makanan
                     </li>
@@ -804,7 +946,7 @@
           });
         }
 
-        // ── Scroll reveal ──
+        // ── Scroll reveal (existing) ──
         const revealEls = document.querySelectorAll(
           ".reveal, .footer-item-anim",
         );
@@ -817,6 +959,42 @@
           { threshold: 0.15 },
         );
         revealEls.forEach((el) => revealObserver.observe(el));
+
+        // ── NEW: Main section scroll-reveal observer ──
+        const mainAnimEls = document.querySelectorAll(
+          "main .main-reveal, main .history-title-anim, main .history-img-anim, main .girl-img-anim, main .card-anim",
+        );
+        const mainObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        mainAnimEls.forEach((el) => mainObserver.observe(el));
+
+        // ── NEW: List items staggered reveal ──
+        const listGroups = document.querySelectorAll("main ul");
+        listGroups.forEach((ul) => {
+          const items = ul.querySelectorAll(".list-item-anim");
+          const groupObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  items.forEach((item, i) => {
+                    setTimeout(() => item.classList.add("visible"), i * 110);
+                  });
+                  groupObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.1 },
+          );
+          if (items.length) groupObserver.observe(ul);
+        });
       })();
     </script>
   </body>
