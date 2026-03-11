@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="FAQ - Gadoeh Rasa" />
-    <title>Gadoeh Rasa - FAQ</title>
+    <title>Gadoeh Rasa - About</title>
 
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
     />
     <link
-      href="../files/assets/bs-example/assets/dist/css/bootstrap.min.css"
+      href="./assets/bs-example/assets/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
@@ -52,6 +52,12 @@
       * {
         font-family: "Fredoka", sans-serif;
         color: var(--text-primary);
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+        max-width: 100%;
       }
 
       body {
@@ -309,12 +315,12 @@
 
       /* ── HISTORY SECTION: section kuning di atas ── */
       .bg-primary-color.py-5 {
-        overflow: visible;
+        overflow: hidden;
       }
 
       /* ── HISTORY SECTION: section putih ── */
       #history-text {
-        overflow: visible;
+        overflow: hidden;
         position: relative;
       }
 
@@ -342,6 +348,12 @@
       .reveal.visible {
         opacity: 1;
         transform: none;
+      }
+
+      /* Semua section dengan animasi slide perlu overflow hidden
+         agar elemen yang belum visible tidak memperlebar halaman */
+      section {
+        overflow: hidden;
       }
       .reveal-delay-1 {
         transition-delay: 0.1s;
@@ -594,7 +606,7 @@
     <nav class="navbar navbar-expand-lg fixed-top bg-primary-color">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="./assets/img/Logo.svg" alt="Gadoeh Rasa Logo" width="46" />
+          <img src="./assets/img/Logo.svg" alt="" width="46" srcset="" />
         </a>
         <button
           class="navbar-toggler"
@@ -619,21 +631,23 @@
               <a class="nav-link" href="product.html">OUR PRODUCT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="faq.html">FAQ</a>
+              <a class="nav-link" href="faq.html">FAQ</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">CONTACT US</a>
             </li>
           </ul>
           <div class="social-media ms-auto">
-            <a href="https://www.facebook.com/" target="_blank"
+            <a
+              href="https://www.facebook.com/profile.php?id=61573657911961&mibextid=wwXIfr&rdid=EpvAhag15ECxYgDN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18NejEEyzH%2F%3Fmibextid%3DwwXIfr#"
+              target="_blank"
               ><i class="fab fa-facebook-f"></i
             ></a>
-            <a href="https://www.instagram.com/" target="_blank"
+            <a href="https://www.instagram.com/gadoehrasa" target="_blank"
               ><i class="fab fa-instagram"></i
             ></a>
-            <a href="https://www.pinterest.com/" target="_blank"
-              ><i class="fab fa-pinterest"></i
+            <a href="https://www.tiktok.com/@gadoehrasa" target="_blank"
+              ><i class="fab fa-tiktok"></i
             ></a>
           </div>
         </div>
@@ -651,7 +665,7 @@
             alt=""
             srcset=""
           />
-          <div class="overlay-text">
+          <div class="overlay-text" id="hero-overlay">
             <img
               src="assets/img/about-assets/headline-text.svg"
               class="img-fluid c-headline-text"
@@ -661,7 +675,7 @@
         </div>
 
         <!-- Section kuning: deskripsi -->
-        <div class="bg-primary-color py-5" style="overflow: visible">
+        <div class="bg-primary-color py-5" style="overflow: visible" id="about">
           <div class="container">
             <div class="row fs-5 fw-medium">
               <div class="col-md-6 text-justify main-reveal">
@@ -820,7 +834,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-primary-color py-5">
+       <footer class="bg-primary-color py-5">
       <div class="container">
         <div class="row align-items-start">
           <!-- Logo -->
@@ -834,11 +848,10 @@
               width="80%"
               alt="Gadoeh Rasa Logo"
             />
-            <p class="mt-3" style="font-size: 1rem">
-              <i>© 2025 Gadoeh Rasa</i>
+            <p class="mt-3 text-muted" style="font-size: 1rem">
+              <i>© 2026 Gadoeh Rasa</i>
             </p>
           </div>
-
           <!-- Office Info -->
           <div
             class="col-md-4 mb-3 footer-item-anim"
@@ -854,7 +867,6 @@
               </p>
             </div>
           </div>
-
           <!-- Official Online Store -->
           <div
             class="col-md-2 mb-3 footer-item-anim"
@@ -863,25 +875,52 @@
             <div class="footer-part">
               <h5 class="fw-bold mb-3">Official Online Store</h5>
               <ul class="list-unstyled" style="font-size: 1rem">
-                <li>Shopee</li>
-                <li>TikTok Shop</li>
-                <li>Tokopedia</li>
-                <li>Lazada</li>
+                <li>
+                  <a
+                    href="https://id.shp.ee/eSkkzfbk"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Shopee</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://vt.tiktok.com/ZS9duwaVr76h3-U6BXT/"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >TikTok Shop</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://tk.tokopedia.com/ZSujDYn4a/"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Tokopedia</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://s.lazada.co.id/s.ZgrB5G"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Lazada</a
+                  >
+                </li>
               </ul>
               <div class="mt-2 d-flex gap-3">
-                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                <a href="https://www.facebook.com/share/18NejEEyzH/?mibextid=wwXIfr" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-facebook-f"></i
                 ></a>
-                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                <a href="https://www.instagram.com/gadoehrasa?igsh=MXdraWg2MTd6eG9seA==" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-instagram"></i
                 ></a>
-                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                <a href="https://www.tiktok.com/@gadoehrasa?_r=1&_t=ZS-94XB6QLYVAW" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-tiktok"></i
                 ></a>
               </div>
             </div>
           </div>
-
           <!-- Main Menu -->
           <div
             class="col-md-2 mb-3 footer-item-anim"
@@ -892,35 +931,35 @@
               <ul class="list-unstyled" style="font-size: 1rem">
                 <li>
                   <a
-                    href="index.html"
+                    href="./index.html"
                     class="text-primary-color text-decoration-none"
                     >Home</a
                   >
                 </li>
                 <li>
                   <a
-                    href="about.html"
+                    href="./about.html"
                     class="text-primary-color text-decoration-none"
                     >About Us</a
                   >
                 </li>
                 <li>
                   <a
-                    href="product.html"
+                    href="./product.html"
                     class="text-primary-color text-decoration-none"
                     >Our Product</a
                   >
                 </li>
                 <li>
                   <a
-                    href="faq.html"
+                    href="./faq.html"
                     class="text-primary-color text-decoration-none"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="contact.html"
+                    href="./contact.html"
                     class="text-primary-color text-decoration-none"
                     >Contact Us</a
                   >
@@ -932,7 +971,18 @@
       </div>
     </footer>
 
-    <script src="../files/assets/bs-example/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/bs-example/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Scroll fokus ke overlay-text saat halaman dibuka
+      window.addEventListener("load", function () {
+        const heroOverlay = document.getElementById("hero-overlay");
+        if (heroOverlay) {
+          setTimeout(function () {
+            heroOverlay.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 300);
+        }
+      });
+    </script>
     <script>
       (function () {
         // ── Scroll-to-top button ──

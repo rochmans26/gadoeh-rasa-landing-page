@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -66,6 +66,11 @@
       * {
         font-family: "Fredoka", sans-serif;
         color: var(--text-primary);
+      }
+      html,
+      body {
+        overflow-x: hidden;
+        max-width: 100%;
       }
       body {
         background-color: #fffdf5;
@@ -270,10 +275,58 @@
       /* ══════════════════════════════
          HERO CAROUSEL
          ══════════════════════════════ */
+
+      /* ── Entrance animation ── */
+      @keyframes heroWrapperIn {
+        0% {
+          opacity: 0;
+          transform: translateY(32px) scale(0.98);
+        }
+        60% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes heroCarouselFadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes heroOverlaySlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-50%) translateX(-40px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(-50%) translateX(0);
+        }
+      }
+
       .hero-carousel-wrapper {
         background-color: var(--primary-color);
         width: 100%;
         padding: 20px 20px 40px;
+        animation: heroWrapperIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .hero-carousel-wrapper .hero-carousel {
+        animation: heroCarouselFadeIn 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1)
+          both;
+      }
+      .hero-carousel-wrapper .hero-overlay {
+        animation: heroOverlaySlideIn 0.85s 0.35s
+          cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      .hero-carousel-wrapper .hero-dots {
+        animation: heroCarouselFadeIn 0.7s 0.55s ease both;
       }
       .hero-carousel {
         border-radius: 28px;
@@ -285,6 +338,30 @@
         height: 0;
         padding-bottom: 66.67%;
         position: relative;
+      }
+      @media (min-width: 768px) {
+        .hero-carousel .carousel-item {
+          padding-bottom: 50%;
+        }
+      }
+      @media (min-width: 992px) {
+        .hero-carousel .carousel-item {
+          padding-bottom: 42%;
+        }
+      }
+      @media (min-width: 1200px) {
+        .hero-carousel-wrapper {
+          padding: 16px 24px 32px;
+        }
+        .hero-carousel .carousel-item {
+          padding-bottom: 0;
+          height: 590px;
+        }
+      }
+      @media (min-width: 1400px) {
+        .hero-carousel .carousel-item {
+          height: 590px;
+        }
       }
       .hero-carousel .carousel-item img {
         position: absolute;
@@ -642,6 +719,12 @@
       [data-animate].is-visible {
         opacity: 1;
         transform: none;
+      }
+
+      /* Semua section dengan animasi fade-left/right perlu overflow hidden
+         agar elemen yang belum visible tidak memperlebar halaman */
+      section {
+        overflow: hidden;
       }
 
       /* ══════════════════════════════
@@ -1098,6 +1181,9 @@
       #best-seller-2 {
         animation: floatBadge2 3s ease-in-out infinite;
       }
+      section[id] {
+        scroll-margin-top: calc(var(--navbar-height) + 16px);
+      }
     </style>
   </head>
 
@@ -1110,7 +1196,7 @@
     <nav class="navbar navbar-expand-lg fixed-top bg-primary-color">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="./assets/img/Logo.svg" alt="Gadoeh Rasa Logo" width="46" />
+          <img src="./assets/img/Logo.svg" alt="" width="46" srcset="" />
         </a>
         <button
           class="navbar-toggler"
@@ -1132,9 +1218,7 @@
               <a class="nav-link" href="about.html">ABOUT US</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="product.html"
-                >OUR PRODUCT</a
-              >
+              <a class="nav-link active" href="product.html">OUR PRODUCT</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="faq.html">FAQ</a>
@@ -1144,14 +1228,16 @@
             </li>
           </ul>
           <div class="social-media ms-auto">
-            <a href="https://www.facebook.com/" target="_blank"
+            <a
+              href="https://www.facebook.com/profile.php?id=61573657911961&mibextid=wwXIfr&rdid=EpvAhag15ECxYgDN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18NejEEyzH%2F%3Fmibextid%3DwwXIfr#"
+              target="_blank"
               ><i class="fab fa-facebook-f"></i
             ></a>
-            <a href="https://www.instagram.com/" target="_blank"
+            <a href="https://www.instagram.com/gadoehrasa" target="_blank"
               ><i class="fab fa-instagram"></i
             ></a>
-            <a href="https://www.pinterest.com/" target="_blank"
-              ><i class="fab fa-pinterest"></i
+            <a href="https://www.tiktok.com/@gadoehrasa" target="_blank"
+              ><i class="fab fa-tiktok"></i
             ></a>
           </div>
         </div>
@@ -1175,26 +1261,32 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img
-                src="./assets/img/product-assets/footage-headline-0.jpg"
+                src="./assets/img/product-assets/foto produk - produk kami-01.webp"
                 alt="Produk Gadoeh Rasa 1"
               />
             </div>
             <div class="carousel-item">
               <img
-                src="./assets/img/product-assets/footage-headline-1.png"
+                src="./assets/img/product-assets/foto produk - produk kami-02.webp"
                 alt="Produk Gadoeh Rasa 2"
               />
             </div>
             <div class="carousel-item">
               <img
-                src="./assets/img/product-assets/footage-headline-2.png"
+                src="./assets/img/product-assets/foto produk - produk kami-03.webp"
                 alt="Produk Gadoeh Rasa 3"
               />
             </div>
             <div class="carousel-item">
               <img
-                src="./assets/img/product-assets/footage-headline-3.png"
+                src="./assets/img/product-assets/foto produk - produk kami-04.webp"
                 alt="Produk Gadoeh Rasa 4"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="./assets/img/product-assets/foto produk - produk kami-05.webp"
+                alt="Produk Gadoeh Rasa 5"
               />
             </div>
           </div>
@@ -1222,7 +1314,11 @@
               class="produk-img"
               alt="Produk Kami"
             />
-            <a href="product.html" class="btn-beli">
+            <a
+              href="https://linktr.ee/gadoehrasa"
+              class="btn-beli"
+              target="_blank"
+            >
               Beli Sekarang
               <span class="me-2"
                 ><i class="fas fa-arrow-right text-white"></i
@@ -1235,14 +1331,15 @@
           <button data-slide="1" aria-label="Slide 2"></button>
           <button data-slide="2" aria-label="Slide 3"></button>
           <button data-slide="3" aria-label="Slide 4"></button>
+          <button data-slide="4" aria-label="Slide 5"></button>
         </div>
       </section>
 
       <!-- ── CATEGORY PILLS ── -->
-      <section class="bg-primary-color p-5">
+      <section class="bg-primary-color p-5" id="kategori">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-4 d-flex justify-content-center mb-3">
+          <div class="row justify-content-center g-3">
+            <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
               <div class="bg-white p-2 rounded-pill" style="width: 438px">
                 <div class="d-flex align-items-center">
                   <div>
@@ -1250,15 +1347,19 @@
                       src="./assets/img/product-assets/kremes-hati-ayam.png"
                       alt=""
                       width="200"
+                      class="img-fluid"
                     />
                   </div>
-                  <div class="fs-3 fw-semibold text-center ms-2">
+                  <div
+                    class="fw-semibold text-center"
+                    style="font-size: 1.5rem"
+                  >
                     Kremes <br />Hati Ayam
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-center mb-3">
+            <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
               <div class="bg-white p-2 rounded-pill" style="width: 438px">
                 <div class="d-flex align-items-center">
                   <div>
@@ -1266,15 +1367,19 @@
                       src="./assets/img/product-assets/abon-ayam-premium.png"
                       alt=""
                       width="200"
+                      class="img-fluid"
                     />
                   </div>
-                  <div class="fs-3 fw-semibold text-center ms-3">
+                  <div
+                    class="fw-semibold text-center"
+                    style="font-size: 1.5rem"
+                  >
                     Abon Ayam <br />Premium
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-center mb-3">
+            <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
               <div class="bg-white p-2 rounded-pill" style="width: 438px">
                 <div class="d-flex align-items-center">
                   <div>
@@ -1282,15 +1387,19 @@
                       src="./assets/img/product-assets/healthy-snack.png"
                       alt=""
                       width="200"
+                      class="img-fluid"
                     />
                   </div>
-                  <div class="fs-3 fw-semibold text-center ms-4">
+                  <div
+                    class="fw-semibold text-center"
+                    style="font-size: 1.5rem"
+                  >
                     Healthy <br />Snack
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-center mb-3">
+            <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
               <div class="bg-white p-2 rounded-pill" style="width: 438px">
                 <div class="d-flex align-items-center">
                   <div>
@@ -1298,15 +1407,19 @@
                       src="./assets/img/product-assets/icon-cheesy-bites.png"
                       alt=""
                       width="200"
+                      class="img-fluid"
                     />
                   </div>
-                  <div class="fs-3 fw-semibold text-center ms-4">
+                  <div
+                    class="fw-semibold text-center"
+                    style="font-size: 1.5rem"
+                  >
                     Cheesy <br />Bites
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-center mb-3">
+            <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
               <div class="bg-white p-2 rounded-pill" style="width: 438px">
                 <div class="d-flex align-items-center">
                   <div>
@@ -1314,9 +1427,13 @@
                       src="./assets/img/product-assets/icon-madu-murni-akasia.png"
                       alt=""
                       width="200"
+                      class="img-fluid"
                     />
                   </div>
-                  <div class="fs-3 fw-semibold text-center ms-4">
+                  <div
+                    class="fw-semibold text-center"
+                    style="font-size: 1.5rem"
+                  >
                     Madu Murni <br />Akasia
                   </div>
                 </div>
@@ -1330,732 +1447,769 @@
       <section class="bg-white p-3 mb-5">
         <div class="container">
           <!-- ================= Kremes Hati Ayam ================= -->
-          <div class="row justify-content-center align-items-center mb-5 mt-5">
-            <div class="col-md-6 mb-4">
-              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
-                Kremes Hati Ayam
-              </h1>
-              <div class="fs-5 fw-medium text-justify" style="width: 75%">
-                Taburan gurih renyah dari hati ayam pilihan, kaya zat besi dan
-                diproses higienis tanpa MSG. Cocok sebagai pendamping MPASI
-                maupun makanan anak sehari-hari. Praktis ditaburkan di atas
-                nasi, bubur, atau lauk kesukaan, bikin si kecil lebih lahap dan
-                bebas drama makan.
+          <section id="kremes-hati-ayam">
+            <div
+              class="row justify-content-center align-items-center mb-5 mt-5"
+            >
+              <div class="col-md-6 mb-4">
+                <h1
+                  class="fw-bold text-green-dark mb-4"
+                  style="font-size: 48pt"
+                >
+                  Kremes Hati Ayam
+                </h1>
+                <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                  Taburan gurih renyah dari hati ayam pilihan, kaya zat besi dan
+                  diproses higienis tanpa MSG. Cocok sebagai pendamping MPASI
+                  maupun makanan anak sehari-hari. Praktis ditaburkan di atas
+                  nasi, bubur, atau lauk kesukaan, bikin si kecil lebih lahap
+                  dan bebas drama makan.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="position-relative d-inline-block w-100">
+                  <img
+                    src="./assets/img/product-assets/promo-kremes-hati-ayam.png"
+                    alt="Kremes Hati Ayam"
+                    id="gambar-produk"
+                    class="img-fluid w-100"
+                  />
+                  <img
+                    src="./assets/img/product-assets/best seller.png"
+                    alt="Best Seller"
+                    id="best-seller"
+                    class="position-absolute"
+                    style="
+                      width: 150px;
+                      top: 0;
+                      right: 1rem;
+                      transform: translate(10%, -10%);
+                      z-index: 10;
+                    "
+                  />
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="position-relative d-inline-block w-100">
-                <img
-                  src="./assets/img/product-assets/promo-kremes-hati-ayam.png"
-                  alt="Kremes Hati Ayam"
-                  id="gambar-produk"
-                  class="img-fluid w-100"
-                />
-                <img
-                  src="./assets/img/product-assets/best seller.png"
-                  alt="Best Seller"
-                  id="best-seller"
-                  class="position-absolute"
-                  style="
-                    width: 150px;
-                    top: 0;
-                    right: 0;
-                    transform: translate(10%, -10%);
-                    z-index: 10;
-                  "
-                />
-              </div>
-            </div>
-          </div>
 
-          <div
-            class="row g-4 justify-content-start mb-3"
-            id="produk-kremes-ayam"
-          >
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
+            <div
+              class="row g-4 justify-content-start mb-3"
+              id="produk-kremes-ayam"
+            >
+              <div class="col-md-3 d-flex">
                 <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
                 >
+                  <div class="card-glow"></div>
                   <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    <img
-                      src="./assets/img/product-assets/KMHA-150g.png"
-                      alt="Kremes Hati Ayam 150g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/KMHA-150g.png"
+                        alt="Kremes Hati Ayam 150g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Kremes Hati Ayam <br />150 g
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
                   <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    Kremes Hati Ayam <br />150 g
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/KMHA-50g.png"
+                        alt="Kremes Hati Ayam 50g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Kremes Hati Ayam <br />50 g
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
+                  >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/KMHA-150g-refill.png"
+                        alt="Kremes Hati Ayam Refill 150g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Kremes Hati Ayam <br />Refill 150 g
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
+                  >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/KMHA-15g-sachet.png"
+                        alt="Kremes Hati Ayam Sachet 15g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Kremes Hati Ayam <br />Sachet 15 g
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
+                  >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/KMHA-box-12pcs.png"
+                        alt="Kremes Hati Ayam Box 12 Sachet"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Kremes Hati Ayam <br />Box isi 12 Sachet
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/KMHA-50g.png"
-                      alt="Kremes Hati Ayam 50g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Kremes Hati Ayam <br />50 g
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/KMHA-150g-refill.png"
-                      alt="Kremes Hati Ayam Refill 150g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Kremes Hati Ayam <br />Refill 150 g
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/KMHA-15g-sachet.png"
-                      alt="Kremes Hati Ayam Sachet 15g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Kremes Hati Ayam <br />Sachet 15 g
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/KMHA-box-12pcs.png"
-                      alt="Kremes Hati Ayam Box 12 Sachet"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Kremes Hati Ayam <br />Box isi 12 Sachet
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
 
           <!-- ================= Abon Ayam MPASI ================= -->
-          <div class="row justify-content-center align-items-center mb-5 mt-5">
-            <div class="col-md-6 mb-4">
-              <div class="position-relative d-inline-block w-100">
-                <img
-                  src="./assets/img/product-assets/promo-abon-ayam-MPASI.png"
-                  alt="Abon Ayam MPASI"
-                  id="gambar-produk"
-                  class="img-fluid w-100"
-                />
+          <section id="abon-ayam-premium">
+            <div
+              class="row justify-content-center align-items-center mb-5 mt-5"
+            >
+              <div class="col-md-6 mb-4">
+                <div class="position-relative d-inline-block w-100">
+                  <img
+                    src="./assets/img/product-assets/promo-abon-ayam-MPASI.png"
+                    alt="Abon Ayam MPASI"
+                    id="gambar-produk"
+                    class="img-fluid w-100"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h1
+                  class="fw-bold text-green-dark mb-4"
+                  style="font-size: 48pt"
+                >
+                  Abon Ayam MPASI
+                </h1>
+                <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                  Dibuat dari daging ayam pilihan berkualitas, Abon Ayam Premium
+                  Gadoeh Rasa hadir dengan tekstur lembut dan rasa gurih alami
+                  yang ramah untuk anak. Tanpa MSG dan diproses higienis, abon
+                  ini kaya protein serta praktis dijadikan lauk atau taburan
+                  MPASI.
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
-                Abon Ayam MPASI
-              </h1>
-              <div class="fs-5 fw-medium text-justify" style="width: 75%">
-                Dibuat dari daging ayam pilihan berkualitas, Abon Ayam Premium
-                Gadoeh Rasa hadir dengan tekstur lembut dan rasa gurih alami
-                yang ramah untuk anak. Tanpa MSG dan diproses higienis, abon ini
-                kaya protein serta praktis dijadikan lauk atau taburan MPASI.
-              </div>
-            </div>
-          </div>
 
-          <div
-            class="row g-4 justify-content-start mb-3"
-            id="produk-abon-ayam-mpasi"
-          >
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
+            <div
+              class="row g-4 justify-content-start mb-3"
+              id="produk-abon-ayam-mpasi"
+            >
+              <div class="col-md-3 d-flex">
                 <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
                 >
+                  <div class="card-glow"></div>
                   <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    <img
-                      src="./assets/img/product-assets/AAM-Refill-100g.png"
-                      alt="Abon Ayam Refill 100g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/AAM-Refill-100g.png"
+                        alt="Abon Ayam Refill 100g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Abon Ayam <br />Refill 100 g
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
                   <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    Abon Ayam <br />Refill 100 g
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/AAM-Refill-200g.png"
+                        alt="Abon Ayam Refill 200g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Abon Ayam <br />Refill 200 g
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
+                  >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/AAM-Topless-200g.png"
+                        alt="Abon Ayam 200g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Abon Ayam <br />200 g
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
+                  >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/AAM-Sachet-10g.png"
+                        alt="Abon Ayam Sachet 10g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Abon Ayam <br />Sachet 10 g
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
+                  >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/AAM-Box-12-Sachet.png"
+                        alt="Abon Ayam Box 12 Sachet"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Abon Ayam <br />Box isi 12 Sachet
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/AAM-Refill-200g.png"
-                      alt="Abon Ayam Refill 200g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Abon Ayam <br />Refill 200 g
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/AAM-Topless-200g.png"
-                      alt="Abon Ayam 200g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Abon Ayam <br />200 g
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/AAM-Sachet-10g.png"
-                      alt="Abon Ayam Sachet 10g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Abon Ayam <br />Sachet 10 g
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/AAM-Box-12-Sachet.png"
-                      alt="Abon Ayam Box 12 Sachet"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Abon Ayam <br />Box isi 12 Sachet
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
 
           <!-- ================= Healthy Snack ================= -->
-          <div class="row justify-content-center align-items-center mb-5 mt-5">
-            <div class="col-md-6 mb-4">
-              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
-                Healthy Snack
-              </h1>
-              <div class="fs-5 fw-medium text-justify" style="width: 75%">
-                Kini ngemil sehat makin seru dengan varian terbaru dari Gadoeh
-                Rasa! Dibuat dari bahan pilihan dan diproses dengan teknik
-                modern, sehingga tetap renyah, bergizi, dan pastinya aman untuk
-                anak maupun keluarga.
+          <section id="healthy-snack">
+            <div
+              class="row justify-content-center align-items-center mb-5 mt-5"
+            >
+              <div class="col-md-6 mb-4">
+                <h1
+                  class="fw-bold text-green-dark mb-4"
+                  style="font-size: 48pt"
+                >
+                  Healthy Snack
+                </h1>
+                <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                  Kini ngemil sehat makin seru dengan varian terbaru dari Gadoeh
+                  Rasa! Dibuat dari bahan pilihan dan diproses dengan teknik
+                  modern, sehingga tetap renyah, bergizi, dan pastinya aman
+                  untuk anak maupun keluarga.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="position-relative d-inline-block w-100">
+                  <img
+                    src="./assets/img/product-assets/promo-healthy-snack.png"
+                    alt="Healthy Snack"
+                    id="gambar-produk"
+                    class="img-fluid w-100"
+                  />
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="position-relative d-inline-block w-100">
-                <img
-                  src="./assets/img/product-assets/promo-healthy-snack.png"
-                  alt="Healthy Snack"
-                  id="gambar-produk"
-                  class="img-fluid w-100"
-                />
-              </div>
-            </div>
-          </div>
 
-          <div
-            class="row g-4 justify-content-start mb-3"
-            id="produk-healthy-snack"
-          >
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
+            <div
+              class="row g-4 justify-content-start mb-3"
+              id="produk-healthy-snack"
+            >
+              <div class="col-md-3 d-flex">
                 <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
                 >
+                  <div class="card-glow"></div>
                   <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    <img
-                      src="./assets/img/product-assets/HS-tempe-70g.png"
-                      alt="Tempe 70g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/HS-tempe-70g.png"
+                        alt="Tempe 70g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Tempe <br />70 g
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
                   <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    Tempe <br />70 g
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/HS-mixed-fruit-75g.png"
+                        alt="Mixed Fruit 75g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Mixed Fruit <br />75 g
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
+                  >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/HS-mixed-vegetable-75g.png"
+                        alt="Mixed Vegetable 75g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Mixed Vegetable <br />75 g
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
+                  >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/HS-brocoli-crispy-50g.png"
+                        alt="Broccoli Crispy 50g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Broccoli Crispy <br />50 g
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/HS-mixed-fruit-75g.png"
-                      alt="Mixed Fruit 75g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Mixed Fruit <br />75 g
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/HS-mixed-vegetable-75g.png"
-                      alt="Mixed Vegetable 75g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Mixed Vegetable <br />75 g
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/HS-brocoli-crispy-50g.png"
-                      alt="Broccoli Crispy 50g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Broccoli Crispy <br />50 g
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
 
           <!-- ================= Cheesy Bites ================= -->
-          <div class="row justify-content-center align-items-center mb-5 mt-5">
-            <div class="col-md-6 mb-4">
-              <div class="position-relative d-inline-block w-100">
-                <img
-                  src="./assets/img/product-assets/promo-cheesy-bites.png"
-                  alt="Cheesy-Bites"
-                  id="gambar-produk-bs-2"
-                  class="img-fluid w-100"
-                />
-                <img
-                  src="./assets/img/product-assets/best seller 2.png"
-                  alt="Best Seller"
-                  id="best-seller-2"
-                  class="position-absolute"
-                  style="
-                    width: 150px;
-                    top: 0;
-                    left: 0;
-                    transform: translate(-10%, 100%);
-                    z-index: 10;
-                  "
-                />
+          <section id="cheesy-bites">
+            <div
+              class="row justify-content-center align-items-center mb-5 mt-5"
+            >
+              <div class="col-md-6 mb-4">
+                <div class="position-relative d-inline-block w-100">
+                  <img
+                    src="./assets/img/product-assets/promo-cheesy-bites.png"
+                    alt="Cheesy-Bites"
+                    id="gambar-produk-bs-2"
+                    class="img-fluid w-100"
+                  />
+                  <img
+                    src="./assets/img/product-assets/best seller 2.png"
+                    alt="Best Seller"
+                    id="best-seller-2"
+                    class="position-absolute"
+                    style="
+                      width: 150px;
+                      top: 0;
+                      left: 1rem;
+                      transform: translate(-10%, 100%);
+                      z-index: 10;
+                    "
+                  />
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
-                Cheesy Bites
-              </h1>
-              <div class="fs-5 fw-medium text-justify" style="width: 75%">
-                Camilan keju dengan tekstur renyah di luar, creamy dan lumer di
-                dalam. Dibuat dari bahan pilihan dengan rasa keju yang ringan,
-                sehingga nyaman dinikmati oleh anak-anak. Cocok sebagai camilan
-                harian, teman bekal, atau pendamping waktu bermain.
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="row g-4 justify-content-start mb-3"
-            id="produk-cheesy-bites"
-          >
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
+              <div class="col-md-6">
+                <h1
+                  class="fw-bold text-green-dark mb-4"
+                  style="font-size: 48pt"
                 >
+                  Cheesy Bites
+                </h1>
+                <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                  Camilan keju dengan tekstur renyah di luar, creamy dan lumer
+                  di dalam. Dibuat dari bahan pilihan dengan rasa keju yang
+                  ringan, sehingga nyaman dinikmati oleh anak-anak. Cocok
+                  sebagai camilan harian, teman bekal, atau pendamping waktu
+                  bermain.
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="row g-4 justify-content-start mb-3"
+              id="produk-cheesy-bites"
+            >
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
                   <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    <img
-                      src="./assets/img/product-assets/CB-75g.png"
-                      alt="Cheesy Bites 75g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Cheesy Bites <br />75 g
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/CB-75g.png"
+                        alt="Cheesy Bites 75g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Cheesy Bites <br />75 g
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
           <!-- ================= Madu Murni Akasia ================= -->
-          <div class="row justify-content-center align-items-center mb-5 mt-5">
-            <div class="col-md-6 mb-4">
-              <h1 class="fw-bold text-green-dark mb-4" style="font-size: 48pt">
-                Madu Murni Akasia
-              </h1>
-              <div class="fs-5 fw-medium text-justify" style="width: 75%">
-                Madu Murni Bunga Akasia Gadoeh Rasa adalah madu 100% alami tanpa
-                campuran. Dipanen dari nektar bunga akasia yang ringan dan
-                manis, madu ini aman untuk pencernaan anak. Tanpa tambahan gula,
-                pewarna, perisa, atau pengawet, cocok dikonsumsi anak usia 1
-                tahun ke atas untuk mendukung tumbuh kembang dan kesehatannya
-                secara alami.
+          <section id="madu-murni-akasia">
+            <div
+              class="row justify-content-center align-items-center mb-5 mt-5"
+            >
+              <div class="col-md-6 mb-4">
+                <h1
+                  class="fw-bold text-green-dark mb-4"
+                  style="font-size: 48pt"
+                >
+                  Madu Murni Akasia
+                </h1>
+                <div class="fs-5 fw-medium text-justify" style="width: 75%">
+                  Madu Murni Bunga Akasia Gadoeh Rasa adalah madu 100% alami
+                  tanpa campuran. Dipanen dari nektar bunga akasia yang ringan
+                  dan manis, madu ini aman untuk pencernaan anak. Tanpa tambahan
+                  gula, pewarna, perisa, atau pengawet, cocok dikonsumsi anak
+                  usia 1 tahun ke atas untuk mendukung tumbuh kembang dan
+                  kesehatannya secara alami.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="position-relative d-inline-block w-100">
+                  <img
+                    src="./assets/img/product-assets/promo-madu-murni-akasia.png"
+                    alt="Madu Murni Akasia"
+                    id="gambar-produk"
+                    class="img-fluid w-100"
+                  />
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="position-relative d-inline-block w-100">
-                <img
-                  src="./assets/img/product-assets/promo-madu-murni-akasia.png"
-                  alt="Madu Murni Akasia"
-                  id="gambar-produk"
-                  class="img-fluid w-100"
-                />
-              </div>
-            </div>
-          </div>
 
-          <div
-            class="row g-4 justify-content-start mb-3"
-            id="produk-madu-murni-akasia"
-          >
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
+            <div
+              class="row g-4 justify-content-start mb-3"
+              id="produk-madu-murni-akasia"
+            >
+              <div class="col-md-3 d-flex">
                 <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
                 >
+                  <div class="card-glow"></div>
                   <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    <img
-                      src="./assets/img/product-assets/MM-madu-murni-akasia-350g.png"
-                      alt="Madu Murni Akasia 350g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/MM-madu-murni-akasia-350g.png"
+                        alt="Madu Murni Akasia 350g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Madu Murni Akasia <br />350 g
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div
+                  class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
+                  style="min-height: 320px"
+                >
+                  <div class="card-glow"></div>
                   <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    class="d-flex flex-column align-items-center justify-content-between h-100"
                   >
-                    Madu Murni Akasia <br />350 g
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                      style="height: 220px"
+                    >
+                      <img
+                        src="./assets/img/product-assets/MM-madu-murni-akasia-150g.png"
+                        alt="Madu Murni Akasia 150g"
+                        class="card-img-inner"
+                        style="
+                          max-height: 200px;
+                          max-width: 100%;
+                          object-fit: contain;
+                        "
+                      />
+                    </div>
+                    <div
+                      class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
+                    >
+                      Madu Murni Akasia <br />150 g
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3 d-flex">
-              <div
-                class="card shadow rounded-4 p-3 text-center w-100 border-0 card-produk-animated"
-                style="min-height: 320px"
-              >
-                <div class="card-glow"></div>
-                <div
-                  class="d-flex flex-column align-items-center justify-content-between h-100"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-center"
-                    style="height: 220px"
-                  >
-                    <img
-                      src="./assets/img/product-assets/MM-madu-murni-akasia-150g.png"
-                      alt="Madu Murni Akasia 150g"
-                      class="card-img-inner"
-                      style="
-                        max-height: 200px;
-                        max-width: 100%;
-                        object-fit: contain;
-                      "
-                    />
-                  </div>
-                  <div
-                    class="fs-5 fw-semibold text-center text-green-dark mt-3 card-title-inner"
-                  >
-                    Madu Murni Akasia <br />150 g
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
         </div>
       </section>
 
@@ -2073,9 +2227,10 @@
     <!-- ══════════════════════════════
          FOOTER
          ══════════════════════════════ -->
-    <footer class="bg-primary-color py-5">
+       <footer class="bg-primary-color py-5">
       <div class="container">
         <div class="row align-items-start">
+          <!-- Logo -->
           <div
             class="col-md-4 text-center mb-3 footer-item-anim"
             style="transition-delay: 0.1s"
@@ -2086,10 +2241,11 @@
               width="80%"
               alt="Gadoeh Rasa Logo"
             />
-            <p class="mt-3" style="font-size: 1rem">
-              <i>© 2025 Gadoeh Rasa</i>
+            <p class="mt-3 text-muted" style="font-size: 1rem">
+              <i>© 2026 Gadoeh Rasa</i>
             </p>
           </div>
+          <!-- Office Info -->
           <div
             class="col-md-4 mb-3 footer-item-anim"
             style="transition-delay: 0.2s"
@@ -2104,6 +2260,7 @@
               </p>
             </div>
           </div>
+          <!-- Official Online Store -->
           <div
             class="col-md-2 mb-3 footer-item-anim"
             style="transition-delay: 0.3s"
@@ -2111,24 +2268,53 @@
             <div class="footer-part">
               <h5 class="fw-bold mb-3">Official Online Store</h5>
               <ul class="list-unstyled" style="font-size: 1rem">
-                <li>Shopee</li>
-                <li>TikTok Shop</li>
-                <li>Tokopedia</li>
-                <li>Lazada</li>
+                <li>
+                  <a
+                    href="https://id.shp.ee/eSkkzfbk"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Shopee</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://vt.tiktok.com/ZS9duwaVr76h3-U6BXT/"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >TikTok Shop</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://tk.tokopedia.com/ZSujDYn4a/"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Tokopedia</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://s.lazada.co.id/s.ZgrB5G"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Lazada</a
+                  >
+                </li>
               </ul>
               <div class="mt-2 d-flex gap-3">
-                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                <a href="https://www.facebook.com/share/18NejEEyzH/?mibextid=wwXIfr" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-facebook-f"></i
                 ></a>
-                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                <a href="https://www.instagram.com/gadoehrasa?igsh=MXdraWg2MTd6eG9seA==" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-instagram"></i
                 ></a>
-                <a href="#" class="text-dark" style="font-size: 1.8rem"
+                <a href="https://www.tiktok.com/@gadoehrasa?_r=1&_t=ZS-94XB6QLYVAW" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-tiktok"></i
                 ></a>
               </div>
             </div>
           </div>
+          <!-- Main Menu -->
           <div
             class="col-md-2 mb-3 footer-item-anim"
             style="transition-delay: 0.4s"
@@ -2138,35 +2324,35 @@
               <ul class="list-unstyled" style="font-size: 1rem">
                 <li>
                   <a
-                    href="index.html"
+                    href="./index.html"
                     class="text-primary-color text-decoration-none"
                     >Home</a
                   >
                 </li>
                 <li>
                   <a
-                    href="about.html"
+                    href="./about.html"
                     class="text-primary-color text-decoration-none"
                     >About Us</a
                   >
                 </li>
                 <li>
                   <a
-                    href="product.html"
+                    href="./product.html"
                     class="text-primary-color text-decoration-none"
                     >Our Product</a
                   >
                 </li>
                 <li>
                   <a
-                    href="faq.html"
+                    href="./faq.html"
                     class="text-primary-color text-decoration-none"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="contact.html"
+                    href="./contact.html"
                     class="text-primary-color text-decoration-none"
                     >Contact Us</a
                   >
@@ -2179,6 +2365,27 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Scroll ke hash anchor setelah halaman fully loaded,
+      // dengan offset untuk navbar fixed
+      window.addEventListener("load", function () {
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            setTimeout(function () {
+              const navbarHeight =
+                document.querySelector(".navbar")?.offsetHeight || 80;
+              const targetTop =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                navbarHeight -
+                16;
+              window.scrollTo({ top: targetTop, behavior: "smooth" });
+            }, 300); // delay sedikit agar animasi halaman tidak bentrok
+          }
+        }
+      });
+    </script>
 
     <script>
       /* ════════════════════════════════════

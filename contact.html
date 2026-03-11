@@ -266,8 +266,16 @@
         background-size: cover;
 
         /* Fade out the bottom of the background image */
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, transparent 100%);
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, transparent 100%);
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 50%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 50%,
+          transparent 100%
+        );
 
         opacity: 1;
         z-index: 0;
@@ -317,7 +325,12 @@
       }
 
       .contact-card {
-        background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent to let the door show through */
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.85
+        ); /* Semi-transparent to let the door show through */
         backdrop-filter: blur(4px); /* Slight blur for readability */
         border-radius: 20px;
         padding: 2rem 2rem 1.5rem;
@@ -590,8 +603,8 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top bg-primary-color">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="./assets/img/Logo.svg" alt="Gadoeh Rasa Logo" width="46" />
+        <a class="navbar-brand" href="#">
+          <img src="./assets/img/Logo.svg" alt="" width="46" srcset="" />
         </a>
         <button
           class="navbar-toggler"
@@ -619,23 +632,20 @@
               <a class="nav-link" href="faq.html">FAQ</a>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="contact.html"
-                >CONTACT US</a
-              >
+              <a class="nav-link active" href="contact.html">CONTACT US</a>
             </li>
           </ul>
           <div class="social-media ms-auto">
-            <a href="https://www.facebook.com/" target="_blank"
+            <a
+              href="https://www.facebook.com/profile.php?id=61573657911961&mibextid=wwXIfr&rdid=EpvAhag15ECxYgDN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18NejEEyzH%2F%3Fmibextid%3DwwXIfr#"
+              target="_blank"
               ><i class="fab fa-facebook-f"></i
             ></a>
-            <a href="https://www.instagram.com/" target="_blank"
+            <a href="https://www.instagram.com/gadoehrasa" target="_blank"
               ><i class="fab fa-instagram"></i
             ></a>
-            <a href="https://www.pinterest.com/" target="_blank"
-              ><i class="fab fa-pinterest"></i
+            <a href="https://www.tiktok.com/@gadoehrasa" target="_blank"
+              ><i class="fab fa-tiktok"></i
             ></a>
           </div>
         </div>
@@ -751,9 +761,7 @@
                   />
                 </div>
                 <div class="mb-4">
-                  <label for="contactSubject" class="form-label"
-                    >Subject</label
-                  >
+                  <label for="contactSubject" class="form-label">Subject</label>
                   <input
                     type="text"
                     class="form-control"
@@ -774,7 +782,9 @@
                     rows="5"
                   ></textarea>
                 </div>
-                <button type="submit" id="submitBtn" class="btn-submit">Submit</button>
+                <button type="submit" id="submitBtn" class="btn-submit">
+                  Submit
+                </button>
               </form>
             </div>
           </div>
@@ -788,7 +798,8 @@
         <div class="row align-items-start">
           <!-- Logo -->
           <div
-            class="col-md-4 text-center mb-3 footer-item-anim footer-delay-1"
+            class="col-md-4 text-center mb-3 footer-item-anim"
+            style="transition-delay: 0.1s"
           >
             <img
               src="assets/img/Logo.svg"
@@ -796,90 +807,118 @@
               width="80%"
               alt="Gadoeh Rasa Logo"
             />
-            <p class="mt-3 footer-text">
+            <p class="mt-3 text-muted" style="font-size: 1rem">
               <i>© 2026 Gadoeh Rasa</i>
             </p>
           </div>
-
           <!-- Office Info -->
           <div
-            class="col-md-4 mb-3 footer-item-anim footer-delay-2"
+            class="col-md-4 mb-3 footer-item-anim"
+            style="transition-delay: 0.2s"
           >
             <div class="footer-part">
               <h5 class="fw-bold mb-5">Gadoeh Rasa</h5>
               <p class="mb-0"><b>Office</b></p>
-              <p class="footer-text">
+              <p style="font-size: 1rem">
                 Ruko Magna Commercial, Summarecon, Komplek Jl. Magna Barat Blok
                 MB. 19, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat
                 40295
               </p>
             </div>
           </div>
-
           <!-- Official Online Store -->
           <div
-            class="col-md-2 mb-3 footer-item-anim footer-delay-3"
+            class="col-md-2 mb-3 footer-item-anim"
+            style="transition-delay: 0.3s"
           >
             <div class="footer-part">
               <h5 class="fw-bold mb-3">Official Online Store</h5>
-              <ul class="list-unstyled footer-text">
-                <li>Shopee</li>
-                <li>TikTok Shop</li>
-                <li>Tokopedia</li>
-                <li>Lazada</li>
+              <ul class="list-unstyled" style="font-size: 1rem">
+                <li>
+                  <a
+                    href="https://id.shp.ee/eSkkzfbk"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Shopee</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://vt.tiktok.com/ZS9duwaVr76h3-U6BXT/"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >TikTok Shop</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://tk.tokopedia.com/ZSujDYn4a/"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Tokopedia</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://s.lazada.co.id/s.ZgrB5G"
+                    class="text-primary-color text-decoration-none"
+                    target="_blank"
+                    >Lazada</a
+                  >
+                </li>
               </ul>
               <div class="mt-2 d-flex gap-3">
-                <a href="#" class="text-dark footer-social-icon"
+                <a href="https://www.facebook.com/share/18NejEEyzH/?mibextid=wwXIfr" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-facebook-f"></i
                 ></a>
-                <a href="#" class="text-dark footer-social-icon"
+                <a href="https://www.instagram.com/gadoehrasa?igsh=MXdraWg2MTd6eG9seA==" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-instagram"></i
                 ></a>
-                <a href="#" class="text-dark footer-social-icon"
+                <a href="https://www.tiktok.com/@gadoehrasa?_r=1&_t=ZS-94XB6QLYVAW" class="text-dark" target="_blank" style="font-size: 1.8rem"
                   ><i class="fab fa-tiktok"></i
                 ></a>
               </div>
             </div>
           </div>
-
           <!-- Main Menu -->
           <div
-            class="col-md-2 mb-3 footer-item-anim footer-delay-4"
+            class="col-md-2 mb-3 footer-item-anim"
+            style="transition-delay: 0.4s"
           >
             <div class="footer-part">
               <h5 class="fw-bold mb-4">Main Menu</h5>
-              <ul class="list-unstyled footer-text">
+              <ul class="list-unstyled" style="font-size: 1rem">
                 <li>
                   <a
-                    href="index.html"
+                    href="./index.html"
                     class="text-primary-color text-decoration-none"
                     >Home</a
                   >
                 </li>
                 <li>
                   <a
-                    href="about.html"
+                    href="./about.html"
                     class="text-primary-color text-decoration-none"
                     >About Us</a
                   >
                 </li>
                 <li>
                   <a
-                    href="product.html"
+                    href="./product.html"
                     class="text-primary-color text-decoration-none"
                     >Our Product</a
                   >
                 </li>
                 <li>
                   <a
-                    href="faq.html"
+                    href="./faq.html"
                     class="text-primary-color text-decoration-none"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="contact.html"
+                    href="./contact.html"
                     class="text-primary-color text-decoration-none"
                     >Contact Us</a
                   >
@@ -927,7 +966,8 @@
     <!-- Spreadsheet Integration -->
     <script>
       (function () {
-        const endpoint = "https://script.google.com/macros/s/AKfycbzfAPpwW8Mq4rdl5K_HdQ5AHNx7Npcs4gZcxDosQKYsB1AqSaeLGuGUcTczGK2ryG6U/exec";
+        const endpoint =
+          "https://script.google.com/macros/s/AKfycbzfAPpwW8Mq4rdl5K_HdQ5AHNx7Npcs4gZcxDosQKYsB1AqSaeLGuGUcTczGK2ryG6U/exec";
         const form = document.getElementById("contactForm");
         const submitBtn = document.getElementById("submitBtn");
 
